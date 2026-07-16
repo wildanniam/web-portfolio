@@ -25,7 +25,7 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   weight: "500",
   variable: "--font-fraunces",
-  display: "swap",
+  display: "optional",
 });
 
 const metadataBase = getSiteUrl();
