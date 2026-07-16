@@ -16,12 +16,14 @@
   --color-smoke-900: var(--smoke-900);
   --font-sans: var(--font-geist);
   --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-fraunces);
+  --font-display: var(--font-editorial);
   --shadow-paper: 0 24px 70px rgb(75 55 35 / 0.13);
   --shadow-media: 0 32px 90px rgb(20 16 12 / 0.27);
 }
 
 :root {
+  --font-editorial: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia,
+    serif;
   --paper-0: #f5f0e8;
   --paper-1: #ece4d8;
   --paper-2: #e1d6c7;
@@ -167,7 +169,7 @@ summary:focus-visible {
 
 .selected-system-copy h3 {
   margin: 1.15rem 0 0;
-  font-family: var(--font-fraunces), serif;
+  font-family: var(--font-editorial);
   font-size: clamp(2.8rem, 6vw, 5rem);
   line-height: 0.95;
   font-weight: 520;
@@ -386,7 +388,7 @@ summary:focus-visible {
 .credential-section__copy h2 {
   max-width: 10ch;
   margin: 0;
-  font-family: var(--font-fraunces), serif;
+  font-family: var(--font-editorial);
   font-size: clamp(3.15rem, 7vw, 5.6rem);
   line-height: 0.95;
   font-weight: 520;
@@ -676,7 +678,7 @@ summary:focus-visible {
 
 .credential-identity p {
   margin: 0;
-  font-family: var(--font-fraunces), serif;
+  font-family: var(--font-editorial);
   font-size: 1.75rem;
   line-height: 1;
   font-weight: 560;
@@ -720,7 +722,7 @@ summary:focus-visible {
   display: block;
   max-width: 8ch;
   margin-top: 0.75rem;
-  font-family: var(--font-fraunces), serif;
+  font-family: var(--font-editorial);
   font-size: 2.35rem;
   line-height: 0.96;
   font-weight: 550;

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -19,13 +19,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   display: "swap",
   preload: false,
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  weight: "500",
-  variable: "--font-fraunces",
-  display: "optional",
 });
 
 const metadataBase = getSiteUrl();
@@ -101,7 +94,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className={`${geist.variable} ${geistMono.variable} ${fraunces.variable}`}>
+      <body className={`${geist.variable} ${geistMono.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
