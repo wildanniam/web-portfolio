@@ -5,6 +5,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { selectedProjects, specheal, quorum } from "@/content/projects";
 import { siteContent } from "@/content/site";
+import { SelectedSystemsScene } from "@/motion/selected-systems-scene";
 
 export function SelectedSystemsSection() {
   return (
@@ -19,32 +20,60 @@ export function SelectedSystemsSection() {
           </p>
         </div>
 
-        <div className="mt-16 space-y-20 lg:space-y-28">
-          {selectedProjects.map((project, index) => (
-            <article
-              key={project.slug}
-              className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12"
-            >
-              <div className={index === 1 ? "lg:order-2 lg:col-span-7" : "lg:col-span-7"}>
-                <ProjectMedia media={project.media[0]} />
-              </div>
-              <div className={index === 1 ? "lg:order-1 lg:col-span-5" : "lg:col-span-5"}>
-                <p className="font-mono text-xs font-semibold text-ember-700">{project.statusLabel}</p>
-                <h3 className="mt-4 font-display text-4xl font-[520] tracking-[-0.045em] sm:text-5xl">
-                  {project.title}
-                </h3>
-                <p className="mt-4 text-lg leading-8 text-ink-700">{project.oneLiner}</p>
-                <p className="mt-5 text-base leading-7 text-ink-600">{project.cardCopy}</p>
-                <Link
-                  href={`/work/${project.slug}`}
-                  className="mt-7 inline-flex min-h-11 items-center font-semibold text-ember-700 underline decoration-ember-500/40 underline-offset-8 hover:text-ink-900"
-                >
-                  Read case study
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
+        <SelectedSystemsScene>
+          <div className="selected-systems-stage mt-14 sm:mt-16">
+            {selectedProjects.map((project) => (
+              <article
+                key={project.slug}
+                data-system-panel
+                data-project-slug={project.slug}
+                className="selected-system-panel"
+              >
+                <div data-system-surface className="selected-system-surface paper-surface">
+                  <div data-system-content className="selected-system-content">
+                    <div className="selected-system-main">
+                      <div className="selected-system-media">
+                        <ProjectMedia media={project.media[0]} />
+                      </div>
+                      <div className="selected-system-copy">
+                        <div className="selected-system-meta">
+                          <span>{project.statusLabel}</span>
+                          <span>{project.year}</span>
+                        </div>
+                        <h3>{project.title}</h3>
+                        <p className="selected-system-one-liner">{project.oneLiner}</p>
+                        <p className="selected-system-role">{project.role}</p>
+                        <Link href={`/work/${project.slug}`}>Read case study</Link>
+                      </div>
+                    </div>
+
+                    <dl className="selected-system-ledger">
+                      <div>
+                        <dt>Contribution</dt>
+                        <dd>{project.contributions[0]}</dd>
+                      </div>
+                      <div>
+                        <dt>
+                          Evidence <span>{project.evidence[0].state.replace("-", " ")}</span>
+                        </dt>
+                        <dd>
+                          {project.evidence[0].claim}{" "}
+                          <a href={project.evidence[0].source.href} target="_blank" rel="noreferrer">
+                            {project.evidence[0].source.label}
+                          </a>
+                        </dd>
+                      </div>
+                      <div>
+                        <dt>Boundary</dt>
+                        <dd>{project.limitations[0]}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </SelectedSystemsScene>
 
         <div className="mt-24 grid gap-7 border-t border-line-200 pt-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>

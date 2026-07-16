@@ -107,6 +107,194 @@ summary:focus-visible {
     var(--shadow-paper);
 }
 
+.selected-systems-stage {
+  position: relative;
+}
+
+.selected-system-panel {
+  position: relative;
+  padding-block: 1.25rem;
+}
+
+.selected-system-panel + .selected-system-panel {
+  margin-top: 3rem;
+}
+
+.selected-system-surface {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line-200);
+  border-radius: 1.75rem;
+  background: var(--paper-1);
+  transform-origin: center top;
+}
+
+.selected-system-content {
+  min-height: inherit;
+}
+
+.selected-system-panel:nth-child(2) .selected-system-surface {
+  background: color-mix(in srgb, var(--paper-1) 80%, var(--paper-2));
+}
+
+.selected-system-panel:nth-child(3) .selected-system-surface {
+  background: color-mix(in srgb, var(--paper-0) 46%, var(--paper-1));
+}
+
+.selected-system-main {
+  display: grid;
+  gap: 2rem;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.selected-system-media {
+  min-width: 0;
+}
+
+.selected-system-copy {
+  align-self: center;
+}
+
+.selected-system-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.15rem;
+  color: var(--ember-700);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+
+.selected-system-copy h3 {
+  margin: 1.15rem 0 0;
+  font-family: var(--font-fraunces), serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 0.95;
+  font-weight: 520;
+  letter-spacing: -0.05em;
+}
+
+.selected-system-one-liner {
+  max-width: 31rem;
+  margin: 1.25rem 0 0;
+  color: var(--ink-700);
+  font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.selected-system-role {
+  margin: 1.2rem 0 0;
+  color: var(--ink-600);
+  font-size: 0.9rem;
+  font-weight: 620;
+}
+
+.selected-system-copy > a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  margin-top: 1.75rem;
+  color: var(--ember-700);
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-color: rgb(198 94 46 / 0.4);
+  text-underline-offset: 0.5rem;
+  transition: color 180ms ease;
+}
+
+.selected-system-copy > a:hover {
+  color: var(--ink-900);
+}
+
+.selected-system-ledger {
+  display: grid;
+  margin: 0;
+  border-top: 1px solid var(--line-200);
+}
+
+.selected-system-ledger > div {
+  padding: 1.3rem clamp(1.25rem, 3vw, 2.5rem) 1.5rem;
+}
+
+.selected-system-ledger > div + div {
+  border-top: 1px solid var(--line-200);
+}
+
+.selected-system-ledger dt {
+  color: var(--evidence-600);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.selected-system-ledger dt span {
+  margin-left: 0.45rem;
+  color: var(--ink-700);
+  text-transform: uppercase;
+}
+
+.selected-system-ledger dd {
+  margin: 0.7rem 0 0;
+  color: var(--ink-700);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.selected-system-ledger a {
+  color: var(--ember-700);
+  font-weight: 620;
+  text-decoration: underline;
+  text-decoration-color: rgb(198 94 46 / 0.35);
+  text-underline-offset: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .selected-system-main {
+    grid-template-columns: minmax(0, 1.18fr) minmax(17rem, 0.82fr);
+    align-items: center;
+  }
+
+  .selected-system-ledger {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .selected-system-ledger > div + div {
+    border-top: 0;
+    border-left: 1px solid var(--line-200);
+  }
+}
+
+@media (min-width: 1280px) and (prefers-reduced-motion: no-preference) {
+  .selected-system-panel {
+    display: grid;
+    min-height: calc(100dvh - 5.5rem);
+    place-items: center;
+    padding-block: 1.5rem;
+  }
+
+  .selected-system-panel + .selected-system-panel {
+    margin-top: 0;
+  }
+
+  .selected-system-surface {
+    width: 100%;
+    min-height: min(43rem, calc(100dvh - 8.5rem));
+    will-change: transform;
+  }
+
+  .selected-system-content {
+    will-change: opacity;
+  }
+
+  .selected-system-main {
+    min-height: 30rem;
+  }
+}
+
 .hero-media-frame,
 [data-hero-copy],
 [data-credential-gsap-stage] {
@@ -741,6 +929,11 @@ summary:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .selected-system-surface,
+  .selected-system-content {
+    will-change: auto;
+  }
+
   .credential-card,
   .credential-swing,
   .credential-tilt {

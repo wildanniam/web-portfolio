@@ -75,6 +75,18 @@ Desktop uses a sticky editorial stage for Fradium, PayGate, and Nova AI Wallet:
 All project content remains in semantic DOM order. Tablet uses shorter distances.
 Mobile and reduced motion use normal vertical blocks.
 
+Implementation details:
+
+- `SelectedSystemsScene` is the only client owner of this scene.
+- Each project article remains complete in server-rendered HTML.
+- Large desktop pins the first two article wrappers at an 88 px navigation
+  offset with `pinSpacing: false`; the final article releases the scene.
+- The opaque inner project surface scales as the following article arrives,
+  while a nested content layer changes opacity. The pinned wrapper and animated
+  transform never share one node, and paper surfaces never become translucent.
+- Tablet, mobile, no-JS, and reduced-motion rendering use the same articles in
+  ordinary document flow with no replacement content.
+
 ## Supporting motion
 
 - Research method uses a one-time line/marker reveal.

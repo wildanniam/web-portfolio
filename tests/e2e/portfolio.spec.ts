@@ -56,6 +56,44 @@ test("research credential exposes truthful front and back states", async ({ page
   expect(browserProblems).toEqual([]);
 });
 
+test("selected systems forms a semantic desktop editorial stage", async ({ page }) => {
+  const browserProblems: string[] = [];
+  page.on("console", (message) => {
+    if (message.type() === "error" || message.type() === "warning") {
+      browserProblems.push(`${message.type()}: ${message.text()}`);
+    }
+  });
+  page.on("pageerror", (error) => browserProblems.push(`pageerror: ${error.message}`));
+
+  await page.goto("/");
+
+  const scene = page.locator('[data-signature-scene="selected-systems"]');
+  const panels = scene.locator("[data-system-panel]");
+
+  await expect(panels).toHaveCount(3);
+  await expect(panels.nth(0)).toHaveAttribute("data-project-slug", "fradium");
+  await expect(panels.nth(1)).toHaveAttribute("data-project-slug", "paygate");
+  await expect(panels.nth(2)).toHaveAttribute("data-project-slug", "nova-ai-wallet");
+  await expect(scene.getByText("Contribution", { exact: true })).toHaveCount(3);
+  await expect(scene.getByText("Boundary", { exact: true })).toHaveCount(3);
+
+  await panels.first().scrollIntoViewIfNeeded();
+  await expect(scene.locator(".pin-spacer")).toHaveCount(2);
+
+  await panels.nth(2).evaluate((panel) => panel.scrollIntoView({ block: "start" }));
+  await expect
+    .poll(async () => Number(await panels.nth(1).locator("[data-system-content]").evaluate(
+      (content) => getComputedStyle(content).opacity,
+    )))
+    .toBeLessThan(0.9);
+  await expect
+    .poll(async () => Number(await panels.nth(1).locator("[data-system-surface]").evaluate(
+      (surface) => getComputedStyle(surface).opacity,
+    )))
+    .toBe(1);
+  expect(browserProblems).toEqual([]);
+});
+
 test("work index reaches every public case study", async ({ page }) => {
   await page.goto("/work");
 
@@ -112,6 +150,7 @@ test.describe("reduced motion", () => {
     await credential.click();
     await expect(credential).toHaveAttribute("data-face", "back");
     await expect(page.locator('[data-signature-scene="hero-credential"] .pin-spacer')).toHaveCount(0);
+    await expect(page.locator('[data-signature-scene="selected-systems"] .pin-spacer')).toHaveCount(0);
     expect(browserProblems).toEqual([]);
   });
 });
@@ -132,5 +171,6 @@ test.describe("mobile", () => {
     await credential.scrollIntoViewIfNeeded();
     await credential.tap();
     await expect(credential).toHaveAttribute("data-face", "back");
+    await expect(page.locator('[data-signature-scene="selected-systems"] .pin-spacer')).toHaveCount(0);
   });
 });
