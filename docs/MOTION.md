@@ -1,0 +1,106 @@
+# Motion System
+
+## Purpose
+
+Motion explains causality in the portfolio's narrative:
+
+**signal enters → system works → human checkpoint intervenes → evidence emerges**.
+
+It should create one or two memorable moments, not make every section perform.
+
+## Ownership
+
+| Layer | Owner | Examples |
+|---|---|---|
+| Ordinary state | CSS | hover, focus, pressed, color, border |
+| Object interaction | Motion | credential, mobile menu, small disclosure |
+| Signature scroll | GSAP + ScrollTrigger | hero handoff, selected systems stage |
+| Media loop | HTML video | ten-second Verifiable Machine loop |
+
+Motion and GSAP never control the same property on the same element.
+
+## Tokens
+
+| Token | Range | Use |
+|---|---:|---|
+| Micro | 140–220 ms | control state |
+| Interface | 280–420 ms | menu/panel presence |
+| Object | 450–700 ms | credential settle/flip |
+| Scene | 700–1200 ms equivalent | coordinated narrative motion |
+| Stagger | 40–90 ms | at most four or five related items |
+
+Prefer restrained ease-out and weighted motion. Avoid elastic or playful bounce.
+
+## Signature scene 1: Hero to Credential
+
+Desktop motion-enabled only, approximately 60–80vh after the first viewport:
+
+1. Poster and all hero copy are immediately usable.
+2. Video crossfades only after it can play.
+3. The media frame scales/translates slightly as scrolling begins.
+4. An ember signal trace visually continues toward the next section.
+5. The signal meets the lanyard anchor and the credential settles with weight.
+6. Pinning releases early enough that the user never feels trapped.
+
+Pin a wrapper and animate a child. Keep calls scoped through `useGSAP`; use
+`gsap.matchMedia()` for breakpoints and cleanup.
+
+## Research Credential
+
+- A brief gentle pendulum settles and stops.
+- Pointer tilt uses MotionValue, not React state per pointer frame.
+- Click, Enter, or Space flips front/back.
+- Touch uses tap-to-flip and does not depend on hover.
+- Reduced motion removes tilt/pendulum and uses instant or subtle opacity state.
+
+## Signature scene 2: Selected Systems
+
+Desktop uses a sticky editorial stage for Fradium, PayGate, and Nova AI Wallet:
+
+1. The current system becomes visually dominant.
+2. Evidence/status context updates.
+3. The previous system recedes with small scale/opacity changes.
+4. The next system enters focus without horizontal-scroll hijacking.
+
+All project content remains in semantic DOM order. Tablet uses shorter distances.
+Mobile and reduced motion use normal vertical blocks.
+
+## Supporting motion
+
+- Research method uses a one-time line/marker reveal.
+- Principles respond to hover/focus without hiding information.
+- Quorum's six evidence marks may illuminate once.
+- Contact uses a restrained tonal transition.
+- No infinite dominant pulse, ticker, marquee, or repeated section fade-up.
+
+## Reduced-motion contract
+
+When `prefers-reduced-motion: reduce` is active:
+
+- hero video does not autoplay;
+- scroll pinning and scrub timelines do not initialize;
+- credential pendulum and pointer tilt are disabled;
+- large transforms become a subtle opacity change or instant state;
+- content order, actions, and evidence remain identical.
+
+Save-Data and autoplay failure use the same progressive-enhancement principle.
+
+## Performance constraints
+
+- Animate transform and opacity in hot paths.
+- Avoid layout reads/writes inside repeated scroll callbacks.
+- Do not use blur/filter animation as a primary scene effect.
+- Pause video offscreen and when the document is hidden.
+- Destroy timelines, observers, and listeners on route change/unmount.
+- Profile signature scenes on Safari and a representative mobile device.
+
+## Verification
+
+- Normal desktop timeline.
+- Tablet breakpoint.
+- Mobile normal flow.
+- Reduced-motion flow.
+- Keyboard and touch credential behavior.
+- Route navigation cleanup.
+- Offscreen/hidden video pause.
+- No layout shift or console warnings during scene initialization.
