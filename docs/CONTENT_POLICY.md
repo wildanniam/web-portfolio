@@ -22,6 +22,9 @@ LinkedIn, resume, publications, phone number, private metrics, internal review
 notes, and unpublished competition outcomes are excluded until explicitly
 approved.
 
+The credential portrait supplied directly by Wildan is approved for this public
+portfolio as a cropped identity image. Only the metadata-free crop is committed.
+
 ## Required project fields
 
 Every project record includes:

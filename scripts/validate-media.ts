@@ -12,6 +12,10 @@ const heroSource = resolve(
   projectRoot,
   "source-assets/hero/the-verifiable-machine-source.mp4",
 );
+const credentialPortrait = resolve(
+  projectRoot,
+  "public/media/profile/wildan-credential.jpg",
+);
 
 if (!existsSync(heroSource)) {
   errors.push("The approved hero source video is missing from the repository root.");
@@ -19,6 +23,15 @@ if (!existsSync(heroSource)) {
   const size = statSync(heroSource).size;
   if (size === 0 || size > 10 * 1024 * 1024) {
     errors.push(`Hero source size is outside the source-asset budget: ${size} bytes.`);
+  }
+}
+
+if (!existsSync(credentialPortrait)) {
+  errors.push("The approved credential portrait crop is missing.");
+} else {
+  const size = statSync(credentialPortrait).size;
+  if (size === 0 || size > 500 * 1024) {
+    errors.push(`Credential portrait size is outside the 500 KB budget: ${size} bytes.`);
   }
 }
 
@@ -56,6 +69,6 @@ if (errors.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Media validation passed. Hero source is present; ${managedMediaCount} candidate/published project asset(s) checked.`,
+    `Media validation passed. Hero source and credential portrait are present; ${managedMediaCount} candidate/published project asset(s) checked.`,
   );
 }

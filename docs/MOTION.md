@@ -53,6 +53,16 @@ Pin a wrapper and animate a child. Keep calls scoped through `useGSAP`; use
 - Touch uses tap-to-flip and does not depend on hover.
 - Reduced motion removes tilt/pendulum and uses instant or subtle opacity state.
 
+Implementation ownership is separated by nested nodes:
+
+- GSAP: hero media wrapper, hero copy wrapper, signal traces, and outer
+  credential stage arrival.
+- Motion: credential swing, pointer-tilt wrapper, and inner face-flip wrapper.
+
+The first scene uses one short pinned hero timeline plus the continuation and
+arrival triggers inside the same narrative component. These collectively count
+as one signature scene.
+
 ## Signature scene 2: Selected Systems
 
 Desktop uses a sticky editorial stage for Fradium, PayGate, and Nova AI Wallet:

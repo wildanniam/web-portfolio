@@ -100,6 +100,8 @@ Video is paused offscreen and when the tab is hidden.
 - CSS handles ordinary visual state.
 - Motion handles object interaction.
 - GSAP handles only two signature scroll scenes.
+- `qrcode` runs in a Server Component at build time to encode the current
+  deployment's absolute `/about` URL. It does not enter the browser bundle.
 - New runtime dependencies above 20 KiB gzip need documented justification.
 - Do not add a smooth-scroll library, WebGL stack, CMS, or UI kit without an
   approved architecture change.
@@ -124,3 +126,11 @@ CI and local checks cover:
 - production build;
 - Playwright smoke/reduced-motion/accessibility checks;
 - bundle and asset budgets as the implementation matures.
+
+## Credential media
+
+The approved credential portrait is a deterministic 4:5 crop with metadata
+removed. The original private download is not committed. Motion owns the nested
+badge tilt, pendulum, and face flip. GSAP owns only the outer scene wrappers,
+signal traces, and scroll arrival so the two engines never write the same
+transform.

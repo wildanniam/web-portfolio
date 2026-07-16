@@ -21,6 +21,25 @@ export const siteContent = {
     intro:
       "Products and experiments across AI agents, Web3 trust, and on-chain intelligence. Each turns a technical question into something people can inspect, test, and use.",
   },
+  credential: {
+    title: "The human checkpoint is not optional.",
+    copy:
+      "This credential marks where autonomy meets accountability: a named builder, a visible method, and a path to inspect the work behind the claim.",
+    details: [
+      {
+        term: "Role",
+        description: "Researcher & Builder",
+      },
+      {
+        term: "Domain",
+        description: "AI agents, Web3 trust, on-chain intelligence",
+      },
+      {
+        term: "Principle",
+        description: "Evidence over assertion",
+      },
+    ],
+  },
   research: {
     title: "Research Through Building",
     paragraphs: [

@@ -5,9 +5,12 @@ import { siteContent } from "@/content/site";
 
 export function HeroSection() {
   return (
-    <section className="flex min-h-[calc(100dvh-4.5rem)] items-center py-12 sm:py-16 lg:py-18">
+    <section
+      data-hero-pin
+      className="hero-scene relative flex min-h-[calc(100dvh-4.5rem)] items-center py-12 sm:py-16 lg:py-18"
+    >
       <Container className="grid items-center gap-12 xl:grid-cols-[minmax(0,1.25fr)_minmax(25rem,0.75fr)] xl:gap-16">
-        <div className="max-w-[46rem]">
+        <div data-hero-copy className="max-w-[46rem]">
           <p className="mb-6 max-w-[42rem] font-mono text-[0.68rem] leading-relaxed font-semibold tracking-[0.14em] text-ember-700">
             {siteContent.hero.eyebrow}
           </p>
@@ -31,10 +34,15 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="xl:-mr-16">
+        <div data-hero-media-frame className="hero-media-frame xl:-mr-16">
           <HeroMedia />
         </div>
       </Container>
+
+      <div className="hero-handoff-signal" aria-hidden="true">
+        <span data-hero-signal />
+        <i data-hero-signal-head />
+      </div>
     </section>
   );
 }
