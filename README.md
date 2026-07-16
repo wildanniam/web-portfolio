@@ -23,11 +23,14 @@ npm run typecheck
 npm run validate
 npm test
 npm run build
+npm run validate:bundle
 npm run test:e2e
 ```
 
-`npm run check` runs the non-browser foundation gate. Playwright covers the
-desktop, mobile, reduced-motion, route, and automated accessibility smoke paths.
+`npm run check` runs the non-browser foundation gate and enforces the homepage
+JavaScript budget after the production build. Playwright covers Chromium and
+WebKit across desktop, mobile, reduced-motion, reflow, route, security-header,
+and automated accessibility smoke paths.
 
 ## Documentation
 
@@ -36,6 +39,7 @@ desktop, mobile, reduced-motion, route, and automated accessibility smoke paths.
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 - [`docs/CONTENT_POLICY.md`](docs/CONTENT_POLICY.md)
 - [`docs/MOTION.md`](docs/MOTION.md)
+- [`docs/RELEASE.md`](docs/RELEASE.md)
 
 The blueprint is locked for Portfolio v1. Material scope changes require Wildan's
 explicit approval and a matching documentation update.

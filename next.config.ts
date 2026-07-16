@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
+const isSecureDeployment =
+  process.env.VERCEL === "1" ||
+  process.env.NEXT_PUBLIC_SITE_URL?.startsWith("https://") === true;
 
 const contentSecurityPolicy = [
   "default-src 'self'",
@@ -14,7 +17,7 @@ const contentSecurityPolicy = [
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",
-  ...(isDevelopment ? [] : ["upgrade-insecure-requests"]),
+  ...(!isDevelopment && isSecureDeployment ? ["upgrade-insecure-requests"] : []),
 ].join("; ");
 
 const nextConfig: NextConfig = {
@@ -32,6 +35,7 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "DENY" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
         ],
       },

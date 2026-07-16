@@ -6,6 +6,7 @@ import { ProjectMedia } from "@/components/projects/project-media";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { getProjectBySlug, projects } from "@/content/projects";
+import { getSiteUrl, serializeJsonLd } from "@/lib/seo/site-url";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -31,6 +32,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       title: `${project.title} | Wildan Syukri Niam`,
       description: project.oneLiner,
       type: "article",
+      url: `/work/${project.slug}`,
     },
   };
 }
@@ -43,13 +45,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const projectIndex = projects.findIndex((item) => item.slug === project.slug);
   const nextProject = projects[(projectIndex + 1) % projects.length];
+  const siteUrl = getSiteUrl();
+  const projectUrl = new URL(`/work/${project.slug}`, siteUrl).toString();
   const projectJsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: project.title,
     description: project.oneLiner,
-    creator: { "@type": "Person", name: "Wildan Syukri Niam" },
-    url: `/work/${project.slug}`,
+    creator: { "@id": new URL("/#person", siteUrl).toString() },
+    url: projectUrl,
+    mainEntityOfPage: projectUrl,
+    keywords: project.domains.join(", "),
     dateModified: project.lastVerifiedAt,
   };
 
@@ -58,7 +64,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(projectJsonLd).replaceAll("<", "\\u003c"),
+          __html: serializeJsonLd(projectJsonLd),
         }}
       />
       <article>

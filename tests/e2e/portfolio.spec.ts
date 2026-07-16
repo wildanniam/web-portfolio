@@ -24,6 +24,44 @@ test("homepage presents the positioning, proof, work, and contact path", async (
   await expect(playbackControl).toHaveAccessibleName(/play hero animation/i);
 });
 
+test("serves deployment metadata and pragmatic security headers", async ({ page }) => {
+  const response = await page.goto("/");
+  const headers = response?.headers() ?? {};
+
+  expect(headers["content-security-policy"]).toContain("default-src 'self'");
+  expect(headers["referrer-policy"]).toBe("strict-origin-when-cross-origin");
+  expect(headers["x-content-type-options"]).toBe("nosniff");
+  expect(headers["x-frame-options"]).toBe("DENY");
+  expect(headers["strict-transport-security"]).toContain("max-age=63072000");
+  expect(headers["permissions-policy"]).toContain("camera=()");
+
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "http://localhost:3000",
+  );
+
+  const structuredData = await page.locator('script[type="application/ld+json"]').first().textContent();
+  expect(structuredData).toContain('"@type":"WebSite"');
+  expect(structuredData).toContain('"@type":"Person"');
+});
+
+test("reflows at a 200 percent zoom-equivalent viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 720, height: 450 });
+  await page.goto("/");
+
+  await expect(
+    page.getByRole("heading", {
+      level: 1,
+      name: "I research and build autonomous systems people can verify.",
+    }),
+  ).toBeVisible();
+
+  const horizontalOverflow = await page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  );
+  expect(horizontalOverflow).toBe(0);
+});
+
 test("research credential exposes truthful front and back states", async ({ page }) => {
   const browserProblems: string[] = [];
   page.on("console", (message) => {

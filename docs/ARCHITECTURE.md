@@ -111,6 +111,8 @@ Video is paused offscreen and when the tab is hidden.
 - No secrets or private content in the repository.
 - No contact form/API/database in v1.
 - Apply pragmatic static-compatible security headers.
+- Preview deployments emit `noindex, nofollow`; Vercel production remains
+  indexable and exposes the canonical sitemap.
 - Do not introduce per-request nonce architecture that turns static routes dynamic
   without a demonstrated need.
 - Validate URLs and prohibit unsafe protocols in public records.
@@ -125,7 +127,8 @@ CI and local checks cover:
 - unit tests;
 - production build;
 - Playwright smoke/reduced-motion/accessibility checks;
-- bundle and asset budgets as the implementation matures.
+- initial homepage JavaScript and public asset budgets;
+- Chromium and WebKit browser, reflow, security-header, and SEO smoke checks.
 
 ## Credential media
 

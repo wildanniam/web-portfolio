@@ -41,6 +41,9 @@ jobs:
       - name: Production build
         run: npm run build
 
+      - name: Enforce homepage JavaScript budget
+        run: npm run validate:bundle
+
       - name: Dependency audit
         run: npm audit --audit-level=moderate
 
@@ -61,8 +64,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+      - name: Install Chromium and WebKit
+        run: npx playwright install --with-deps chromium webkit
 
       - name: Run browser, mobile, reduced-motion, and accessibility smoke tests
         run: npm run test:e2e

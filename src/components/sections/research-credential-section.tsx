@@ -3,19 +3,10 @@ import QRCode from "qrcode";
 import { ResearchCredential } from "@/components/credential/research-credential";
 import { Container } from "@/components/ui/container";
 import { siteContent } from "@/content/site";
-
-function getDeploymentOrigin() {
-  const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  const vercelHost =
-    process.env.VERCEL_URL ?? process.env.VERCEL_PROJECT_PRODUCTION_URL;
-
-  if (configuredUrl) return new URL(configuredUrl).origin;
-  if (vercelHost) return new URL(`https://${vercelHost}`).origin;
-  return "http://localhost:3000";
-}
+import { getSiteUrl } from "@/lib/seo/site-url";
 
 export async function ResearchCredentialSection() {
-  const aboutUrl = new URL("/about", getDeploymentOrigin()).toString();
+  const aboutUrl = new URL("/about", getSiteUrl()).toString();
   const aboutQrDataUrl = await QRCode.toDataURL(aboutUrl, {
     errorCorrectionLevel: "M",
     margin: 1,

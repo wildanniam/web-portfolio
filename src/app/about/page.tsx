@@ -3,17 +3,21 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { siteContent } from "@/content/site";
+import { getSiteUrl, serializeJsonLd } from "@/lib/seo/site-url";
 
 export const metadata: Metadata = {
   title: "About",
   description:
     "How Wildan uses applied research, full-stack product work, and verifiable evidence to build autonomous systems.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
+  const siteUrl = getSiteUrl();
   const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": new URL("/#person", siteUrl).toString(),
     name: siteContent.name,
     jobTitle: siteContent.role,
     description: siteContent.positioning,
@@ -23,6 +27,7 @@ export default function AboutPage() {
       name: siteContent.contact.location,
     },
     sameAs: [siteContent.contact.github],
+    url: new URL("/about", siteUrl).toString(),
   };
 
   return (
@@ -30,7 +35,7 @@ export default function AboutPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(personJsonLd).replaceAll("<", "\\u003c"),
+          __html: serializeJsonLd(personJsonLd),
         }}
       />
       <section className="py-20 sm:py-28">

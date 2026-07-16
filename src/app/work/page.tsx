@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Work",
   description:
     "Evidence-led systems across AI agents, Web3 trust, on-chain intelligence, payments, and software reliability.",
+  alternates: { canonical: "/work" },
 };
 
 export default function WorkPage() {

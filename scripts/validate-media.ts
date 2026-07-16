@@ -17,6 +17,24 @@ const credentialPortrait = resolve(
   "public/media/profile/wildan-credential.jpg",
 );
 
+const publicMediaBudgets = [
+  {
+    label: "Hero poster",
+    path: resolve(projectRoot, "public/media/hero/hero-poster.jpg"),
+    maxBytes: 200 * 1024,
+  },
+  {
+    label: "Hero WebM",
+    path: resolve(projectRoot, "public/media/hero/hero-desktop.webm"),
+    maxBytes: 2 * 1024 * 1024,
+  },
+  {
+    label: "Hero MP4",
+    path: resolve(projectRoot, "public/media/hero/hero-desktop.mp4"),
+    maxBytes: 3 * 1024 * 1024,
+  },
+] as const;
+
 if (!existsSync(heroSource)) {
   errors.push("The approved hero source video is missing from the repository root.");
 } else {
@@ -32,6 +50,20 @@ if (!existsSync(credentialPortrait)) {
   const size = statSync(credentialPortrait).size;
   if (size === 0 || size > 500 * 1024) {
     errors.push(`Credential portrait size is outside the 500 KB budget: ${size} bytes.`);
+  }
+}
+
+for (const mediaBudget of publicMediaBudgets) {
+  if (!existsSync(mediaBudget.path)) {
+    errors.push(`${mediaBudget.label} is missing.`);
+    continue;
+  }
+
+  const size = statSync(mediaBudget.path).size;
+  if (size === 0 || size > mediaBudget.maxBytes) {
+    errors.push(
+      `${mediaBudget.label} size is outside its ${mediaBudget.maxBytes}-byte budget: ${size} bytes.`,
+    );
   }
 }
 
@@ -69,6 +101,6 @@ if (errors.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Media validation passed. Hero source and credential portrait are present; ${managedMediaCount} candidate/published project asset(s) checked.`,
+    `Media validation passed. Hero source, public derivatives, and credential portrait are within budget; ${managedMediaCount} candidate/published project asset(s) checked.`,
   );
 }
