@@ -72,7 +72,7 @@ Typography rules:
 
 - Desktop content max width: approximately 1440 px with generous fluid gutters.
 - Editorial copy uses a narrower readable measure inside the wide composition.
-- Hero uses a split layout; mobile stacks copy before media.
+- Hero uses a full-bleed media stage with a protected editorial contrast zone.
 - Project pages alternate full evidence surfaces and narrow explanatory prose.
 - Sections are not automatically cards. Use whitespace, rules, and material
   changes before adding a container.
@@ -111,7 +111,7 @@ Typography rules:
 
 ### Large desktop — 1280 px and above
 
-- Full split hero and short hero handoff.
+- Full-bleed cinematic hero and short hero handoff.
 - Research Credential may bridge section boundaries.
 - Selected Systems may use a sticky editorial stage.
 
@@ -124,7 +124,7 @@ Typography rules:
 
 - Strict single-column narrative.
 - No pinned or horizontally hijacked scenes.
-- Preserve hero media at 16:9.
+- Preserve a full-viewport hero crop with a reviewed mobile focal point.
 - Credential is tap-to-flip without pointer tilt.
 - Minimum primary touch target is 44×44 px.
 

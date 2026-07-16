@@ -38,7 +38,7 @@ export const specheal = defineProject({
     "Connected technical outcomes to a persistent audit trail and handoff.",
   ],
   teamAttribution:
-    "SpecHeal was a collaborative hackathon MVP. Public copy centers on Wildan's leadership, product definition, full-stack delivery, and AI-assisted recovery design; no competition result is published.",
+    "SpecHeal was a collaborative hackathon MVP. The team placed second at Refactory Hackathon 2026; the result is attributed to the team, while Wildan's role remains scoped to leadership, product definition, and full-stack delivery.",
   decisions: [
     {
       title: "Optimize against false greens",
@@ -76,6 +76,17 @@ export const specheal = defineProject({
       asOf: "2026-07-15",
       source: { label: "Canonical repository", href: "https://github.com/antech2-async/SpecHeal" },
     },
+    {
+      id: "spc-award-01",
+      claim: "The SpecHeal team placed second at Refactory Hackathon 2026.",
+      scope: "team",
+      state: "owner-confirmed",
+      asOf: "2026-07-16",
+      source: {
+        label: "Wildan's previous public portfolio",
+        href: "https://portofolio-wildan-zeta.vercel.app/",
+      },
+    },
   ],
   limitations: [
     "The MVP uses a seeded ShopFlow application and three controlled scenarios.",
@@ -85,7 +96,12 @@ export const specheal = defineProject({
   ],
   links: [
     { label: "View repository", href: "https://github.com/antech2-async/SpecHeal", kind: "repository" },
+    {
+      label: "View public result record",
+      href: "https://portofolio-wildan-zeta.vercel.app/",
+      kind: "evidence",
+    },
   ],
   media: [{ state: "placeholder", label: "SpecHeal recovery cockpit capture required", aspectRatio: "16/10" }],
-  lastVerifiedAt: "2026-07-15",
+  lastVerifiedAt: "2026-07-16",
 });

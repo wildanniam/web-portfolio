@@ -9,11 +9,12 @@ export function CredentialLanyard() {
   return (
     <div className="credential-lanyard" aria-hidden="true">
       <div className="credential-lanyard__strap credential-lanyard__strap--left">
-        <span>EVIDENCE OVER ASSERTION</span>
+        <span>WILDAN / RESEARCH</span>
       </div>
       <div className="credential-lanyard__strap credential-lanyard__strap--right">
-        <span>EVIDENCE OVER ASSERTION</span>
+        <span>BUILD / VERIFY</span>
       </div>
+      <div className="credential-lanyard__keeper" />
       <div className="credential-lanyard__clasp">
         <span />
       </div>
@@ -26,8 +27,8 @@ export function CredentialFaces({ aboutQrSrc, isBackVisible }: CredentialFacesPr
     <>
       <div className="credential-face credential-face--front" aria-hidden={isBackVisible}>
         <div className="credential-face__topline">
-          <span>RESEARCH CREDENTIAL</span>
-          <span>WSN</span>
+          <span>EMBER LAB / FIELD PASS</span>
+          <span>WN—01</span>
         </div>
 
         <div className="credential-portrait">
@@ -52,7 +53,7 @@ export function CredentialFaces({ aboutQrSrc, isBackVisible }: CredentialFacesPr
 
         <div className="credential-face__footer">
           <span>PUBLIC PROFILE</span>
-          <span>VERIFIED 15 JUL 2026</span>
+          <span>ISSUED 2026</span>
         </div>
       </div>
 

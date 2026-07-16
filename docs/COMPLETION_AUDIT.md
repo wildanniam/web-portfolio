@@ -21,7 +21,11 @@ release approval and must not be used to bypass the remaining human gates.
 
 The repository snapshot was compared with Atlas Vault's Public Claim Register,
 Blocked Claim Register, Profile & Positioning, Contact & Links, Portfolio Content
-Contract, and all five public-ready project records on 16 July 2026.
+Contract, and all five public-ready project records on 16 July 2026. Wildan then
+explicitly approved two additional team-scoped outcomes in the active delivery
+thread: Nova AI's exact Lisk Builder Challenge recognitions and SpecHeal's second
+place at Refactory Hackathon 2026. Both were added to the curated allowlist with
+their public source strength recorded.
 
 - Public evidence IDs and lifecycle states are explicitly allowlisted by the
   build validator.
@@ -31,6 +35,8 @@ Contract, and all five public-ready project records on 16 July 2026.
   scoped in the typed project records.
 - Atlas remains an authoring source only; it is not read by the application or CI.
 - Public output contains no raw Vault path or private source record.
+- Quorum's six verified flows remain available in its case study but are no
+  longer presented as a homepage achievement highlight.
 
 ## Interaction and accessibility coverage
 
@@ -55,6 +61,8 @@ Contract, and all five public-ready project records on 16 July 2026.
 
 The accepted video derivatives are pinned by SHA-256 in the media validator.
 Any replacement intentionally fails validation until it is reprobed and approved.
+Wildan explicitly accepted the honest project-media placeholders as the interim
+v1 state on 16 July 2026; authentic project imagery remains a later content pass.
 
 ## Verification snapshot
 
@@ -75,10 +83,8 @@ Latest local production checks on 16 July 2026:
 
 1. Replace or explicitly approve the visible Gemini watermark with its existing
    AI-generated-media disclosure. It must not be concealed.
-2. Supply and approve authentic visuals for all five project media slots, or
-   explicitly approve the honest `ASSET IN REVIEW` placeholders for this release.
-3. Review the final Vercel Preview at desktop and mobile, then provide explicit
+2. Review the final Vercel Preview at desktop and mobile, then provide explicit
    approval before merge or production deployment.
 
-Until all three gates are resolved, Portfolio v1 remains an approval candidate,
+Until both gates are resolved, Portfolio v1 remains an approval candidate,
 not a completed release.

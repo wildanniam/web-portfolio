@@ -100,9 +100,15 @@ export const proofLedger = [
     href: "https://x.com/Indo_Stellar/status/2075550378553421994",
   },
   {
-    label: "VERIFIED TESTNET EVIDENCE",
-    value: "6 signed Quorum flows",
-    context: "Confirmed on Stellar testnet as of 11 Jul 2026",
-    href: "https://github.com/wildanniam/Quorum/blob/main/docs/LIVE_TESTNET_EVIDENCE.json",
+    label: "SEA BUILDER RECOGNITION",
+    value: "1st Notable Mention",
+    context: "Nova AI also won the 1st Social Media Challenge",
+    href: "https://bse.telkomuniversity.ac.id/prestasi-tim-nova-ai-di-south-east-asia-lisk-builder-challenge-3/",
+  },
+  {
+    label: "PRODUCT SPRINT RESULT",
+    value: "Refactory Hackathon · 2nd Place",
+    context: "Awarded to the SpecHeal team",
+    href: "https://portofolio-wildan-zeta.vercel.app/",
   },
 ] as const;

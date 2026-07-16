@@ -39,7 +39,7 @@ Desktop motion-enabled only, approximately 60–80vh after the first viewport:
    immediately usable.
 2. The video module is requested only on eligible desktop viewports, then
    crossfades only after it can play.
-3. The media frame scales/translates slightly as scrolling begins.
+3. The full-bleed media stage scales/translates slightly as scrolling begins.
 4. An ember signal trace visually continues toward the next section.
 5. The signal meets the lanyard anchor and the credential settles with weight.
 6. Pinning releases early enough that the user never feels trapped.

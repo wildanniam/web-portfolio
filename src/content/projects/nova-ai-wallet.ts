@@ -38,7 +38,7 @@ export const novaAiWallet = defineProject({
     "Contributed across the Next.js product, supporting APIs, deployment, and documentation.",
   ],
   teamAttribution:
-    "Nova was a collaborative build with separate AI, full-stack, design, and multi-chain contributions. No competition recognition is included in public copy.",
+    "Nova was a collaborative build with separate AI, full-stack, design, and multi-chain contributions. The team received 1st Notable Mention and 1st Social Media Challenge recognition at the South East Asia Lisk Builder Challenge 3.",
   decisions: [
     {
       title: "Orchestrate a wallet instead of creating custody",
@@ -76,6 +76,18 @@ export const novaAiWallet = defineProject({
       asOf: "2026-07-15",
       source: { label: "Public prototype", href: "https://nova-wallet-puce.vercel.app" },
     },
+    {
+      id: "nov-award-01",
+      claim:
+        "The Nova AI team received 1st Notable Mention and 1st Social Media Challenge recognition at the South East Asia Lisk Builder Challenge 3.",
+      scope: "team",
+      state: "verified",
+      asOf: "2026-07-16",
+      source: {
+        label: "Telkom University achievement record",
+        href: "https://bse.telkomuniversity.ac.id/prestasi-tim-nova-ai-di-south-east-asia-lisk-builder-challenge-3/",
+      },
+    },
   ],
   limitations: [
     "Nova is not a production or custodial wallet.",
@@ -86,7 +98,12 @@ export const novaAiWallet = defineProject({
   links: [
     { label: "Open public prototype", href: "https://nova-wallet-puce.vercel.app", kind: "live" },
     { label: "View repository", href: "https://github.com/OfficialNovaAI/nova-wallet", kind: "repository" },
+    {
+      label: "View team recognition",
+      href: "https://bse.telkomuniversity.ac.id/prestasi-tim-nova-ai-di-south-east-asia-lisk-builder-challenge-3/",
+      kind: "evidence",
+    },
   ],
   media: [{ state: "placeholder", label: "Nova intent-to-transaction review", aspectRatio: "16/10" }],
-  lastVerifiedAt: "2026-07-15",
+  lastVerifiedAt: "2026-07-16",
 });

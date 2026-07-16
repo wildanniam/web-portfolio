@@ -69,9 +69,11 @@ research prototype. All five systems remain available in `/work`.
 
 ### The Verifiable Machine
 
-A split editorial hero: copy on the left and a dark framed 16:9 system video on
-the right. Text never covers the moving mechanism. The poster is immediately
-usable; video playback is a progressive enhancement with a real pause control.
+A full-bleed cinematic hero: the system video fills the complete first-viewport
+stage below the navigation, while the positioning copy sits over a deliberate
+dark editorial scrim. The moving mechanism remains legible outside the copy's
+protected contrast zone. The poster is immediately usable; video playback is a
+progressive enhancement with a real pause control.
 
 ### Research Credential
 
@@ -124,3 +126,7 @@ require explicit approval plus documentation updates:
 - adding a CMS, database, authentication, or runtime Atlas integration;
 - adding WebGL, a custom smooth-scroll engine, or more signature scenes;
 - weakening claim, accessibility, performance, or verification requirements.
+
+The full-bleed hero supersedes the original split composition with Wildan's
+explicit approval on 16 July 2026. It does not change the hero statement,
+narrative, media lifecycle, or performance contract.

@@ -53,7 +53,7 @@ describe("validatePortfolioContent", () => {
     expect(result.errors.some((error) => error.includes("blocked claim"))).toBe(true);
   });
 
-  it("rejects evidence outside the Atlas public allowlist", () => {
+  it("rejects evidence outside the curated public allowlist", () => {
     const invalid = {
       ...projects[0],
       evidence: [
@@ -67,7 +67,7 @@ describe("validatePortfolioContent", () => {
     } as ProjectRecord;
     const result = validatePortfolioContent([invalid, ...projects.slice(1)], siteContent);
 
-    expect(result.errors.some((error) => error.includes("Atlas public allowlist"))).toBe(true);
+    expect(result.errors.some((error) => error.includes("curated public allowlist"))).toBe(true);
   });
 
   it("rejects an unapproved lifecycle upgrade", () => {

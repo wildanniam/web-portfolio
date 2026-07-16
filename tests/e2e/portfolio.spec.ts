@@ -18,6 +18,20 @@ test("homepage presents the positioning, proof, work, and contact path", async (
   await expect(page.getByRole("heading", { level: 2, name: "Let's build the next proof." })).toBeVisible();
   await expect(page.locator("video")).toHaveCount(1);
 
+  const heroBox = await page.locator("[data-hero-pin]").boundingBox();
+  const heroMediaBox = await page.locator("[data-hero-media-frame]").boundingBox();
+  expect(heroBox).not.toBeNull();
+  expect(heroMediaBox).not.toBeNull();
+  expect(heroMediaBox?.width).toBeCloseTo(heroBox?.width ?? 0, 0);
+  expect(heroMediaBox?.height).toBeCloseTo(heroBox?.height ?? 0, 0);
+
+  const proofLedger = page.getByRole("region", { name: "Selected public proof" });
+  await expect(proofLedger.getByText("1st Notable Mention", { exact: true })).toBeVisible();
+  await expect(
+    proofLedger.getByText("Refactory Hackathon · 2nd Place", { exact: true }),
+  ).toBeVisible();
+  await expect(proofLedger.getByText("6 signed Quorum flows", { exact: true })).toHaveCount(0);
+
   const playbackControl = page.getByRole("button", { name: /hero animation/i });
   await expect(playbackControl).toBeVisible();
   await expect(playbackControl).toHaveAccessibleName(/(?:play|pause) hero animation/i);

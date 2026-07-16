@@ -25,10 +25,10 @@ const blockedClaimPatterns: Record<string, RegExp[]> = {
     /production wallet/i,
     /custodial wallet/i,
     /guaranteed execution price/i,
-    /(?:won|awarded).*(?:lisk|competition|challenge)/i,
+    /(?:overall|grand) winner.*(?:lisk|competition|challenge)/i,
   ],
   specheal: [
-    /(?:won|placed second|runner-up).*(?:hackathon|competition)/i,
+    /(?:winner|first place|champion).*(?:refactory|hackathon|competition)/i,
     /healing accuracy (?:of|is)/i,
     /time savings? (?:of|is)/i,
     /production adoption/i,
@@ -44,8 +44,8 @@ const blockedClaimPatterns: Record<string, RegExp[]> = {
 const approvedEvidenceIds: Record<string, readonly string[]> = {
   fradium: ["fra-role-01", "fra-award-01", "fra-live-01", "fra-flow-01"],
   paygate: ["pay-role-01", "pay-grant-01", "pay-live-01", "pay-flow-01"],
-  "nova-ai-wallet": ["nov-role-01", "nov-flow-01", "nov-life-01"],
-  specheal: ["spc-role-01", "spc-flow-01", "spc-live-01"],
+  "nova-ai-wallet": ["nov-role-01", "nov-flow-01", "nov-life-01", "nov-award-01"],
+  specheal: ["spc-role-01", "spc-flow-01", "spc-live-01", "spc-award-01"],
   quorum: ["quo-role-01", "quo-live-01", "quo-flow-01", "quo-comp-01"],
 };
 
@@ -202,7 +202,7 @@ export function validatePortfolioContent(
       }
 
       if (!approvedEvidenceIds[project.slug]?.includes(evidence.id)) {
-        errors.push(`${prefix}: evidence ${evidence.id} is not on the Atlas public allowlist.`);
+        errors.push(`${prefix}: evidence ${evidence.id} is not on the curated public allowlist.`);
       }
     }
 

@@ -305,6 +305,63 @@ summary:focus-visible {
   transform-origin: center;
 }
 
+.proof-ledger-grid {
+  display: grid;
+}
+
+.proof-ledger-grid > a:not(:last-child) {
+  border-bottom: 1px solid var(--line-200);
+}
+
+@media (min-width: 768px) {
+  .proof-ledger-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proof-ledger-grid > a:nth-child(odd) {
+    border-right: 1px solid var(--line-200);
+  }
+
+  .proof-ledger-grid > a:nth-child(n + 3) {
+    border-bottom: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .proof-ledger-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .proof-ledger-grid > a,
+  .proof-ledger-grid > a:nth-child(odd) {
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .proof-ledger-grid > a + a {
+    border-left: 1px solid var(--line-200);
+  }
+}
+
+.hero-cinematic__scrim {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgb(17 13 10 / 0.88) 0%, rgb(17 13 10 / 0.66) 43%, rgb(17 13 10 / 0.18) 72%, transparent 100%),
+    linear-gradient(0deg, rgb(17 13 10 / 0.78) 0%, transparent 48%),
+    linear-gradient(180deg, rgb(17 13 10 / 0.15), transparent 28%);
+  pointer-events: none;
+}
+
+.hero-media-surface::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  content: "";
+  pointer-events: none;
+}
+
 .hero-handoff-signal {
   position: absolute;
   right: clamp(2rem, 28vw, 25rem);
@@ -442,7 +499,7 @@ summary:focus-visible {
 .credential-section__object {
   position: relative;
   display: grid;
-  min-height: 47rem;
+  min-height: 39rem;
   place-items: start center;
 }
 
@@ -459,13 +516,14 @@ summary:focus-visible {
     linear-gradient(180deg, rgb(255 255 255 / 0.42), transparent 42%),
     var(--bronze-500);
   box-shadow: 0 7px 12px rgb(67 43 24 / 0.18);
+  opacity: 0;
   translate: -50% 0;
 }
 
 .credential-rig {
   position: relative;
-  width: min(100%, 28rem);
-  padding-top: 16.75rem;
+  width: min(100%, 25rem);
+  padding-top: 10rem;
   perspective: 1200px;
 }
 
@@ -474,8 +532,8 @@ summary:focus-visible {
   z-index: 1;
   top: 0;
   left: 50%;
-  width: 23rem;
-  height: 18.5rem;
+  width: 21rem;
+  height: 8.9rem;
   translate: -50% 0;
   pointer-events: none;
 }
@@ -483,37 +541,38 @@ summary:focus-visible {
 .credential-lanyard__strap {
   position: absolute;
   top: -1rem;
-  width: 2.55rem;
-  height: 18rem;
+  width: 1.45rem;
+  height: 8.7rem;
   overflow: hidden;
-  border-inline: 1px solid rgb(118 45 18 / 0.42);
+  border-inline: 1px solid rgb(96 37 17 / 0.44);
+  border-radius: 0.18rem;
   background:
-    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.08) 0 1px, transparent 1px 3px),
-    linear-gradient(90deg, #9a3d1d, var(--ember-500) 45%, #d06b39 62%, #8d3518);
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.09) 0 1px, transparent 1px 2px),
+    linear-gradient(90deg, #813317, #b84f25 42%, #ce6736 58%, #7b2e14);
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.18),
-    0 18px 28px rgb(74 43 26 / 0.14);
+    0 14px 22px rgb(74 43 26 / 0.13);
   transform-origin: top center;
 }
 
 .credential-lanyard__strap--left {
-  left: 5.35rem;
-  rotate: -20deg;
+  left: 6.1rem;
+  rotate: -25deg;
 }
 
 .credential-lanyard__strap--right {
-  right: 5.35rem;
-  rotate: 20deg;
+  right: 6.1rem;
+  rotate: 25deg;
 }
 
 .credential-lanyard__strap span {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 15rem;
+  width: 10rem;
   color: rgb(255 246 235 / 0.86);
   font-family: var(--font-mono-stack);
-  font-size: 0.54rem;
+  font-size: 0.42rem;
   font-weight: 700;
   letter-spacing: 0.13em;
   text-align: center;
@@ -525,13 +584,29 @@ summary:focus-visible {
   transform: translate(-50%, -50%) rotate(-90deg);
 }
 
+.credential-lanyard__keeper {
+  position: absolute;
+  z-index: 2;
+  bottom: 0.45rem;
+  left: 50%;
+  width: 2.85rem;
+  height: 1.2rem;
+  border: 1px solid rgb(84 55 34 / 0.5);
+  border-radius: 0.3rem;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.38), transparent 48%),
+    #876548;
+  box-shadow: 0 8px 15px rgb(58 37 22 / 0.19);
+  translate: -50% 0;
+}
+
 .credential-lanyard__clasp {
   position: absolute;
   z-index: 2;
-  bottom: -0.25rem;
+  bottom: -1.45rem;
   left: 50%;
-  width: 3.1rem;
-  height: 2.65rem;
+  width: 2.25rem;
+  height: 2.2rem;
   border: 1px solid rgb(76 55 38 / 0.48);
   border-radius: 0.8rem 0.8rem 1.2rem 1.2rem;
   background:
@@ -552,16 +627,16 @@ summary:focus-visible {
 
 .credential-lanyard__clasp::before {
   top: 0.42rem;
-  width: 1.35rem;
+  width: 1.05rem;
   height: 0.44rem;
   background: rgb(44 31 22 / 0.58);
 }
 
 .credential-lanyard__clasp::after {
-  bottom: -0.65rem;
-  width: 1.1rem;
-  height: 1.1rem;
-  border: 0.25rem solid #745438;
+  bottom: -0.55rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 0.21rem solid #745438;
 }
 
 .credential-swing,
@@ -578,8 +653,8 @@ summary:focus-visible {
 
 .credential-card {
   position: relative;
-  width: min(100%, 21.25rem);
-  aspect-ratio: 0.64;
+  width: min(100%, 18.75rem);
+  aspect-ratio: 0.68;
   margin-inline: auto;
   cursor: pointer;
   transform-style: preserve-3d;
@@ -603,13 +678,13 @@ summary:focus-visible {
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  border: 1px solid rgb(91 70 51 / 0.34);
-  border-radius: 1.6rem;
+  border: 1px solid rgb(91 70 51 / 0.42);
+  border-radius: 1.25rem;
   background: var(--paper-0);
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.75),
-    0 34px 70px rgb(76 49 29 / 0.22),
-    0 8px 20px rgb(76 49 29 / 0.13);
+    0 28px 58px rgb(76 49 29 / 0.2),
+    0 8px 18px rgb(76 49 29 / 0.12);
   backface-visibility: hidden;
 }
 
@@ -645,17 +720,18 @@ summary:focus-visible {
 }
 
 .credential-face__topline {
-  min-height: 3rem;
-  padding-inline: 1.2rem;
+  min-height: 2.65rem;
+  padding-inline: 1rem;
   border-bottom: 1px solid var(--line-200);
 }
 
 .credential-portrait {
   position: relative;
-  height: 17.5rem;
-  margin: 0.72rem;
+  height: 13.9rem;
+  margin: 0.58rem;
   overflow: hidden;
-  border-radius: 1.05rem;
+  border: 1px solid rgb(91 70 51 / 0.18);
+  border-radius: 0.85rem;
   background: var(--paper-2);
 }
 
@@ -680,13 +756,13 @@ summary:focus-visible {
 }
 
 .credential-identity {
-  padding: 0.35rem 1.2rem 1rem;
+  padding: 0.35rem 1rem 0.85rem;
 }
 
 .credential-identity p {
   margin: 0;
   font-family: var(--font-editorial);
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   line-height: 1;
   font-weight: 560;
   letter-spacing: -0.045em;
@@ -710,9 +786,9 @@ summary:focus-visible {
 }
 
 .credential-face__footer {
-  min-height: 2.8rem;
+  min-height: 2.5rem;
   margin-top: auto;
-  padding-inline: 1.2rem;
+  padding-inline: 1rem;
   border-top: 1px solid var(--line-200);
 }
 
@@ -871,6 +947,17 @@ summary:focus-visible {
 }
 
 @media (max-width: 767px) {
+  .hero-cinematic__scrim {
+    background:
+      linear-gradient(0deg, rgb(17 13 10 / 0.92) 0%, rgb(17 13 10 / 0.58) 52%, rgb(17 13 10 / 0.08) 100%),
+      linear-gradient(90deg, rgb(17 13 10 / 0.36), transparent 75%);
+  }
+
+  .hero-media-surface img,
+  .hero-media-surface video {
+    object-position: 57% center;
+  }
+
   .credential-section {
     padding-block: 5.5rem 6rem;
   }
@@ -894,38 +981,38 @@ summary:focus-visible {
   }
 
   .credential-section__object {
-    min-height: 41rem;
+    min-height: 35rem;
   }
 
   .credential-rig {
-    width: min(100%, 22rem);
-    padding-top: 14rem;
+    width: min(100%, 20rem);
+    padding-top: 9.25rem;
   }
 
   .credential-lanyard {
-    width: 20rem;
-    height: 15.8rem;
+    width: 18rem;
+    height: 8.2rem;
   }
 
   .credential-lanyard__strap {
-    width: 2.15rem;
-    height: 15.3rem;
+    width: 1.3rem;
+    height: 8rem;
   }
 
   .credential-lanyard__strap--left {
-    left: 4.85rem;
+    left: 5.1rem;
   }
 
   .credential-lanyard__strap--right {
-    right: 4.85rem;
+    right: 5.1rem;
   }
 
   .credential-card {
-    width: min(100%, 19rem);
+    width: min(100%, 17.4rem);
   }
 
   .credential-portrait {
-    height: 15.2rem;
+    height: 12.7rem;
   }
 
   .credential-identity p {

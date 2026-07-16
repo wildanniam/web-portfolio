@@ -4,14 +4,14 @@ import { proofLedger } from "@/content/site";
 export function ProofLedger() {
   return (
     <section aria-label="Selected public proof" className="border-y border-line-200 bg-paper-1/48">
-      <Container className="grid md:grid-cols-3">
+      <Container className="proof-ledger-grid">
         {proofLedger.map((proof) => (
           <a
             key={proof.label}
             href={proof.href}
             target="_blank"
             rel="noreferrer"
-            className="group py-7 md:px-7 md:first:pl-0 md:last:pr-0 md:not-last:border-r md:not-last:border-line-200"
+            className="group py-6 md:px-7 xl:py-7 xl:first:pl-0 xl:last:pr-0"
           >
             <span className="font-mono text-[0.64rem] font-semibold tracking-[0.12em] text-ember-700">
               {proof.label}

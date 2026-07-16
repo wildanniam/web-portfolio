@@ -20,7 +20,8 @@ the app never reads Atlas at runtime or during CI.
 
 LinkedIn, resume, publications, phone number, private metrics, internal review
 notes, and unpublished competition outcomes are excluded until explicitly
-approved.
+approved. Owner approval in the active delivery thread may add a claim to the
+curated public allowlist when its exact wording, scope, and source are recorded.
 
 The credential portrait supplied directly by Wildan is approved for this public
 portfolio as a cropped identity image. Only the metadata-free crop is committed.
@@ -81,14 +82,20 @@ Do not replace these with vague success language.
 
 - Describe it as a prototype.
 - The public prototype may be described as degraded when that remains true.
-- Do not claim a public award, production readiness, custodial status, or
-  guaranteed estimates.
+- The team may be credited with **1st Notable Mention** and **1st Social Media
+  Challenge** recognition at the South East Asia Lisk Builder Challenge 3, using
+  the Telkom University public record and team-scoped wording.
+- Do not collapse those categories into an overall-winner claim, or claim
+  production readiness, custodial status, or guaranteed estimates.
 
 ### SpecHeal
 
 - The demo is offline.
 - Only three seeded scenarios may be claimed.
-- Do not claim accuracy, time saved, adoption, or a public competition result.
+- The team may be described as placing second at Refactory Hackathon 2026. The
+  current record is owner-confirmed and linked to Wildan's prior public portfolio;
+  replace it with an organizer record if one becomes available.
+- Do not claim first place, accuracy, time saved, or adoption.
 
 ### Quorum
 
@@ -108,7 +115,7 @@ Content validation must fail on:
 - unsafe URLs;
 - published media without alt text/dimensions/source;
 - blocked claim phrases;
-- evidence IDs outside the Atlas public allowlist or missing from it;
+- evidence IDs outside the curated public allowlist or missing from it;
 - lifecycle states that diverge from the approved public snapshot;
 - evidence without a type, label, or source;
 - local absolute paths in public records;
