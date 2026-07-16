@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -7,19 +6,6 @@ import { siteContent } from "@/content/site";
 import { getSiteUrl, isIndexableDeployment, serializeJsonLd } from "@/lib/seo/site-url";
 
 import "./globals.css";
-
-const geist = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist",
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-  display: "swap",
-  preload: false,
-});
 
 const metadataBase = getSiteUrl();
 const indexable = isIndexableDeployment();
@@ -94,7 +80,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className={`${geist.variable} ${geistMono.variable}`}>
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}

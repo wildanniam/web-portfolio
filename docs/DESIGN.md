@@ -56,13 +56,13 @@ by color alone.
 
 - Iowan/Palatino/Georgia system-serif stack: editorial display and hero headline
   without a render-delaying font transfer.
-- Geist: navigation, body, controls, and case-study prose.
-- Geist Mono: metadata, timestamps, statuses, coordinates, and evidence labels.
+- Native UI sans: navigation, body, controls, and case-study prose.
+- Native UI mono: metadata, timestamps, statuses, coordinates, and evidence labels.
 
 Typography rules:
 
-- Use `next/font` with Latin subsets for Geist Sans and Mono. Keep the display
-  face on the system-serif stack so the largest text paints immediately.
+- Keep all three typography roles on carefully ordered system stacks. This
+  preserves the editorial character while avoiding render-delaying font transfers.
 - Keep the hero headline at two lines on intended desktop sizes.
 - Body copy is 16–18 px and case-study reading width is about 68–72 characters.
 - Mono uppercase is reserved for short evidence metadata.

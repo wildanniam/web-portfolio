@@ -14,14 +14,16 @@
   --color-bronze-500: var(--bronze-500);
   --color-line-200: var(--line-200);
   --color-smoke-900: var(--smoke-900);
-  --font-sans: var(--font-geist);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans-stack);
+  --font-mono: var(--font-mono-stack);
   --font-display: var(--font-editorial);
   --shadow-paper: 0 24px 70px rgb(75 55 35 / 0.13);
   --shadow-media: 0 32px 90px rgb(20 16 12 / 0.27);
 }
 
 :root {
+  --font-sans-stack: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono-stack: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --font-editorial: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia,
     serif;
   --paper-0: #f5f0e8;
@@ -57,7 +59,7 @@ body {
     radial-gradient(circle at 89% 8%, rgb(198 94 46 / 0.08), transparent 23rem),
     var(--paper-0);
   color: var(--ink-900);
-  font-family: var(--font-geist), sans-serif;
+  font-family: var(--font-sans-stack);
 }
 
 body::before {
@@ -162,7 +164,7 @@ summary:focus-visible {
   flex-wrap: wrap;
   gap: 0.45rem 1.15rem;
   color: var(--ember-700);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-mono-stack);
   font-size: 0.7rem;
   font-weight: 650;
 }
@@ -225,7 +227,7 @@ summary:focus-visible {
 
 .selected-system-ledger dt {
   color: var(--evidence-600);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-mono-stack);
   font-size: 0.67rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -423,7 +425,7 @@ summary:focus-visible {
 
 .credential-section__copy dt {
   color: var(--ember-700);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-mono-stack);
   font-size: 0.68rem;
   font-weight: 650;
   letter-spacing: 0.08em;
@@ -510,7 +512,7 @@ summary:focus-visible {
   left: 50%;
   width: 15rem;
   color: rgb(255 246 235 / 0.86);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-mono-stack);
   font-size: 0.54rem;
   font-weight: 700;
   letter-spacing: 0.13em;
@@ -631,7 +633,7 @@ summary:focus-visible {
   justify-content: space-between;
   gap: 1rem;
   color: var(--ink-600);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-mono-stack);
   font-size: 0.56rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -665,7 +667,7 @@ summary:focus-visible {
   border-radius: 0.4rem;
   background: rgb(23 20 17 / 0.72);
   color: var(--paper-0);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-mono-stack);
   font-size: 0.5rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -712,7 +714,7 @@ summary:focus-visible {
 .credential-back__header span,
 .credential-qr-row span {
   color: var(--ember-700);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-mono-stack);
   font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.11em;
@@ -749,7 +751,7 @@ summary:focus-visible {
 
 .credential-method li span {
   color: var(--bronze-500);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-mono-stack);
   font-size: 0.58rem;
 }
 

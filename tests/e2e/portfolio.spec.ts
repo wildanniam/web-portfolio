@@ -63,6 +63,8 @@ test("reflows at a 200 percent zoom-equivalent viewport", async ({ page }) => {
 });
 
 test("research credential exposes truthful front and back states", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+
   const browserProblems: string[] = [];
   page.on("console", (message) => {
     if (message.type() === "error" || message.type() === "warning") {
