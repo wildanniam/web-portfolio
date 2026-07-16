@@ -68,6 +68,14 @@ export const novaAiWallet = defineProject({
       asOf: "2026-07-15",
       source: { label: "Canonical repository", href: "https://github.com/OfficialNovaAI/nova-wallet" },
     },
+    {
+      id: "nov-life-01",
+      claim: "Nova is a completed public hackathon prototype, with no production-readiness claim.",
+      scope: "product",
+      state: "verified",
+      asOf: "2026-07-15",
+      source: { label: "Public prototype", href: "https://nova-wallet-puce.vercel.app" },
+    },
   ],
   limitations: [
     "Nova is not a production or custodial wallet.",

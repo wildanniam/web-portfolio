@@ -586,6 +586,11 @@ summary:focus-visible {
   will-change: transform;
 }
 
+.credential-card--static {
+  cursor: default;
+  will-change: auto;
+}
+
 .credential-card:focus-visible {
   border-radius: 1.6rem;
   outline: 3px solid var(--ember-700);

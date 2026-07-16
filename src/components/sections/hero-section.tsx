@@ -1,4 +1,5 @@
-import { HeroMedia } from "@/components/interactive/hero-media";
+import { HeroMediaStatic } from "@/components/interactive/hero-media-static";
+import { LazyHeroMedia } from "@/components/interactive/lazy-hero-media";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { siteContent } from "@/content/site";
@@ -9,7 +10,7 @@ export function HeroSection() {
       data-hero-pin
       className="hero-scene relative flex min-h-[calc(100dvh-4.5rem)] items-center py-12 sm:py-16 lg:py-18"
     >
-      <Container className="grid items-center gap-12 xl:grid-cols-[minmax(0,1.25fr)_minmax(25rem,0.75fr)] xl:gap-16">
+      <Container className="grid items-center gap-4 sm:gap-10 xl:grid-cols-[minmax(0,1.25fr)_minmax(25rem,0.75fr)] xl:gap-16">
         <div data-hero-copy className="max-w-[46rem]">
           <p className="mb-6 max-w-[42rem] font-mono text-[0.68rem] leading-relaxed font-semibold tracking-[0.14em] text-ember-700">
             {siteContent.hero.eyebrow}
@@ -35,7 +36,7 @@ export function HeroSection() {
         </div>
 
         <div data-hero-media-frame className="hero-media-frame xl:-mr-16">
-          <HeroMedia />
+          <LazyHeroMedia fallback={<HeroMediaStatic />} />
         </div>
       </Container>
 

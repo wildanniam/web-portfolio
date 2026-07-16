@@ -53,6 +53,14 @@ export const specheal = defineProject({
   ],
   evidence: [
     {
+      id: "spc-role-01",
+      claim: "Wildan served as Team Lead, Full-Stack Developer, and Product Developer.",
+      scope: "personal",
+      state: "owner-confirmed",
+      asOf: "2026-07-15",
+      source: { label: "Canonical repository", href: "https://github.com/antech2-async/SpecHeal" },
+    },
+    {
       id: "spc-flow-01",
       claim: "The repository implements an evidence-to-verdict-to-rerun loop for seeded Playwright scenarios.",
       scope: "product",

@@ -40,6 +40,7 @@ and automated accessibility smoke paths.
 - [`docs/CONTENT_POLICY.md`](docs/CONTENT_POLICY.md)
 - [`docs/MOTION.md`](docs/MOTION.md)
 - [`docs/RELEASE.md`](docs/RELEASE.md)
+- [`docs/COMPLETION_AUDIT.md`](docs/COMPLETION_AUDIT.md)
 
 The blueprint is locked for Portfolio v1. Material scope changes require Wildan's
 explicit approval and a matching documentation update.

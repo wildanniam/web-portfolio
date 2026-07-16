@@ -27,6 +27,10 @@ Preview deployments are `noindex, nofollow` through both metadata and
 after a production build and measures the unique JavaScript chunks referenced by
 the homepage client manifest. `npm run check` enforces both.
 
+The approved WebM and MP4 hashes also pin derivatives that were manually probed
+as 1280x720, 24 fps, 10 seconds, and zero audio streams. Replacing either video
+requires repeating that probe and deliberately updating the accepted hash.
+
 ## Required review gate
 
 ```bash
@@ -40,6 +44,11 @@ npm run test:e2e
 Before requesting approval, review the Vercel Preview at desktop, tablet,
 mobile, and reduced motion. Confirm canonical metadata, preview `noindex`,
 security headers, media fallback behavior, and all public links.
+
+Lighthouse lab runs are supporting diagnostics, not field p75 data. Record at
+least three Preview runs and report their median alongside the trace-observed LCP.
+The p75 LCP/INP contract becomes measurable only after sufficient real-user field
+traffic exists; do not present a lab score as p75.
 
 The Playwright gate builds and starts the production server before exercising
 Chromium and WebKit. This deliberately excludes development HMR from release

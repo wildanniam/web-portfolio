@@ -9,16 +9,17 @@ import {
 import { HeroSection } from "@/components/sections/hero-section";
 import { ProofLedger } from "@/components/sections/proof-ledger";
 import { ResearchCredentialSection } from "@/components/sections/research-credential-section";
-import { HeroCredentialScene } from "@/motion/hero-credential-scene";
+import { HeroCredentialSceneController } from "@/motion/hero-credential-scene";
 
 export default function HomePage() {
   return (
     <main id="main-content">
-      <HeroCredentialScene>
+      <div data-signature-scene="hero-credential">
         <HeroSection />
         <ProofLedger />
         <ResearchCredentialSection />
-      </HeroCredentialScene>
+        <HeroCredentialSceneController />
+      </div>
       <SelectedSystemsSection />
       <ResearchSection />
       <PrinciplesSection />

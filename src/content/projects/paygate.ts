@@ -59,7 +59,10 @@ export const paygate = defineProject({
       scope: "product",
       state: "owner-confirmed",
       asOf: "2026",
-      source: { label: "Stellar Community Fund", href: "https://communityfund.stellar.org/" },
+      source: {
+        label: "Stellar Indonesia announcement",
+        href: "https://x.com/Indo_Stellar/status/2075550378553421994",
+      },
     },
     {
       id: "pay-live-01",
@@ -68,6 +71,22 @@ export const paygate = defineProject({
       state: "verified",
       asOf: "2026-07-15",
       source: { label: "Live testnet beta", href: "https://trypaygate.com" },
+    },
+    {
+      id: "pay-role-01",
+      claim: "Wildan is PayGate's Founder and Builder.",
+      scope: "personal",
+      state: "owner-confirmed",
+      asOf: "2026-07-15",
+      source: { label: "Canonical repository", href: "https://github.com/wildanniam/paygate-stellar" },
+    },
+    {
+      id: "pay-flow-01",
+      claim: "PayGate verifies a testnet payment before forwarding to a protected upstream and recording an escrow credit.",
+      scope: "product",
+      state: "verified",
+      asOf: "2026-07-15",
+      source: { label: "Canonical repository", href: "https://github.com/wildanniam/paygate-stellar" },
     },
   ],
   limitations: [

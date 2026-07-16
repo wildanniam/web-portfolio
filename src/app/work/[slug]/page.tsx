@@ -12,8 +12,6 @@ type ProjectPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
@@ -100,6 +98,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </div>
               </dl>
             </div>
+            <p className="copy-pretty mt-10 max-w-[56rem] text-lg leading-8 text-ink-600">
+              {project.caseStudyLead}
+            </p>
             <div className="mt-12">
               <ProjectMedia media={project.media[0]} />
             </div>

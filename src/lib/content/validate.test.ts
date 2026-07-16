@@ -52,4 +52,37 @@ describe("validatePortfolioContent", () => {
 
     expect(result.errors.some((error) => error.includes("blocked claim"))).toBe(true);
   });
+
+  it("rejects evidence outside the Atlas public allowlist", () => {
+    const invalid = {
+      ...projects[0],
+      evidence: [
+        ...projects[0].evidence,
+        {
+          ...projects[0].evidence[0],
+          id: "fra-private-claim",
+          claim: "A claim that has not passed the public content contract.",
+        },
+      ],
+    } as ProjectRecord;
+    const result = validatePortfolioContent([invalid, ...projects.slice(1)], siteContent);
+
+    expect(result.errors.some((error) => error.includes("Atlas public allowlist"))).toBe(true);
+  });
+
+  it("rejects an unapproved lifecycle upgrade", () => {
+    const invalid = {
+      ...projects[1],
+      status: "public-beta",
+      liveStatus: "online",
+    } as ProjectRecord;
+    const result = validatePortfolioContent(
+      [projects[0], invalid, ...projects.slice(2)],
+      siteContent,
+    );
+
+    expect(result.errors.some((error) => error.includes("not the approved public state"))).toBe(
+      true,
+    );
+  });
 });

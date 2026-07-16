@@ -5,7 +5,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { selectedProjects, specheal, quorum } from "@/content/projects";
 import { siteContent } from "@/content/site";
-import { SelectedSystemsScene } from "@/motion/selected-systems-scene";
+import { SelectedSystemsSceneController } from "@/motion/selected-systems-scene";
 
 export function SelectedSystemsSection() {
   return (
@@ -20,7 +20,7 @@ export function SelectedSystemsSection() {
           </p>
         </div>
 
-        <SelectedSystemsScene>
+        <div data-signature-scene="selected-systems">
           <div className="selected-systems-stage mt-14 sm:mt-16">
             {selectedProjects.map((project) => (
               <article
@@ -73,7 +73,8 @@ export function SelectedSystemsSection() {
               </article>
             ))}
           </div>
-        </SelectedSystemsScene>
+          <SelectedSystemsSceneController />
+        </div>
 
         <div className="mt-24 grid gap-7 border-t border-line-200 pt-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>

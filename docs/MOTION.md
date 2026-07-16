@@ -35,15 +35,18 @@ Prefer restrained ease-out and weighted motion. Avoid elastic or playful bounce.
 
 Desktop motion-enabled only, approximately 60–80vh after the first viewport:
 
-1. Poster and all hero copy are immediately usable.
-2. Video crossfades only after it can play.
+1. Poster, provenance caption, and all hero copy are server-rendered and
+   immediately usable.
+2. The video module is requested only on eligible desktop viewports, then
+   crossfades only after it can play.
 3. The media frame scales/translates slightly as scrolling begins.
 4. An ember signal trace visually continues toward the next section.
 5. The signal meets the lanyard anchor and the credential settles with weight.
 6. Pinning releases early enough that the user never feels trapped.
 
-Pin a wrapper and animate a child. Keep calls scoped through `useGSAP`; use
-`gsap.matchMedia()` for breakpoints and cleanup.
+Pin a wrapper and animate a child. The server-rendered scene owns all content;
+a zero-layout client controller imports GSAP after scroll intent or a short
+post-paint delay and scopes cleanup to the scene root.
 
 ## Research Credential
 
@@ -52,6 +55,9 @@ Pin a wrapper and animate a child. Keep calls scoped through `useGSAP`; use
 - Click, Enter, or Space flips front/back.
 - Touch uses tap-to-flip and does not depend on hover.
 - Reduced motion removes tilt/pendulum and uses instant or subtle opacity state.
+- The complete front-facing credential is server-rendered as the no-JS state.
+  Motion and the interactive face controller load only when the credential stage
+  approaches the viewport, then replace an identically sized static shell.
 
 Implementation ownership is separated by nested nodes:
 
@@ -77,7 +83,9 @@ Mobile and reduced motion use normal vertical blocks.
 
 Implementation details:
 
-- `SelectedSystemsScene` is the only client owner of this scene.
+- `SelectedSystemsSceneController` is the only client owner of this scene.
+- Its IntersectionObserver imports GSAP only as the section approaches the
+  viewport; the semantic articles remain server-rendered.
 - Each project article remains complete in server-rendered HTML.
 - Large desktop pins the first two article wrappers at an 88 px navigation
   offset with `pinSpacing: false`; the final article releases the scene.

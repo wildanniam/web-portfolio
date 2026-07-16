@@ -1,4 +1,5 @@
-import { existsSync, statSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { projects } from "../src/content/projects";
@@ -35,6 +36,20 @@ const publicMediaBudgets = [
   },
 ] as const;
 
+// These exact derivatives were probed with ffprobe: 1280x720, 24 fps,
+// 10 seconds, and zero audio streams. A replacement must be re-audited before
+// its new hash is accepted here.
+const approvedSilentVideoHashes = new Map([
+  [
+    resolve(projectRoot, "public/media/hero/hero-desktop.webm"),
+    "4fd51782cce5abf5299283a644c2d07d3b0a5d972488fd64b632c463425ae2af",
+  ],
+  [
+    resolve(projectRoot, "public/media/hero/hero-desktop.mp4"),
+    "2c425cf0ea25cbbb90af6b2249090a66adceea98a95f05fda144f7d79b81c388",
+  ],
+]);
+
 if (!existsSync(heroSource)) {
   errors.push("The approved hero source video is missing from the repository root.");
 } else {
@@ -64,6 +79,16 @@ for (const mediaBudget of publicMediaBudgets) {
     errors.push(
       `${mediaBudget.label} size is outside its ${mediaBudget.maxBytes}-byte budget: ${size} bytes.`,
     );
+  }
+
+  const approvedHash = approvedSilentVideoHashes.get(mediaBudget.path);
+  if (approvedHash) {
+    const actualHash = createHash("sha256").update(readFileSync(mediaBudget.path)).digest("hex");
+    if (actualHash !== approvedHash) {
+      errors.push(
+        `${mediaBudget.label} changed and must be re-audited for duration, dimensions, frame rate, and zero audio streams.`,
+      );
+    }
   }
 }
 

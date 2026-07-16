@@ -108,6 +108,8 @@ Content validation must fail on:
 - unsafe URLs;
 - published media without alt text/dimensions/source;
 - blocked claim phrases;
+- evidence IDs outside the Atlas public allowlist or missing from it;
+- lifecycle states that diverge from the approved public snapshot;
 - evidence without a type, label, or source;
 - local absolute paths in public records;
 - duplicate project links or records.

@@ -53,6 +53,22 @@ export const quorum = defineProject({
   ],
   evidence: [
     {
+      id: "quo-role-01",
+      claim: "Wildan serves as Team Lead, Full-Stack Developer, and Smart Contract Engineer.",
+      scope: "personal",
+      state: "owner-confirmed",
+      asOf: "2026-07-15",
+      source: { label: "Canonical repository", href: "https://github.com/wildanniam/Quorum" },
+    },
+    {
+      id: "quo-live-01",
+      claim: "Quorum is a publicly deployed Stellar testnet hackathon build.",
+      scope: "product",
+      state: "verified",
+      asOf: "2026-07-15",
+      source: { label: "Live testnet build", href: "https://quorum-sandy-eight.vercel.app" },
+    },
+    {
       id: "quo-flow-01",
       claim: "Six recorded signed flows were confirmed successful on Stellar testnet.",
       scope: "product",

@@ -97,7 +97,7 @@ export const proofLedger = [
     label: "PUBLIC PROJECT RECORD",
     value: "$5,000 SCF Instaward",
     context: "Awarded to PayGate; not a disbursement claim",
-    href: "https://communityfund.stellar.org/",
+    href: "https://x.com/Indo_Stellar/status/2075550378553421994",
   },
   {
     label: "VERIFIED TESTNET EVIDENCE",

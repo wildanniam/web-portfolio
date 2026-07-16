@@ -20,8 +20,22 @@ test("homepage presents the positioning, proof, work, and contact path", async (
 
   const playbackControl = page.getByRole("button", { name: /hero animation/i });
   await expect(playbackControl).toBeVisible();
-  await playbackControl.click();
-  await expect(playbackControl).toHaveAccessibleName(/play hero animation/i);
+  await expect(playbackControl).toHaveAccessibleName(/(?:play|pause) hero animation/i);
+});
+
+test("credential identity remains available in the server-rendered fallback", async ({ request }) => {
+  const response = await request.get("/");
+  const html = await response.text();
+  const qrResponse = await request.get("/about-qr");
+
+  expect(response.ok()).toBe(true);
+  expect(html).toContain('data-testid="research-credential-fallback"');
+  expect(html).toContain("Wildan Syukri Niam");
+  expect(html).toContain("Evidence before confidence.");
+  expect(html).toContain('href="/about"');
+  expect(html).toContain('src="/about-qr"');
+  expect(qrResponse.ok()).toBe(true);
+  expect(qrResponse.headers()["content-type"]).toContain("image/svg+xml");
 });
 
 test("serves deployment metadata and pragmatic security headers", async ({ page }) => {
@@ -75,8 +89,8 @@ test("research credential exposes truthful front and back states", async ({ page
 
   await page.goto("/");
 
+  await page.locator("[data-credential-gsap-stage]").scrollIntoViewIfNeeded();
   const credential = page.getByTestId("research-credential");
-  await credential.scrollIntoViewIfNeeded();
   await expect(credential).toHaveAttribute("data-face", "front");
   await expect(page.getByText("Wildan Syukri Niam", { exact: true })).toBeVisible();
 
@@ -168,6 +182,53 @@ test("major routes have no serious automated accessibility violations", async ({
   }
 });
 
+test("hero playback remains user-controlled and pauses outside the active document", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  const video = page.locator("video");
+  await expect(video).toHaveCount(1);
+  await video.evaluate(async (element: HTMLVideoElement) => {
+    await element.play();
+  });
+
+  const pauseButton = page.getByRole("button", { name: "Pause hero animation" });
+  await expect(pauseButton).toBeVisible();
+  await pauseButton.click();
+  await expect(page.getByRole("button", { name: "Play hero animation" })).toBeVisible();
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
+
+  await page.getByRole("button", { name: "Play hero animation" }).click();
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(false);
+
+  await page.evaluate(() => {
+    Object.defineProperty(document, "visibilityState", {
+      configurable: true,
+      get: () => "hidden",
+    });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
+});
+
+test("Save-Data keeps the hero on its disclosed still fallback", async ({ page }) => {
+  await page.addInitScript(() => {
+    const connection = new EventTarget();
+    Object.defineProperty(connection, "saveData", { value: true });
+    Object.defineProperty(navigator, "connection", {
+      configurable: true,
+      value: connection,
+    });
+  });
+
+  await page.goto("/");
+
+  await expect(page.locator("video")).toHaveCount(0);
+  await expect(page.getByText("STILL MODE")).toBeVisible();
+  await expect(page.getByText("AI-generated system visualization.", { exact: false })).toBeVisible();
+});
+
 test.describe("reduced motion", () => {
   test("keeps the hero useful without loading autoplay video", async ({ page }) => {
     const browserProblems: string[] = [];
@@ -185,8 +246,8 @@ test.describe("reduced motion", () => {
     await expect(page.getByText("STILL MODE")).toBeVisible();
     await expect(page.getByRole("link", { name: "Explore My Work" }).first()).toBeVisible();
 
+    await page.locator("[data-credential-gsap-stage]").scrollIntoViewIfNeeded();
     const credential = page.getByTestId("research-credential");
-    await credential.scrollIntoViewIfNeeded();
     await credential.click();
     await expect(credential).toHaveAttribute("data-face", "back");
     await expect(page.locator('[data-signature-scene="hero-credential"] .pin-spacer')).toHaveCount(0);
@@ -207,8 +268,8 @@ test.describe("mobile", () => {
     await expect(mobileNavigation).toBeVisible();
     await expect(mobileNavigation.getByRole("link", { name: "About" })).toBeVisible();
 
+    await page.locator("[data-credential-gsap-stage]").scrollIntoViewIfNeeded();
     const credential = page.getByTestId("research-credential");
-    await credential.scrollIntoViewIfNeeded();
     await credential.tap();
     await expect(credential).toHaveAttribute("data-face", "back");
     await expect(page.locator('[data-signature-scene="selected-systems"] .pin-spacer')).toHaveCount(0);
