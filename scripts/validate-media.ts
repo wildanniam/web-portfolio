@@ -11,7 +11,7 @@ let managedMediaCount = 0;
 
 const heroSource = resolve(
   projectRoot,
-  "source-assets/hero/the-verifiable-machine-source.mp4",
+  "source-assets/hero/wildan-human-checkpoint-source.mp4",
 );
 const credentialPortrait = resolve(
   projectRoot,
@@ -21,32 +21,32 @@ const credentialPortrait = resolve(
 const publicMediaBudgets = [
   {
     label: "Hero poster",
-    path: resolve(projectRoot, "public/media/hero/hero-poster.jpg"),
+    path: resolve(projectRoot, "public/media/hero/wildan-human-checkpoint-poster.jpg"),
     maxBytes: 200 * 1024,
   },
   {
     label: "Hero WebM",
-    path: resolve(projectRoot, "public/media/hero/hero-desktop.webm"),
+    path: resolve(projectRoot, "public/media/hero/wildan-human-checkpoint-loop.webm"),
     maxBytes: 2 * 1024 * 1024,
   },
   {
     label: "Hero MP4",
-    path: resolve(projectRoot, "public/media/hero/hero-desktop.mp4"),
+    path: resolve(projectRoot, "public/media/hero/wildan-human-checkpoint-loop.mp4"),
     maxBytes: 3 * 1024 * 1024,
   },
 ] as const;
 
 // These exact derivatives were probed with ffprobe: 1280x720, 24 fps,
-// 10 seconds, and zero audio streams. A replacement must be re-audited before
+// 9.375 seconds, and zero audio streams. A replacement must be re-audited before
 // its new hash is accepted here.
 const approvedSilentVideoHashes = new Map([
   [
-    resolve(projectRoot, "public/media/hero/hero-desktop.webm"),
-    "4fd51782cce5abf5299283a644c2d07d3b0a5d972488fd64b632c463425ae2af",
+    resolve(projectRoot, "public/media/hero/wildan-human-checkpoint-loop.webm"),
+    "3123913c6b2fbbad22fc93ee3f1028c19a6369e31e2b406afe808e76f31d3189",
   ],
   [
-    resolve(projectRoot, "public/media/hero/hero-desktop.mp4"),
-    "2c425cf0ea25cbbb90af6b2249090a66adceea98a95f05fda144f7d79b81c388",
+    resolve(projectRoot, "public/media/hero/wildan-human-checkpoint-loop.mp4"),
+    "0e243a8225db7a131ffd7b179fe5a250d9b66d76ebf6fd7b16b32d814f8f8018",
   ],
 ]);
 

@@ -15,7 +15,7 @@ It should create one or two memorable moments, not make every section perform.
 | Ordinary state | CSS | hover, focus, pressed, color, border |
 | Object interaction | Motion | credential, mobile menu, small disclosure |
 | Signature scroll | GSAP + ScrollTrigger | hero handoff, selected systems stage |
-| Media loop | HTML video | ten-second Verifiable Machine loop |
+| Media loop | HTML video | 9.375-second Living Checkpoint loop |
 
 Motion and GSAP never control the same property on the same element.
 
@@ -39,7 +39,7 @@ Desktop motion-enabled only, approximately 60–80vh after the first viewport:
    immediately usable.
 2. The video module is requested only on eligible desktop viewports, then
    crossfades only after it can play.
-3. The full-bleed media stage scales/translates slightly as scrolling begins.
+3. The full-bleed portrait stage scales/translates slightly as scrolling begins.
 4. An ember signal trace visually continues toward the next section.
 5. The signal meets the lanyard anchor and the credential settles with weight.
 6. Pinning releases early enough that the user never feels trapped.
@@ -51,6 +51,8 @@ post-paint delay and scopes cleanup to the scene root.
 ## Research Credential
 
 - A brief gentle pendulum settles and stops.
+- The continuous strap, clip, and badge share the pendulum wrapper so their
+  physical connection never separates during motion.
 - Pointer tilt uses MotionValue, not React state per pointer frame.
 - Click, Enter, or Space flips front/back.
 - Touch uses tap-to-flip and does not depend on hover.

@@ -11,8 +11,8 @@ export function HeroMediaFrame({ isReady = false, children, control }: HeroMedia
   return (
     <figure className="hero-media-surface relative size-full overflow-hidden bg-smoke-900">
       <Image
-        src="/media/hero/hero-poster.jpg"
-        alt="An analog-futurist system with an ember signal moving through processing modules toward an evidence chamber."
+        src="/media/hero/wildan-human-checkpoint-poster.jpg"
+        alt="Wildan Syukri Niam in a maroon blazer inside a warm analog-futurist research studio."
         fill
         priority
         fetchPriority="high"
@@ -23,8 +23,17 @@ export function HeroMediaFrame({ isReady = false, children, control }: HeroMedia
       {children}
 
       <div className="hero-media-meta absolute right-4 bottom-4 z-20 flex max-w-[30rem] items-center justify-end gap-3 sm:right-8 sm:bottom-6 lg:right-12">
-        <figcaption className="hidden max-w-[23rem] text-right text-[0.68rem] leading-relaxed text-white/68 lg:block">
-          AI-generated system visualization. Signal, processing, human checkpoint, and evidence.
+        <figcaption
+          data-testid="hero-media-disclosure"
+          className="max-w-[10.5rem] text-right text-[0.54rem] leading-[1.35] text-white/70 sm:max-w-[14rem] sm:text-[0.6rem] lg:max-w-[23rem] lg:text-[0.68rem] lg:leading-relaxed"
+        >
+          <span className="lg:hidden">
+            AI-generated portrait environment. Gemini mark visible in motion.
+          </span>
+          <span className="hidden lg:inline">
+            AI-generated environment based on Wildan&apos;s approved portrait; Gemini&apos;s
+            provenance mark remains visible in motion mode.
+          </span>
         </figcaption>
         {control}
       </div>

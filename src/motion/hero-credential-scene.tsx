@@ -39,7 +39,6 @@ export function HeroCredentialSceneController() {
         const credentialScene = root.querySelector<HTMLElement>("[data-credential-scene]");
         const credentialSignal = root.querySelector<HTMLElement>("[data-credential-signal]");
         const credentialStage = root.querySelector<HTMLElement>("[data-credential-gsap-stage]");
-        const lanyardAnchor = root.querySelector<HTMLElement>("[data-lanyard-anchor]");
 
         if (
           !media ||
@@ -49,8 +48,7 @@ export function HeroCredentialSceneController() {
           !heroSignalHead ||
           !credentialScene ||
           !credentialSignal ||
-          !credentialStage ||
-          !lanyardAnchor
+          !credentialStage
         ) {
           return;
         }
@@ -110,8 +108,7 @@ export function HeroCredentialSceneController() {
         });
 
         arrival
-          .fromTo(credentialStage, { y: -64 }, { y: 0 }, 0)
-          .fromTo(lanyardAnchor, { scale: 0.65 }, { scale: 1 }, 0.2);
+          .fromTo(credentialStage, { y: -42 }, { y: 0 }, 0);
       }, root);
 
       revertScene = () => scene.revert();

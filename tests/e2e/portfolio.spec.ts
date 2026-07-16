@@ -105,6 +105,34 @@ test("research credential exposes truthful front and back states", async ({ page
 
   await page.locator("[data-credential-gsap-stage]").scrollIntoViewIfNeeded();
   const credential = page.getByTestId("research-credential");
+  const credentialSwing = page.locator(
+    '.credential-swing:has([data-testid="research-credential"])',
+  );
+  const lanyard = credentialSwing.locator(".credential-lanyard");
+  const lanyardStrap = lanyard.locator(".credential-lanyard__strap");
+  const lanyardClasp = lanyard.locator(".credential-lanyard__clasp");
+
+  await expect(credential).toBeVisible();
+  await expect(lanyardStrap).toHaveCount(1);
+  await expect(lanyardClasp).toBeVisible();
+  await expect(credentialSwing.locator(".credential-card")).toHaveCount(1);
+
+  const strapBox = await lanyardStrap.boundingBox();
+  const claspBox = await lanyardClasp.boundingBox();
+  const credentialBox = await credential.boundingBox();
+  expect(strapBox).not.toBeNull();
+  expect(claspBox).not.toBeNull();
+  expect(credentialBox).not.toBeNull();
+  expect(strapBox?.y ?? 0).toBeLessThan(credentialBox?.y ?? 0);
+  expect(Math.abs(
+    ((claspBox?.x ?? 0) + (claspBox?.width ?? 0) / 2) -
+      ((credentialBox?.x ?? 0) + (credentialBox?.width ?? 0) / 2),
+  )).toBeLessThan(10);
+  const claspBottom = (claspBox?.y ?? 0) + (claspBox?.height ?? 0);
+  const cardTop = credentialBox?.y ?? 0;
+  expect(claspBottom - cardTop).toBeGreaterThan(-4);
+  expect(claspBottom - cardTop).toBeLessThan(12);
+
   await expect(credential).toHaveAttribute("data-face", "front");
   await expect(page.getByText("Wildan Syukri Niam", { exact: true })).toBeVisible();
 
@@ -227,6 +255,7 @@ test("hero playback remains user-controlled and pauses outside the active docume
 });
 
 test("Save-Data keeps the hero on its disclosed still fallback", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.addInitScript(() => {
     const connection = new EventTarget();
     Object.defineProperty(connection, "saveData", { value: true });
@@ -240,7 +269,9 @@ test("Save-Data keeps the hero on its disclosed still fallback", async ({ page }
 
   await expect(page.locator("video")).toHaveCount(0);
   await expect(page.getByText("STILL MODE")).toBeVisible();
-  await expect(page.getByText("AI-generated system visualization.", { exact: false })).toBeVisible();
+  const disclosure = page.getByTestId("hero-media-disclosure");
+  await expect(disclosure).toBeVisible();
+  await expect(disclosure).toContainText("AI-generated portrait environment");
 });
 
 test.describe("reduced motion", () => {

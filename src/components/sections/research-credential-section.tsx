@@ -29,7 +29,6 @@ export function ResearchCredentialSection() {
         </div>
 
         <div data-credential-gsap-stage className="credential-section__object">
-          <span data-lanyard-anchor className="credential-anchor" aria-hidden="true" />
           <LazyResearchCredential
             aboutQrSrc="/about-qr"
             fallback={<ResearchCredentialStatic aboutQrSrc="/about-qr" />}

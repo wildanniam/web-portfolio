@@ -28,7 +28,7 @@ after a production build and measures the unique JavaScript chunks referenced by
 the homepage client manifest. `npm run check` enforces both.
 
 The approved WebM and MP4 hashes also pin derivatives that were manually probed
-as 1280x720, 24 fps, 10 seconds, and zero audio streams. Replacing either video
+as 1280x720, 24 fps, 9.375 seconds, and zero audio streams. Replacing either video
 requires repeating that probe and deliberately updating the accepted hash.
 
 ## Required review gate

@@ -105,8 +105,8 @@ export function HeroMedia() {
         onPause={() => setPlaybackState("paused")}
         onError={() => setPlaybackState("failed")}
       >
-        <source src="/media/hero/hero-desktop.webm" type="video/webm" />
-        <source src="/media/hero/hero-desktop.mp4" type="video/mp4" />
+        <source src="/media/hero/wildan-human-checkpoint-loop.webm" type="video/webm" />
+        <source src="/media/hero/wildan-human-checkpoint-loop.mp4" type="video/mp4" />
       </video>
     </HeroMediaFrame>
   );

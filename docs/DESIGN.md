@@ -94,6 +94,8 @@ Typography rules:
 - Media frame with caption, provenance, and state.
 - Evidence ledger row rather than generic metric card.
 - Physical Research Credential object.
+- Continuous woven lanyard entering from outside the section, with one compact
+  clip physically touching the credential slot.
 - Project panel with problem, mechanism, contribution, evidence, and limitations.
 
 ## State requirements
@@ -151,7 +153,7 @@ Typography rules:
 ## Visual references
 
 - Reference implementation: locally audited inspiration repository, not copied or committed here.
-- Hero source: `The_three_uploaded_images_show.mp4`
+- Hero source: `wildan-human-checkpoint-source.mp4`
 - Full approved product direction: `docs/DEVELOPMENT_BLUEPRINT.md`
 
 Local absolute reference paths are documentation-only and must never enter the

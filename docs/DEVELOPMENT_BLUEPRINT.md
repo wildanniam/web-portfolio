@@ -41,7 +41,7 @@ Open Graph assets.
 ## Locked homepage order
 
 1. Site Header
-2. Hero — The Verifiable Machine
+2. Hero — The Living Checkpoint
 3. Proof Ledger
 4. Research Credential
 5. Selected Systems — Fradium, PayGate, Nova AI Wallet
@@ -67,19 +67,21 @@ research prototype. All five systems remain available in `/work`.
 
 ## Signature experiences
 
-### The Verifiable Machine
+### The Living Checkpoint
 
-A full-bleed cinematic hero: the system video fills the complete first-viewport
-stage below the navigation, while the positioning copy sits over a deliberate
-dark editorial scrim. The moving mechanism remains legible outside the copy's
-protected contrast zone. The poster is immediately usable; video playback is a
-progressive enhancement with a real pause control.
+A full-bleed identity-led cinematic hero places Wildan in a warm analog-futurist
+research environment. Wildan remains on the right while the positioning copy uses
+the deliberately quiet left side. Motion is restrained to natural portrait and
+ember-signal movement. The matching poster is immediately usable; video playback
+is a progressive enhancement with a real pause control.
 
 ### Research Credential
 
-An orange woven lanyard and physical ID badge with Wildan's real portrait, role,
-domains, front/back state, and a QR link to `/about`. Interaction is a restrained
-pendulum, pointer tilt, and deliberate flip—not the reference site's drop/bounce.
+One continuous orange woven strap enters from the section boundary and connects
+through a compact metal clip to a physical ID badge with Wildan's real portrait,
+role, domains, front/back state, and a QR link to `/about`. The strap, clip, and
+badge share one restrained pendulum; pointer tilt and deliberate flip remain on
+the badge—not the reference site's drop/bounce.
 
 ### Selected Systems Stage
 
@@ -130,3 +132,7 @@ require explicit approval plus documentation updates:
 The full-bleed hero supersedes the original split composition with Wildan's
 explicit approval on 16 July 2026. It does not change the hero statement,
 narrative, media lifecycle, or performance contract.
+
+The identity-led Living Checkpoint portrait supersedes the abstract machine
+visual with Wildan's explicit approval on 16 July 2026. The approved hero statement,
+full-bleed composition, Ember Lab system, and progressive media lifecycle remain.

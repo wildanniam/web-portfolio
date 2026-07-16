@@ -77,12 +77,10 @@ export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
 
   return (
     <div className="credential-rig" aria-label="Interactive research credential">
-      <CredentialLanyard />
-
       <motion.div
         className="credential-swing"
         initial={false}
-        animate={{ rotateZ: hasSettled ? [0, -2.4, 1.15, -0.55, 0] : 0 }}
+        animate={{ rotateZ: hasSettled ? [0, -1.65, 0.72, -0.28, 0] : 0 }}
         onViewportEnter={() => {
           if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
             setHasSettled(true);
@@ -90,11 +88,12 @@ export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
         }}
         viewport={{ once: true, amount: 0.58 }}
         transition={{
-          duration: 1.3,
+          duration: 1.55,
           ease: [0.22, 1, 0.36, 1],
-          times: [0, 0.18, 0.48, 0.74, 1],
+          times: [0, 0.22, 0.5, 0.76, 1],
         }}
       >
+        <CredentialLanyard />
         <motion.div
           className="credential-tilt"
           style={{ rotateX, rotateY }}

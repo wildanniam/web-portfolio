@@ -348,9 +348,9 @@ summary:focus-visible {
   z-index: 1;
   inset: 0;
   background:
-    linear-gradient(90deg, rgb(17 13 10 / 0.88) 0%, rgb(17 13 10 / 0.66) 43%, rgb(17 13 10 / 0.18) 72%, transparent 100%),
-    linear-gradient(0deg, rgb(17 13 10 / 0.78) 0%, transparent 48%),
-    linear-gradient(180deg, rgb(17 13 10 / 0.15), transparent 28%);
+    linear-gradient(90deg, rgb(17 13 10 / 0.7) 0%, rgb(17 13 10 / 0.48) 36%, rgb(17 13 10 / 0.14) 58%, transparent 72%),
+    linear-gradient(0deg, rgb(17 13 10 / 0.44) 0%, transparent 42%),
+    linear-gradient(180deg, rgb(17 13 10 / 0.12), transparent 24%);
   pointer-events: none;
 }
 
@@ -503,116 +503,87 @@ summary:focus-visible {
   place-items: start center;
 }
 
-.credential-anchor {
-  position: absolute;
-  z-index: 3;
-  top: -0.35rem;
-  left: 50%;
-  width: 2.1rem;
-  height: 0.7rem;
-  border: 1px solid rgb(90 62 39 / 0.52);
-  border-radius: 999px;
-  background:
-    linear-gradient(180deg, rgb(255 255 255 / 0.42), transparent 42%),
-    var(--bronze-500);
-  box-shadow: 0 7px 12px rgb(67 43 24 / 0.18);
-  opacity: 0;
-  translate: -50% 0;
-}
-
 .credential-rig {
   position: relative;
   width: min(100%, 25rem);
-  padding-top: 10rem;
   perspective: 1200px;
 }
 
 .credential-lanyard {
   position: absolute;
   z-index: 1;
-  top: 0;
+  top: -7.35rem;
   left: 50%;
-  width: 21rem;
-  height: 8.9rem;
+  width: 6rem;
+  height: 17.8rem;
   translate: -50% 0;
   pointer-events: none;
 }
 
 .credential-lanyard__strap {
   position: absolute;
-  top: -1rem;
-  width: 1.45rem;
-  height: 8.7rem;
+  top: 0;
+  left: 50%;
+  width: 1.38rem;
+  height: 15.3rem;
   overflow: hidden;
   border-inline: 1px solid rgb(96 37 17 / 0.44);
-  border-radius: 0.18rem;
+  border-radius: 0 0 0.18rem 0.18rem;
   background:
     repeating-linear-gradient(90deg, rgb(255 255 255 / 0.09) 0 1px, transparent 1px 2px),
     linear-gradient(90deg, #813317, #b84f25 42%, #ce6736 58%, #7b2e14);
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.18),
-    0 14px 22px rgb(74 43 26 / 0.13);
+    0 12px 20px rgb(74 43 26 / 0.13);
   transform-origin: top center;
-}
-
-.credential-lanyard__strap--left {
-  left: 6.1rem;
-  rotate: -25deg;
-}
-
-.credential-lanyard__strap--right {
-  right: 6.1rem;
-  rotate: 25deg;
+  translate: -50% 0;
 }
 
 .credential-lanyard__strap span {
   position: absolute;
-  top: 50%;
+  top: 1.25rem;
   left: 50%;
-  width: 10rem;
+  height: 11.5rem;
   color: rgb(255 246 235 / 0.86);
   font-family: var(--font-mono-stack);
-  font-size: 0.42rem;
+  font-size: 0.39rem;
   font-weight: 700;
   letter-spacing: 0.13em;
-  text-align: center;
-  transform: translate(-50%, -50%) rotate(90deg);
+  line-height: 1;
+  transform: translateX(-50%) rotate(180deg);
   white-space: nowrap;
-}
-
-.credential-lanyard__strap--right span {
-  transform: translate(-50%, -50%) rotate(-90deg);
+  writing-mode: vertical-rl;
 }
 
 .credential-lanyard__keeper {
   position: absolute;
   z-index: 2;
-  bottom: 0.45rem;
+  top: 14.8rem;
   left: 50%;
-  width: 2.85rem;
-  height: 1.2rem;
+  width: 2.15rem;
+  height: 0.92rem;
   border: 1px solid rgb(84 55 34 / 0.5);
-  border-radius: 0.3rem;
+  border-radius: 0.28rem;
   background:
     linear-gradient(180deg, rgb(255 255 255 / 0.38), transparent 48%),
     #876548;
-  box-shadow: 0 8px 15px rgb(58 37 22 / 0.19);
+  box-shadow: 0 6px 12px rgb(58 37 22 / 0.18);
   translate: -50% 0;
 }
 
 .credential-lanyard__clasp {
   position: absolute;
   z-index: 2;
-  bottom: -1.45rem;
+  top: 15.45rem;
   left: 50%;
-  width: 2.25rem;
-  height: 2.2rem;
+  width: 1.55rem;
+  height: 2.15rem;
   border: 1px solid rgb(76 55 38 / 0.48);
-  border-radius: 0.8rem 0.8rem 1.2rem 1.2rem;
+  border-radius: 0.48rem 0.48rem 0.78rem 0.78rem;
   background:
     linear-gradient(150deg, rgb(255 255 255 / 0.55), transparent 32%),
     linear-gradient(180deg, #aa8a68, #6f5035);
-  box-shadow: 0 8px 15px rgb(58 37 22 / 0.23);
+  box-shadow: 0 7px 13px rgb(58 37 22 / 0.22);
   translate: -50% 0;
 }
 
@@ -626,17 +597,17 @@ summary:focus-visible {
 }
 
 .credential-lanyard__clasp::before {
-  top: 0.42rem;
-  width: 1.05rem;
-  height: 0.44rem;
+  top: 0.38rem;
+  width: 0.76rem;
+  height: 0.32rem;
   background: rgb(44 31 22 / 0.58);
 }
 
 .credential-lanyard__clasp::after {
-  bottom: -0.55rem;
-  width: 0.9rem;
-  height: 0.9rem;
-  border: 0.21rem solid #745438;
+  bottom: -0.46rem;
+  width: 0.82rem;
+  height: 0.82rem;
+  border: 0.18rem solid #745438;
 }
 
 .credential-swing,
@@ -648,7 +619,9 @@ summary:focus-visible {
 }
 
 .credential-swing {
-  transform-origin: 50% -2rem;
+  padding-top: 10rem;
+  transform-origin: 50% -7.35rem;
+  rotate: -1.4deg;
 }
 
 .credential-card {
@@ -659,6 +632,34 @@ summary:focus-visible {
   cursor: pointer;
   transform-style: preserve-3d;
   will-change: transform;
+}
+
+.credential-card::before,
+.credential-card::after {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  content: "";
+  translate: -50% 0;
+}
+
+.credential-card::before {
+  top: -0.42rem;
+  width: 2.75rem;
+  height: 1rem;
+  border: 1px solid rgb(91 70 51 / 0.38);
+  border-radius: 0.62rem 0.62rem 0.28rem 0.28rem;
+  background: var(--paper-1);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.72);
+}
+
+.credential-card::after {
+  top: 0.02rem;
+  width: 1.15rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: rgb(71 51 35 / 0.5);
+  box-shadow: inset 0 1px 2px rgb(32 23 17 / 0.36);
 }
 
 .credential-card--static {
@@ -955,7 +956,7 @@ summary:focus-visible {
 
   .hero-media-surface img,
   .hero-media-surface video {
-    object-position: 57% center;
+    object-position: 45% center;
   }
 
   .credential-section {
@@ -986,25 +987,36 @@ summary:focus-visible {
 
   .credential-rig {
     width: min(100%, 20rem);
-    padding-top: 9.25rem;
   }
 
   .credential-lanyard {
-    width: 18rem;
-    height: 8.2rem;
+    top: -4.5rem;
+    width: 5.25rem;
+    height: 14rem;
   }
 
   .credential-lanyard__strap {
-    width: 1.3rem;
-    height: 8rem;
+    width: 1.2rem;
+    height: 11.55rem;
   }
 
-  .credential-lanyard__strap--left {
-    left: 5.1rem;
+  .credential-lanyard__strap span {
+    top: 0.9rem;
+    height: 9rem;
+    font-size: 0.34rem;
   }
 
-  .credential-lanyard__strap--right {
-    right: 5.1rem;
+  .credential-lanyard__keeper {
+    top: 11.1rem;
+  }
+
+  .credential-lanyard__clasp {
+    top: 11.75rem;
+  }
+
+  .credential-swing {
+    padding-top: 9.25rem;
+    transform-origin: 50% -4.5rem;
   }
 
   .credential-card {

@@ -55,8 +55,8 @@ their public source strength recorded.
 
 | Asset | Audited property |
 |---|---|
-| Hero WebM | VP9, 1280x720, 24 fps, 10 seconds, zero audio, 293,852 bytes |
-| Hero MP4 | H.264, 1280x720, 24 fps, 10 seconds, zero audio, 2,459,891 bytes |
+| Hero WebM | VP9, 1280x720, 24 fps, 9.375 seconds, zero audio, 483,523 bytes |
+| Hero MP4 | H.264, 1280x720, 24 fps, 9.375 seconds, zero audio, 1,359,352 bytes |
 | Credential portrait | approved deterministic crop; source metadata not committed |
 
 The accepted video derivatives are pinned by SHA-256 in the media validator.

@@ -8,11 +8,8 @@ type CredentialFacesProps = {
 export function CredentialLanyard() {
   return (
     <div className="credential-lanyard" aria-hidden="true">
-      <div className="credential-lanyard__strap credential-lanyard__strap--left">
-        <span>WILDAN / RESEARCH</span>
-      </div>
-      <div className="credential-lanyard__strap credential-lanyard__strap--right">
-        <span>BUILD / VERIFY</span>
+      <div className="credential-lanyard__strap">
+        <span>WILDAN / FIELD RESEARCH</span>
       </div>
       <div className="credential-lanyard__keeper" />
       <div className="credential-lanyard__clasp">
