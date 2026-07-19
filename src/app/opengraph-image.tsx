@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Wildan Syukri Niam, Researcher and Builder";
+export const alt = "Wildan Syukri Niam, Full-Stack Engineer and Product Builder";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -41,7 +41,7 @@ export default function OpenGraphImage() {
         </div>
       </div>
       <div style={{ maxWidth: 980, fontSize: 76, lineHeight: 1.02, letterSpacing: -3 }}>
-        I research and build autonomous systems people can verify.
+        I turn complex ideas into working products.
       </div>
       <div
         style={{
@@ -52,8 +52,8 @@ export default function OpenGraphImage() {
           fontSize: 21,
         }}
       >
-        <span>AI agents / Web3 trust / On-chain intelligence</span>
-        <span style={{ color: "#943e1b" }}>Evidence over assertion</span>
+        <span>AI agents / Web3 / Product engineering</span>
+        <span style={{ color: "#943e1b" }}>Full-stack builder</span>
       </div>
     </div>,
     size,

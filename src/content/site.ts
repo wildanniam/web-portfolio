@@ -1,113 +1,123 @@
 export const siteContent = {
   name: "Wildan Syukri Niam",
   shortName: "Wildan",
-  role: "Researcher & Builder",
+  role: "Full-Stack Builder",
   positioning:
-    "Researcher & Builder working across AI agents, Web3 trust, and on-chain intelligence.",
+    "Full-stack builder working across AI agents, Web3, and product engineering.",
   hero: {
     eyebrow:
-      "RESEARCHER & BUILDER / AI AGENTS / WEB3 TRUST / ON-CHAIN INTELLIGENCE",
-    title: "I research and build autonomous systems people can verify.",
+      "FULL-STACK BUILDER / AI AGENTS / WEB3 / PRODUCT ENGINEERING",
+    title: "I turn complex ideas into working products.",
     supportingCopy:
-      "I build AI agents and on-chain systems that keep human decisions clear, evidence visible, and autonomy accountable.",
-    primaryAction: { label: "Explore My Work", href: "#selected-systems" },
+      "I'm Wildan, a full-stack builder based in Bandung. I work across AI agents, Web3, and developer tools—shaping products, leading teams, and building the software behind them.",
+    primaryAction: { label: "View My Work", href: "#selected-work" },
     secondaryAction: {
-      label: "View GitHub",
+      label: "GitHub",
       href: "https://github.com/wildanniam",
     },
   },
   selectedWork: {
-    title: "Selected Systems",
+    title: "Selected Work",
     intro:
-      "Products and experiments across AI agents, Web3 trust, and on-chain intelligence. Each turns a technical question into something people can inspect, test, and use.",
+      "A selection of products I've led and built across wallet safety, agentic payments, AI-assisted testing, and on-chain applications.",
   },
   credential: {
-    title: "The human checkpoint is not optional.",
+    title: "I like being close to the whole build.",
     copy:
-      "This credential marks where autonomy meets accountability: a named builder, a visible method, and a path to inspect the work behind the claim.",
+      "I enjoy moving between product direction, team coordination, implementation, and testing—whatever helps turn the idea into a working product.",
     details: [
       {
         term: "Role",
-        description: "Researcher & Builder",
+        description: "Full-Stack Builder",
       },
       {
-        term: "Domain",
-        description: "AI agents, Web3 trust, on-chain intelligence",
+        term: "Focus",
+        description: "AI, Web3, Developer Tools",
       },
       {
-        term: "Principle",
-        description: "Evidence over assertion",
+        term: "Based in",
+        description: "Bandung, Indonesia",
       },
     ],
   },
-  research: {
-    title: "Research Through Building",
+  approach: {
+    title: "From idea to working product.",
     paragraphs: [
-      "My research often begins as a build: a protocol, an agent workflow, or an on-chain experiment designed to test a concrete idea under real constraints.",
-      "A working system forces the interesting questions into the open: what should the agent know, which actions need human approval, where does evidence come from, and what would make the result trustworthy?",
+      "I like working close to the whole problem. That can mean defining the product, designing the flow, building the full stack, integrating AI or smart contracts, and testing how everything works together.",
+      "Some projects start with a research question. Others start with a frustrating workflow or a hackathon deadline. Either way, I learn fastest when there is something real to build, test, and improve.",
+    ],
+    steps: [
+      "Understand the problem",
+      "Shape the product",
+      "Build the core",
+      "Test and improve",
     ],
   },
   principles: [
     {
-      title: "Human Control by Design",
-      copy: "Actions with financial, operational, or security consequences need clear checkpoints and understandable boundaries.",
+      title: "Work end to end",
+      copy: "I like moving between product direction, implementation, testing, and delivery instead of treating them as separate worlds.",
     },
     {
-      title: "Evidence Over Assertion",
-      copy: "Tests, citations, transaction records, and execution artifacts make system behavior easier to inspect and trust.",
+      title: "Keep people in control",
+      copy: "AI and automation should help people make better decisions, not quietly make every decision for them.",
     },
     {
-      title: "Research Through Building",
-      copy: "A working system can be a research instrument: it turns an abstract question into architecture, constraints, experiments, and observable trade-offs.",
+      title: "Make complex things clearer",
+      copy: "Good products turn technical complexity into an experience people can understand and use.",
     },
     {
-      title: "End-to-End Ownership",
-      copy: "I work across product direction, interaction design, implementation, integrations, validation, and delivery instead of treating them as isolated layers.",
+      title: "Learn by building",
+      copy: "Working software helps me understand a problem faster, reveal trade-offs, and decide what should improve next.",
     },
   ],
   about: {
-    short:
-      "I'm Wildan Syukri Niam, a researcher and builder working across AI agents, Web3 trust, and on-chain intelligence. I lead products from research question and architecture through full-stack implementation, technical validation, and public proof.",
-    extended:
-      "I use building as a form of applied research. My projects often start with a concrete question: how should an AI agent act safely, how can a wallet make risk legible, or how can an on-chain system turn transactions into inspectable evidence? I explore those questions by shaping the product, implementing the system, testing its boundaries, and documenting what the result actually proves.",
+    home:
+      "I'm Wildan, a full-stack builder based in Bandung. I've led and built projects across AI agents, Web3, payments, smart contracts, and developer tools.",
+    intro:
+      "I enjoy projects that sit between product and engineering. Sometimes I'm shaping the idea and user flow; other times I'm working on the frontend, backend, AI agent, smart contract, or the tests that keep everything together.",
+    experience:
+      "My background spans full-stack development, AI agent workflows, smart contracts, QA automation, and team leadership. That mix helps me move comfortably between defining the product and building the technology behind it.",
+    research:
+      "I also enjoy research, especially when it leads to a prototype, an experiment, or a clearer technical decision.",
   },
   contact: {
-    title: "Let's build the next proof.",
-    copy: "Reach out for AI and Web3 collaboration, research-driven prototypes, ambitious builder programs, or systems that need to become more autonomous without becoming opaque.",
+    title: "Have something interesting to build?",
+    copy: "I'm open to collaborations around AI, Web3, developer tools, and ambitious product ideas. If you think we could build something useful together, send me a message.",
     email: "wildanniam4@gmail.com",
     github: "https://github.com/wildanniam",
     location: "Bandung, Indonesia",
   },
   seo: {
-    title: "Wildan Syukri Niam - Researcher & Builder",
+    title: "Wildan Syukri Niam — Full-Stack Engineer & Product Builder",
     description:
-      "Researcher and builder working across AI agents, Web3 trust, and on-chain intelligence. Explore systems for verifiable automation, wallet intelligence, and agentic payments.",
+      "Full-stack builder working across AI agents, Web3 products, and developer tools. Explore projects in wallet safety, agentic payments, smart contracts, and AI-assisted engineering.",
   },
-  lastVerifiedAt: "2026-07-15",
+  lastVerifiedAt: "2026-07-20",
 } as const;
 
 export const proofLedger = [
   {
-    label: "GLOBAL TEAM OUTCOME",
+    label: "FRADIUM / GLOBAL TRACK WINNER",
     value: "WCHL 2025 Fully On-Chain Track",
     context: "Won by the Fradium team",
     href: "https://bse.telkomuniversity.ac.id/tim-fradium-berhasil-meraih-global-finale-winner-fully-on-chain-track-pada-world-computer-hacker-league-2025/",
   },
   {
-    label: "PUBLIC PROJECT RECORD",
-    value: "$5,000 SCF Instaward",
-    context: "Awarded to PayGate; not a disbursement claim",
+    label: "PAYGATE / $5,000 SCF INSTAWARD",
+    value: "Stellar Community Fund",
+    context: "Awarded to the PayGate project",
     href: "https://x.com/Indo_Stellar/status/2075550378553421994",
   },
   {
-    label: "SEA BUILDER RECOGNITION",
-    value: "1st Notable Mention",
+    label: "NOVA AI / 1ST NOTABLE MENTION",
+    value: "SEA Lisk Builder Challenge 3",
     context: "Nova AI also won the 1st Social Media Challenge",
     href: "https://bse.telkomuniversity.ac.id/prestasi-tim-nova-ai-di-south-east-asia-lisk-builder-challenge-3/",
   },
   {
-    label: "PRODUCT SPRINT RESULT",
-    value: "Refactory Hackathon · 2nd Place",
+    label: "SPECHEAL / 2ND PLACE",
+    value: "Refactory Hackathon 2026",
     context: "Awarded to the SpecHeal team",
     href: "https://portofolio-wildan-zeta.vercel.app/",
   },

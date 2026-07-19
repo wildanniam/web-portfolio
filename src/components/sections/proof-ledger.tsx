@@ -3,7 +3,7 @@ import { proofLedger } from "@/content/site";
 
 export function ProofLedger() {
   return (
-    <section aria-label="Selected public proof" className="border-y border-line-200 bg-paper-1/48">
+    <section aria-label="Selected highlights" className="border-y border-line-200 bg-paper-1/48">
       <Container className="proof-ledger-grid">
         {proofLedger.map((proof) => (
           <a

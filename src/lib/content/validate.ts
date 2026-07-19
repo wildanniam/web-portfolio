@@ -240,5 +240,13 @@ export function validatePortfolioContent(
     }
   }
 
+  const blockedPublicVoicePatterns = [/\binspect(?:able|ed|ing|ion|ions|s)?\b/i];
+
+  for (const pattern of blockedPublicVoicePatterns) {
+    if (pattern.test(serializedPublicData)) {
+      errors.push(`Public runtime data contains blocked visitor-facing language ${pattern}.`);
+    }
+  }
+
   return { errors, warnings };
 }

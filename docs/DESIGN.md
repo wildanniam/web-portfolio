@@ -7,9 +7,11 @@ peers, collaborators, program evaluators, founders, and technical recruiters.
 
 Visitors should understand three things quickly:
 
-1. Wildan builds serious technical systems, not visual concepts alone.
-2. Claims are accompanied by mechanisms, evidence, or stated limitations.
-3. The experience has a distinct point of view while remaining calm and usable.
+1. Wildan turns complex ideas into working products.
+2. Wildan works end to end across product, full-stack engineering, AI, Web3,
+   testing, and team delivery.
+3. Project claims remain factual and scoped without turning editorial safeguards
+   into the public brand voice.
 
 ## Visual thesis
 
@@ -92,11 +94,11 @@ Typography rules:
 - Solid ink primary action; paper/line secondary action.
 - Mono status label with icon or explicit text.
 - Media frame with caption, provenance, and state.
-- Evidence ledger row rather than generic metric card.
-- Physical Research Credential object.
+- Results/source row rather than generic metric card.
+- Physical personal Builder Pass object.
 - Continuous woven lanyard entering from outside the section, with one compact
   clip physically touching the credential slot.
-- Project panel with problem, mechanism, contribution, evidence, and limitations.
+- Project panel with problem, mechanism, contribution, highlight, and current state.
 
 ## State requirements
 
@@ -114,8 +116,8 @@ Typography rules:
 ### Large desktop — 1280 px and above
 
 - Full-bleed cinematic hero and short hero handoff.
-- Research Credential may bridge section boundaries.
-- Selected Systems may use a sticky editorial stage.
+- Builder Pass may bridge section boundaries.
+- Selected Work may use a sticky editorial stage.
 
 ### Tablet — 768 to 1279 px
 
@@ -149,6 +151,16 @@ Typography rules:
   giant CONTACT form treatment.
 - Placeholder text presented as evidence.
 - Decorative verified/evidence states without factual meaning.
+
+## Public voice
+
+- Lead with concrete verbs such as build, shape, lead, test, ship, and improve.
+- Position Wildan as a full-stack builder first; research is a secondary way of
+  learning and should appear only where it adds real context.
+- Keep the tone warm, direct, technically literate, and personal.
+- Do not use `inspect` or its variants in visitor-facing copy.
+- Do not repeat internal claim-governance language as slogans. Truthfulness is
+  demonstrated through project status, attribution, sources, and limitations.
 
 ## Visual references
 

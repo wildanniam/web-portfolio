@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Motion explains causality in the portfolio's narrative:
+Motion supports the portfolio's build narrative:
 
-**signal enters → system works → human checkpoint intervenes → evidence emerges**.
+**idea appears → product takes shape → build connects → result becomes usable**.
 
 It should create one or two memorable moments, not make every section perform.
 
@@ -13,9 +13,9 @@ It should create one or two memorable moments, not make every section perform.
 | Layer | Owner | Examples |
 |---|---|---|
 | Ordinary state | CSS | hover, focus, pressed, color, border |
-| Object interaction | Motion | credential, mobile menu, small disclosure |
-| Signature scroll | GSAP + ScrollTrigger | hero handoff, selected systems stage |
-| Media loop | HTML video | 9.375-second Living Checkpoint loop |
+| Object interaction | Motion | Builder Pass, mobile menu, small disclosure |
+| Signature scroll | GSAP + ScrollTrigger | hero handoff, Selected Work stage |
+| Media loop | HTML video | 9.375-second Living Portrait loop |
 
 Motion and GSAP never control the same property on the same element.
 
@@ -25,7 +25,7 @@ Motion and GSAP never control the same property on the same element.
 |---|---:|---|
 | Micro | 140–220 ms | control state |
 | Interface | 280–420 ms | menu/panel presence |
-| Object | 450–700 ms | credential settle/flip |
+| Object | 450–700 ms | Builder Pass settle/flip |
 | Scene | 700–1200 ms equivalent | coordinated narrative motion |
 | Stagger | 40–90 ms | at most four or five related items |
 
@@ -41,14 +41,14 @@ Desktop motion-enabled only, approximately 60–80vh after the first viewport:
    crossfades only after it can play.
 3. The full-bleed portrait stage scales/translates slightly as scrolling begins.
 4. An ember signal trace visually continues toward the next section.
-5. The signal meets the lanyard anchor and the credential settles with weight.
+5. The signal meets the lanyard anchor and the Builder Pass settles with weight.
 6. Pinning releases early enough that the user never feels trapped.
 
 Pin a wrapper and animate a child. The server-rendered scene owns all content;
 a zero-layout client controller imports GSAP after scroll intent or a short
 post-paint delay and scopes cleanup to the scene root.
 
-## Research Credential
+## Builder Pass
 
 - A brief gentle pendulum settles and stops.
 - The continuous strap, clip, and badge share the pendulum wrapper so their
@@ -71,7 +71,7 @@ The first scene uses one short pinned hero timeline plus the continuation and
 arrival triggers inside the same narrative component. These collectively count
 as one signature scene.
 
-## Signature scene 2: Selected Systems
+## Signature scene 2: Selected Work
 
 Desktop uses a sticky editorial stage for Fradium, PayGate, and Nova AI Wallet:
 
@@ -99,7 +99,7 @@ Implementation details:
 
 ## Supporting motion
 
-- Research method uses a one-time line/marker reveal.
+- How I Work uses a one-time line/marker reveal.
 - Principles respond to hover/focus without hiding information.
 - Quorum's six evidence marks may illuminate once.
 - Contact uses a restrained tonal transition.

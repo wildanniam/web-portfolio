@@ -1,17 +1,19 @@
 # Portfolio v1 Completion Audit
 
-Status: **approval candidate in progress**  
-Audit date: 16 July 2026  
+Status: **approval candidate in progress**
+
+Audit date: 20 July 2026
+
 Scope: locked Ember Lab Development Blueprint
 
-This record maps the goal to inspectable implementation evidence. It is not a
+This record maps the goal to implementation evidence. It is not a
 release approval and must not be used to bypass the remaining human gates.
 
 ## Product and route coverage
 
 | Requirement | Evidence | State |
 |---|---|---|
-| Homepage narrative | Hero, Proof Ledger, Research Credential, Selected Systems, Research Through Building, Principles, Quorum, Contact | Implemented |
+| Homepage narrative | Hero, Selected Highlights, Builder Pass, Selected Work, How I Work, Principles, Quorum, Contact | Implemented |
 | Supporting routes | `/about`, `/work`, custom not-found | Implemented |
 | Five public case studies | Fradium, PayGate, Nova AI Wallet, SpecHeal, Quorum | Implemented |
 | Deployment metadata | icon, Open Graph image, robots, sitemap, canonical metadata, JSON-LD | Implemented |
@@ -26,6 +28,10 @@ explicitly approved two additional team-scoped outcomes in the active delivery
 thread: Nova AI's exact Lisk Builder Challenge recognitions and SpecHeal's second
 place at Refactory Hackathon 2026. Both were added to the curated allowlist with
 their public source strength recorded.
+
+On 20 July 2026, Wildan explicitly approved the builder-first positioning and
+voice now reflected in the website, locked blueprint, and Atlas authoring notes.
+Research remains a supporting method rather than the primary public title.
 
 - Public evidence IDs and lifecycle states are explicitly allowlisted by the
   build validator.
@@ -43,9 +49,9 @@ their public source strength recorded.
 - Hero: server-rendered still, eligibility-aware desktop video enhancement,
   pause/play, offscreen pause, hidden-document pause, Save-Data and reduced-motion
   fallbacks.
-- Research Credential: server-rendered front state, deferred Motion enhancement,
+- Builder Pass: server-rendered front state, deferred Motion enhancement,
   pointer/touch/keyboard flip, reduced-motion behavior, and direct `/about` link.
-- Signature motion: hero-to-credential handoff and Selected Systems stage only;
+- Signature motion: hero-to-pass handoff and Selected Work stage only;
   both defer GSAP and preserve semantic no-JavaScript/mobile flow.
 - Playwright covers Chromium and WebKit, 200% reflow, mobile navigation, reduced
   motion, Save-Data, video lifecycle, credential states, routes, headers, and
@@ -66,11 +72,11 @@ v1 state on 16 July 2026; authentic project imagery remains a later content pass
 
 ## Verification snapshot
 
-Latest local production checks on 16 July 2026:
+Latest local production checks on 20 July 2026:
 
 - `npm run check`: passed;
-- unit tests: 10 passed;
-- Playwright: 26 passed across Chromium and WebKit;
+- unit tests: 12 passed;
+- Playwright: 28 passed across Chromium and WebKit;
 - static build: 15 generated routes/endpoints;
 - initial homepage JavaScript: 24.5 KiB gzip against a 180 KiB budget;
 - Lighthouse local production: accessibility 100, best practices 100, CLS 0,

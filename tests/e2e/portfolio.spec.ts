@@ -7,15 +7,17 @@ test("homepage presents the positioning, proof, work, and contact path", async (
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "I research and build autonomous systems people can verify.",
+      name: "I turn complex ideas into working products.",
     }),
   ).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "Selected Systems" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Selected Work" })).toBeVisible();
   await expect(
-    page.getByRole("heading", { level: 2, name: "The human checkpoint is not optional." }),
+    page.getByRole("heading", { level: 2, name: "I like being close to the whole build." }),
   ).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "Quorum" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "Let's build the next proof." })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { level: 2, name: "Have something interesting to build?" }),
+  ).toBeVisible();
   await expect(page.locator("video")).toHaveCount(1);
 
   const heroBox = await page.locator("[data-hero-pin]").boundingBox();
@@ -25,10 +27,10 @@ test("homepage presents the positioning, proof, work, and contact path", async (
   expect(heroMediaBox?.width).toBeCloseTo(heroBox?.width ?? 0, 0);
   expect(heroMediaBox?.height).toBeCloseTo(heroBox?.height ?? 0, 0);
 
-  const proofLedger = page.getByRole("region", { name: "Selected public proof" });
-  await expect(proofLedger.getByText("1st Notable Mention", { exact: true })).toBeVisible();
+  const proofLedger = page.getByRole("region", { name: "Selected highlights" });
+  await expect(proofLedger.getByText("NOVA AI / 1ST NOTABLE MENTION", { exact: true })).toBeVisible();
   await expect(
-    proofLedger.getByText("Refactory Hackathon · 2nd Place", { exact: true }),
+    proofLedger.getByText("Refactory Hackathon 2026", { exact: true }),
   ).toBeVisible();
   await expect(proofLedger.getByText("6 signed Quorum flows", { exact: true })).toHaveCount(0);
 
@@ -45,7 +47,7 @@ test("credential identity remains available in the server-rendered fallback", as
   expect(response.ok()).toBe(true);
   expect(html).toContain('data-testid="research-credential-fallback"');
   expect(html).toContain("Wildan Syukri Niam");
-  expect(html).toContain("Evidence before confidence.");
+  expect(html).toContain("From idea to product.");
   expect(html).toContain('href="/about"');
   expect(html).toContain('src="/about-qr"');
   expect(qrResponse.ok()).toBe(true);
@@ -80,7 +82,7 @@ test("reflows at a 200 percent zoom-equivalent viewport", async ({ page }) => {
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "I research and build autonomous systems people can verify.",
+      name: "I turn complex ideas into working products.",
     }),
   ).toBeVisible();
 
@@ -90,7 +92,7 @@ test("reflows at a 200 percent zoom-equivalent viewport", async ({ page }) => {
   expect(horizontalOverflow).toBe(0);
 });
 
-test("research credential exposes truthful front and back states", async ({ page }) => {
+test("builder pass exposes truthful front and back states", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
 
   const browserProblems: string[] = [];
@@ -138,7 +140,7 @@ test("research credential exposes truthful front and back states", async ({ page
 
   await credential.click();
   await expect(credential).toHaveAttribute("data-face", "back");
-  await expect(page.getByText("Evidence before confidence.", { exact: true })).toBeVisible();
+  await expect(page.getByText("From idea to product.", { exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Open full profile" })).toHaveAttribute(
     "href",
     "/about",
@@ -152,7 +154,7 @@ test("research credential exposes truthful front and back states", async ({ page
   expect(browserProblems).toEqual([]);
 });
 
-test("selected systems forms a semantic desktop editorial stage", async ({ page }) => {
+test("selected work forms a semantic desktop editorial stage", async ({ page }) => {
   const browserProblems: string[] = [];
   page.on("console", (message) => {
     if (message.type() === "error" || message.type() === "warning") {
@@ -170,8 +172,8 @@ test("selected systems forms a semantic desktop editorial stage", async ({ page 
   await expect(panels.nth(0)).toHaveAttribute("data-project-slug", "fradium");
   await expect(panels.nth(1)).toHaveAttribute("data-project-slug", "paygate");
   await expect(panels.nth(2)).toHaveAttribute("data-project-slug", "nova-ai-wallet");
-  await expect(scene.getByText("Contribution", { exact: true })).toHaveCount(3);
-  await expect(scene.getByText("Boundary", { exact: true })).toHaveCount(3);
+  await expect(scene.getByText("My contribution", { exact: true })).toHaveCount(3);
+  await expect(scene.getByText("Current state", { exact: true })).toHaveCount(3);
 
   await panels.first().scrollIntoViewIfNeeded();
   await expect(scene.locator(".pin-spacer")).toHaveCount(2);
@@ -193,7 +195,7 @@ test("selected systems forms a semantic desktop editorial stage", async ({ page 
 test("work index reaches every public case study", async ({ page }) => {
   await page.goto("/work");
 
-  await expect(page.getByRole("heading", { level: 1, name: "Systems built to leave evidence." })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Projects I've led and built." })).toBeVisible();
 
   for (const title of ["Fradium", "PayGate", "Nova AI Wallet", "SpecHeal", "Quorum"]) {
     await expect(page.getByRole("heading", { name: title, exact: true })).toBeVisible();
@@ -202,14 +204,14 @@ test("work index reaches every public case study", async ({ page }) => {
   await page.getByRole("link", { name: "Read case study" }).first().click();
   await expect(page).toHaveURL(/\/work\/fradium$/);
   await expect(page.getByRole("heading", { level: 1, name: "Fradium" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "Scope boundaries" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Current limitations" })).toBeVisible();
 });
 
 test("unknown project routes return the custom not-found experience", async ({ page }) => {
   const response = await page.goto("/work/not-a-public-project");
 
   expect(response?.status()).toBe(404);
-  await expect(page.getByRole("heading", { name: "This evidence trail ends here." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Looks like this page went missing." })).toBeVisible();
 });
 
 test("major routes have no serious automated accessibility violations", async ({ page }) => {
@@ -222,6 +224,22 @@ test("major routes have no serious automated accessibility violations", async ({
 
     expect(seriousViolations, `${route}: ${JSON.stringify(seriousViolations, null, 2)}`).toEqual([]);
   }
+});
+
+test("public routes use the approved builder-first voice", async ({ page }) => {
+  for (const route of ["/", "/about", "/work", "/work/paygate"]) {
+    await page.goto(route);
+    const bodyCopy = await page.locator("body").innerText();
+    expect(bodyCopy, route).not.toMatch(/\binspect\w*/i);
+  }
+
+  await page.goto("/about");
+  await expect(
+    page.getByRole("heading", {
+      level: 1,
+      name: "I learn fastest when I'm building something real.",
+    }),
+  ).toBeVisible();
 });
 
 test("hero playback remains user-controlled and pauses outside the active document", async ({
@@ -289,7 +307,7 @@ test.describe("reduced motion", () => {
 
     await expect(page.locator("video")).toHaveCount(0);
     await expect(page.getByText("STILL MODE")).toBeVisible();
-    await expect(page.getByRole("link", { name: "Explore My Work" }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "View My Work" }).first()).toBeVisible();
 
     await page.locator("[data-credential-gsap-stage]").scrollIntoViewIfNeeded();
     const credential = page.getByTestId("research-credential");

@@ -2,8 +2,8 @@ import {
   AboutSection,
   ContactSection,
   CurrentBuildSection,
+  HowIWorkSection,
   PrinciplesSection,
-  ResearchSection,
   SelectedSystemsSection,
 } from "@/components/sections/home-sections";
 import { HeroSection } from "@/components/sections/hero-section";
@@ -21,7 +21,7 @@ export default function HomePage() {
         <HeroCredentialSceneController />
       </div>
       <SelectedSystemsSection />
-      <ResearchSection />
+      <HowIWorkSection />
       <PrinciplesSection />
       <AboutSection />
       <CurrentBuildSection />

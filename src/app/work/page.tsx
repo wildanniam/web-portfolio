@@ -8,7 +8,7 @@ import { projects } from "@/content/projects";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Evidence-led systems across AI agents, Web3 trust, on-chain intelligence, payments, and software reliability.",
+    "Projects Wildan has led and built across AI agents, Web3, payments, smart contracts, and developer tools.",
   alternates: { canonical: "/work" },
 };
 
@@ -21,11 +21,11 @@ export default function WorkPage() {
             WORK
           </p>
           <h1 className="display-balance mt-5 max-w-[12ch] font-display text-6xl leading-[0.96] font-[520] tracking-[-0.055em] sm:text-7xl lg:text-8xl">
-            Systems built to leave evidence.
+            Projects I&apos;ve led and built.
           </h1>
           <p className="mt-7 max-w-[44rem] text-xl leading-9 text-ink-600">
-            Five projects spanning wallet intelligence, agentic payments, test recovery, and
-            inspectable settlement. Each case study states the boundary as clearly as the result.
+            AI agents, wallets, payments, smart contracts, and developer tools—each with a
+            different problem and a working story behind it.
           </p>
         </Container>
       </section>

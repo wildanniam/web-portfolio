@@ -76,7 +76,7 @@ export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
   };
 
   return (
-    <div className="credential-rig" aria-label="Interactive research credential">
+    <div className="credential-rig" aria-label="Interactive builder pass">
       <motion.div
         className="credential-swing"
         initial={false}
@@ -106,8 +106,8 @@ export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
             aria-pressed={isBackVisible}
             aria-label={
               isBackVisible
-                ? "Show front of Wildan's research credential"
-                : "Show back of Wildan's research credential"
+                ? "Show front of Wildan's builder pass"
+                : "Show back of Wildan's builder pass"
             }
             id="research-credential-card"
             data-testid="research-credential"
@@ -134,7 +134,7 @@ export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
           aria-controls="research-credential-card"
           aria-pressed={isBackVisible}
         >
-          {isBackVisible ? "Show front" : "Turn credential"}
+          {isBackVisible ? "Show front" : "Flip pass"}
         </button>
         <Link href="/about">Open full profile</Link>
       </div>

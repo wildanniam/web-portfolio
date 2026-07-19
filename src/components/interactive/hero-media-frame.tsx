@@ -12,7 +12,7 @@ export function HeroMediaFrame({ isReady = false, children, control }: HeroMedia
     <figure className="hero-media-surface relative size-full overflow-hidden bg-smoke-900">
       <Image
         src="/media/hero/wildan-human-checkpoint-poster.jpg"
-        alt="Wildan Syukri Niam in a maroon blazer inside a warm analog-futurist research studio."
+        alt="Wildan Syukri Niam in a maroon blazer inside a warm analog-futurist studio."
         fill
         priority
         fetchPriority="high"
