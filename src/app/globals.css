@@ -1168,6 +1168,7 @@ summary:focus-visible {
 }
 
 .credential-swing,
+.credential-reactive,
 .credential-tilt {
   position: relative;
   z-index: 2;
@@ -1176,9 +1177,14 @@ summary:focus-visible {
 }
 
 .credential-swing {
-  padding-top: 8.62rem;
   transform-origin: 50% -9rem;
   rotate: -1.4deg;
+}
+
+.credential-reactive {
+  padding-top: 8.62rem;
+  transform-origin: 50% -8rem;
+  will-change: transform;
 }
 
 .credential-card {
@@ -1589,8 +1595,12 @@ summary:focus-visible {
   }
 
   .credential-swing {
-    padding-top: 9.25rem;
     transform-origin: 50% -4.5rem;
+  }
+
+  .credential-reactive {
+    padding-top: 9.25rem;
+    transform-origin: 50% -4rem;
   }
 
   .credential-card {
@@ -1643,6 +1653,7 @@ summary:focus-visible {
 
   .credential-card,
   .credential-swing,
+  .credential-reactive,
   .credential-tilt {
     will-change: auto;
   }

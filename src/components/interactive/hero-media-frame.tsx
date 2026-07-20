@@ -30,21 +30,16 @@ export function HeroMediaFrame({ isReady = false, children, control }: HeroMedia
 
       {children}
 
-      <div className="hero-media-meta absolute right-4 bottom-4 z-20 flex max-w-[30rem] items-center justify-end gap-3 sm:right-8 sm:bottom-6 lg:right-12">
-        <figcaption
-          data-testid="hero-media-disclosure"
-          className="max-w-[10.5rem] text-right text-[0.54rem] leading-[1.35] text-white/70 sm:max-w-[14rem] sm:text-[0.6rem] lg:max-w-[23rem] lg:text-[0.68rem] lg:leading-relaxed"
-        >
-          <span className="lg:hidden">
-            AI-generated portrait environment. Veo mark remains visible.
-          </span>
-          <span className="hidden lg:inline">
-            AI-assisted portrait scene created from Wildan&apos;s approved likeness; the Veo
-            provenance mark remains visible.
-          </span>
-        </figcaption>
+      <div className="hero-media-control absolute top-[6.5rem] right-4 z-20 sm:top-[7.25rem] sm:right-8 lg:top-[7.75rem] lg:right-12">
         {control}
       </div>
+
+      <figcaption
+        data-testid="hero-media-disclosure"
+        className="absolute right-4 bottom-4 z-20 max-w-[13rem] text-right text-[0.54rem] leading-[1.35] text-white/70 sm:right-8 sm:bottom-6 sm:max-w-[16rem] sm:text-[0.6rem] lg:right-12 lg:max-w-[19rem] lg:text-[0.68rem] lg:leading-relaxed"
+      >
+        Veo provenance mark remains visible.
+      </figcaption>
     </figure>
   );
 }

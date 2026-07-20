@@ -14,7 +14,7 @@ test("homepage presents the positioning, proof, work, and contact path", async (
   await expect(
     page.getByRole("heading", { level: 2, name: "I like being close to the whole build." }),
   ).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "Quorum" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 3, name: "Quorum" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "A few moments I'm proud of." })).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "From idea to working product." })).toBeVisible();
   await expect(
@@ -211,15 +211,16 @@ test("selected work forms a semantic desktop editorial stage", async ({ page }) 
   const scene = page.locator('[data-signature-scene="selected-systems"]');
   const panels = scene.locator("[data-system-panel]");
 
-  await expect(panels).toHaveCount(3);
+  await expect(panels).toHaveCount(4);
   await expect(panels.nth(0)).toHaveAttribute("data-project-slug", "fradium");
   await expect(panels.nth(1)).toHaveAttribute("data-project-slug", "paygate");
   await expect(panels.nth(2)).toHaveAttribute("data-project-slug", "nova-ai-wallet");
-  await expect(scene.getByText("My contribution", { exact: true })).toHaveCount(3);
-  await expect(scene.getByText("Current state", { exact: true })).toHaveCount(3);
+  await expect(panels.nth(3)).toHaveAttribute("data-project-slug", "quorum");
+  await expect(scene.getByText("My contribution", { exact: true })).toHaveCount(4);
+  await expect(scene.getByText("Current state", { exact: true })).toHaveCount(4);
 
   await panels.first().scrollIntoViewIfNeeded();
-  await expect(scene.locator(".pin-spacer")).toHaveCount(2);
+  await expect(scene.locator(".pin-spacer")).toHaveCount(3);
 
   await panels.nth(2).evaluate((panel) => panel.scrollIntoView({ block: "start" }));
   await expect
@@ -335,7 +336,7 @@ test("Save-Data keeps the hero on its disclosed still fallback", async ({ page }
   await expect(page.getByText("STILL MODE")).toBeHidden();
   const disclosure = page.getByTestId("hero-media-disclosure");
   await expect(disclosure).toBeVisible();
-  await expect(disclosure).toContainText("AI-generated portrait environment");
+  await expect(disclosure).toHaveText("Veo provenance mark remains visible.");
 });
 
 test.describe("reduced motion", () => {

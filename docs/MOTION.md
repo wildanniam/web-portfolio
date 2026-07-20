@@ -49,6 +49,8 @@ Prefer restrained ease-out and weighted motion. Avoid elastic or playful bounce.
 - The continuous strap, clip, and badge share the pendulum wrapper so their
   physical connection never separates during motion.
 - Pointer tilt uses MotionValue, not React state per pointer frame.
+- Hover and touch feedback move the complete strap, clip, and badge together with
+  a restrained spring response; the physical connection never separates.
 - Click, Enter, or Space flips front/back.
 - Touch uses tap-to-flip and does not depend on hover.
 - Reduced motion removes tilt/pendulum and uses instant or subtle opacity state.
@@ -64,7 +66,8 @@ wrapper. No GSAP selector or timeline writes to the Builder Pass.
 
 ## Signature scene 1: Selected Work
 
-Desktop uses a sticky editorial stage for Fradium, PayGate, and Nova AI Wallet:
+Desktop uses a sticky editorial stage for Fradium, PayGate, Nova AI Wallet, and
+Quorum:
 
 1. The current system becomes visually dominant.
 2. Evidence/status context updates.

@@ -17,7 +17,7 @@ export const quorum = defineProject({
   domains: ["Smart Contracts", "Event Settlement", "On-chain Infrastructure"],
   technologies: ["Next.js", "TypeScript", "PostgreSQL", "Stellar SDK", "Soroban", "Rust", "Freighter"],
   featuredOrder: 5,
-  showInSelectedSystems: false,
+  showInSelectedSystems: true,
   problem:
     "Collaborative events often collect ticket revenue through one organizer and reconcile access, shares, and withdrawals through disconnected tools and trust boundaries.",
   audience: [

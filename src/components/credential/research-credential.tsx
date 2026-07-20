@@ -24,6 +24,13 @@ const tiltSpring = {
   mass: 0.7,
 };
 
+const objectResponseSpring = {
+  type: "spring" as const,
+  stiffness: 150,
+  damping: 18,
+  mass: 0.82,
+};
+
 function subscribeToReducedMotion(onChange: () => void) {
   const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   mediaQuery.addEventListener("change", onChange);
@@ -106,36 +113,43 @@ export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
           opacity: { duration: 0.18, ease: "easeOut" },
         }}
       >
-        <CredentialLanyard />
         <motion.div
-          className="credential-tilt"
-          style={{ rotateX, rotateY }}
-          onPointerMove={handlePointerMove}
-          onPointerLeave={resetTilt}
+          className="credential-reactive"
+          whileHover={reduceMotion ? undefined : { y: -3, rotateZ: 1.4 }}
+          whileTap={reduceMotion ? undefined : { y: 2, rotateZ: -1, scale: 0.995 }}
+          transition={objectResponseSpring}
         >
+          <CredentialLanyard />
           <motion.div
-            role="button"
-            tabIndex={0}
-            aria-pressed={isBackVisible}
-            aria-label={
-              isBackVisible
-                ? "Show front of Wildan's builder pass"
-                : "Show back of Wildan's builder pass"
-            }
-            id="research-credential-card"
-            data-testid="research-credential"
-            data-face={isBackVisible ? "back" : "front"}
-            className="credential-card"
-            animate={{ rotateY: isBackVisible ? 180 : 0 }}
-            transition={
-              reduceMotion
-                ? { duration: 0.01 }
-                : { duration: 0.62, ease: [0.22, 1, 0.36, 1] }
-            }
-            onClick={toggleFace}
-            onKeyDown={handleKeyDown}
+            className="credential-tilt"
+            style={{ rotateX, rotateY }}
+            onPointerMove={handlePointerMove}
+            onPointerLeave={resetTilt}
           >
-            <CredentialFaces aboutQrSrc={aboutQrSrc} isBackVisible={isBackVisible} />
+            <motion.div
+              role="button"
+              tabIndex={0}
+              aria-pressed={isBackVisible}
+              aria-label={
+                isBackVisible
+                  ? "Show front of Wildan's builder pass"
+                  : "Show back of Wildan's builder pass"
+              }
+              id="research-credential-card"
+              data-testid="research-credential"
+              data-face={isBackVisible ? "back" : "front"}
+              className="credential-card"
+              animate={{ rotateY: isBackVisible ? 180 : 0 }}
+              transition={
+                reduceMotion
+                  ? { duration: 0.01 }
+                  : { duration: 0.62, ease: [0.22, 1, 0.36, 1] }
+              }
+              onClick={toggleFace}
+              onKeyDown={handleKeyDown}
+            >
+              <CredentialFaces aboutQrSrc={aboutQrSrc} isBackVisible={isBackVisible} />
+            </motion.div>
           </motion.div>
         </motion.div>
       </motion.div>

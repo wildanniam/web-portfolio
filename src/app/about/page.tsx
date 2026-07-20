@@ -43,8 +43,9 @@ export default function AboutPage() {
           <p className="font-mono text-xs font-semibold tracking-[0.1em] text-ember-700">
             ABOUT
           </p>
-          <h1 className="display-balance mt-5 max-w-[12ch] font-display text-6xl leading-[0.96] font-[520] tracking-[-0.055em] sm:text-7xl lg:text-8xl">
-            I learn fastest when I&apos;m building something real.
+          <h1 className="mt-5 max-w-[18ch] font-display text-6xl leading-[0.96] font-[520] tracking-[-0.055em] sm:text-7xl lg:max-w-none lg:text-8xl">
+            <span className="lg:block">I learn fastest when I&apos;m</span>{" "}
+            <span className="lg:block">building something real.</span>
           </h1>
           <div className="mt-14 grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             <p className="text-xl leading-9 text-ink-700">{siteContent.about.intro}</p>

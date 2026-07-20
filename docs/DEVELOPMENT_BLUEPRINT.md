@@ -43,16 +43,17 @@ Open Graph assets.
 2. Fixed Site Header
 3. Hero — The Talking Portrait
 4. Builder Pass + About
-5. Selected Work — Fradium, PayGate, Nova AI Wallet
+5. Selected Work — Fradium, PayGate, Nova AI Wallet, Quorum
 6. SpecHeal archive bridge
 7. Selected Highlights
 8. How I Build
 9. Contact closing act
 10. Oversized Footer
 
-Quorum no longer receives a standalone homepage interruption. It remains honestly
-available in `/work` and `/work/quorum`. SpecHeal remains an archived, offline
-hackathon prototype. All five projects remain available in `/work`.
+Quorum no longer receives a standalone homepage interruption. It joins Selected
+Work after Nova AI Wallet and remains available in `/work` and `/work/quorum`.
+SpecHeal remains an archived, offline hackathon prototype. All five projects
+remain available in `/work`.
 
 ## Locked technical direction
 
@@ -94,7 +95,7 @@ tilt and deliberate flip remain on the badge. Motion owns the complete object.
 
 ### Selected Work Stage
 
-Three editorial project panels use a desktop sticky narrative. Mobile and reduced
+Four editorial project panels use a desktop sticky narrative. Mobile and reduced
 motion receive the same content in normal document flow.
 
 This is the only GSAP signature scene in the prototype. How I Build may use a
@@ -169,3 +170,7 @@ records, Ember Lab palette, progressive media safeguards, and Selected Work
 signature scene. The implementation intentionally experiments on
 `codex/prototype-video-portfolio-redesign` without requiring an issue or pull
 request for this iteration.
+
+Quorum joins the Selected Work stage after Nova AI Wallet with Wildan's explicit
+approval on 20 July 2026. It remains one panel in the existing signature scene,
+not a separate homepage interruption, and keeps its active-build/testnet limits.

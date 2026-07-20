@@ -117,9 +117,15 @@ export function HeroMedia() {
           <button
             type="button"
             onClick={handlePlaybackControl}
-            className="min-h-11 shrink-0 rounded-full border border-white/28 bg-black/50 px-4 text-xs font-semibold text-white backdrop-blur-md transition-colors hover:bg-black/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="group inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full border border-white/70 bg-paper-0 px-4 text-xs font-semibold text-ink-900 shadow-[0_0.8rem_2rem_rgb(20_12_7/0.28)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             aria-label={controlLabel}
           >
+            <span
+              aria-hidden="true"
+              className="grid size-5 place-items-center rounded-full bg-ember-500 text-[0.56rem] text-white transition-transform group-hover:scale-105"
+            >
+              {playbackState === "playing" && hasActivatedAudio ? "Ⅱ" : "▶"}
+            </span>
             {controlLabel}
           </button>
         )

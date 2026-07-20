@@ -21,7 +21,7 @@ export function SelectedSystemsSection() {
       <Container>
         <header className="selected-work-section__header max-w-[54rem]">
           <p className="font-mono text-xs font-semibold tracking-[0.12em] text-ember-700">
-            SELECTED WORK / 03
+            SELECTED WORK / {String(selectedProjects.length).padStart(2, "0")}
           </p>
           <h2
             id="selected-work-title"
