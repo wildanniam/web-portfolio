@@ -76,6 +76,14 @@ export function SiteFooter() {
             >
               GitHub
             </a>
+            <a
+              href={siteContent.contact.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-paper-0"
+            >
+              Instagram
+            </a>
             <a href="#main-content" className="transition-colors hover:text-paper-0">
               Back to top ↑
             </a>

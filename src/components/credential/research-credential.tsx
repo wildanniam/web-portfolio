@@ -15,7 +15,7 @@ import {
 } from "@/components/credential/credential-shell";
 
 type ResearchCredentialProps = {
-  aboutQrSrc: string;
+  instagramQrSrc: string;
 };
 
 const tiltSpring = {
@@ -45,7 +45,7 @@ function getReducedMotionServerSnapshot() {
   return false;
 }
 
-export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
+export function ResearchCredential({ instagramQrSrc }: ResearchCredentialProps) {
   const reduceMotion = useSyncExternalStore(
     subscribeToReducedMotion,
     getReducedMotionSnapshot,
@@ -148,7 +148,10 @@ export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
               onClick={toggleFace}
               onKeyDown={handleKeyDown}
             >
-              <CredentialFaces aboutQrSrc={aboutQrSrc} isBackVisible={isBackVisible} />
+              <CredentialFaces
+                instagramQrSrc={instagramQrSrc}
+                isBackVisible={isBackVisible}
+              />
             </motion.div>
           </motion.div>
         </motion.div>

@@ -89,7 +89,8 @@ mid-sentence. Visible provenance marks remain visible and are disclosed.
 
 One continuous orange woven strap enters from the section boundary and connects
 through a compact metal clip to a physical ID badge with Wildan's real portrait,
-role, focus, location, front/back state, and a QR link to `/about`. This scene now
+role, focus, location, front/back state, and a QR link to Wildan's public
+Instagram profile. This scene now
 also carries the concise homepage About narrative and follows the hero directly.
 The strap, clip, and badge share one weighted drop-and-settle pendulum; pointer
 tilt and deliberate flip remain on the badge. Motion owns the complete object.

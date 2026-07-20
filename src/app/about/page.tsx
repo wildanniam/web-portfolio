@@ -26,7 +26,7 @@ export default function AboutPage() {
       "@type": "Place",
       name: siteContent.contact.location,
     },
-    sameAs: [siteContent.contact.github],
+    sameAs: [siteContent.contact.github, siteContent.contact.instagram],
     url: new URL("/about", siteUrl).toString(),
   };
 
@@ -90,6 +90,9 @@ export default function AboutPage() {
             <ButtonLink href="/work">View My Work</ButtonLink>
             <ButtonLink href={siteContent.contact.github} variant="secondary">
               View GitHub
+            </ButtonLink>
+            <ButtonLink href={siteContent.contact.instagram} variant="secondary">
+              Instagram
             </ButtonLink>
           </div>
         </Container>

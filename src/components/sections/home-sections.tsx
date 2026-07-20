@@ -195,6 +195,9 @@ export function ContactSection() {
           <a href={siteContent.contact.github} target="_blank" rel="noreferrer">
             GitHub ↗
           </a>
+          <a href={siteContent.contact.instagram} target="_blank" rel="noreferrer">
+            Instagram ↗
+          </a>
           <a href="#main-content">Back to top ↑</a>
         </div>
       </Container>

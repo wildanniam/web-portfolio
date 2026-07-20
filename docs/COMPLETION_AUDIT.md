@@ -17,7 +17,7 @@ release approval and must not be used to bypass the remaining human gates.
 | Supporting routes | `/about`, `/work`, custom not-found | Implemented |
 | Six public case studies | Fradium, PayGate, Nova AI Wallet, Nara Wallet, Quorum, SpecHeal | Implemented |
 | Deployment metadata | icon, Open Graph image, robots, sitemap, canonical metadata, JSON-LD | Implemented |
-| Credential destination | static `/about-qr` SVG encoding the deployment-aware `/about` URL | Implemented |
+| Credential destination | static `/instagram-qr` SVG encoding Wildan's canonical Instagram profile | Implemented |
 
 ## Content and claim audit
 
@@ -32,6 +32,8 @@ their public source strength recorded.
 On 20 July 2026, Wildan explicitly approved the builder-first positioning and
 voice now reflected in the website, locked blueprint, and Atlas authoring notes.
 Research remains a supporting method rather than the primary public title.
+Wildan also approved the public Instagram profile as a contact destination and
+the Builder Pass QR target on the same date.
 
 On 20 July 2026, Wildan also approved Nara Wallet as a public project. Its
 canonical repository was reviewed against the typed content record, its public
@@ -58,7 +60,8 @@ security-audit, external-service, and end-to-end verification limits.
   pause/play, offscreen pause, hidden-document pause, Save-Data and reduced-motion
   fallbacks.
 - Builder Pass: server-rendered front state, deferred Motion enhancement,
-  pointer/touch/keyboard flip, reduced-motion behavior, and direct `/about` link.
+  pointer/touch/keyboard flip, reduced-motion behavior, Instagram QR, and direct
+  `/about` profile link.
 - Signature motion: hero-to-pass handoff and Selected Work stage only;
   both defer GSAP and preserve semantic no-JavaScript/mobile flow.
 - Playwright covers Chromium and WebKit, 200% reflow, mobile navigation, reduced
@@ -86,10 +89,9 @@ Latest local production checks on 20 July 2026:
 
 - `npm run check`: passed;
 - unit tests: 12 passed;
-- Playwright: all 30 checks passed across Chromium and WebKit; the full suite
-  was run serially after the parallel run exhausted local browser resources, and
-  the WebKit four-route axe audit passed separately with a 120-second timeout;
-- static build: 16 generated routes/endpoints, including `/work/nara`;
+- Playwright: 32 passed across Chromium and WebKit;
+- static build: 16 generated routes/endpoints, including `/work/nara` and
+  `/instagram-qr`;
 - initial homepage JavaScript: 67.6 KiB gzip against a 180 KiB budget;
 - Lighthouse local production: accessibility 100, best practices 100, CLS 0,
   TBT below 60 ms; trace-observed LCP below 0.3 seconds;
