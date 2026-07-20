@@ -66,8 +66,8 @@ wrapper. No GSAP selector or timeline writes to the Builder Pass.
 
 ## Signature scene 1: Selected Work
 
-Desktop uses a sticky editorial stage for Fradium, PayGate, Nova AI Wallet, and
-Quorum:
+Desktop uses a sticky editorial stage for Fradium, PayGate, Nova AI Wallet, Nara
+Wallet, and Quorum:
 
 1. The current system becomes visually dominant.
 2. Evidence/status context updates.
@@ -83,8 +83,9 @@ Implementation details:
 - Its IntersectionObserver imports GSAP only as the section approaches the
   viewport; the semantic articles remain server-rendered.
 - Each project article remains complete in server-rendered HTML.
-- Large desktop pins the first two article wrappers at an 88 px navigation
-  offset with `pinSpacing: false`; the final article releases the scene.
+- Large desktop pins every article wrapper except the final one at an 88 px
+  navigation offset with `pinSpacing: false`; the final article releases the
+  scene.
 - The opaque inner project surface scales as the following article arrives,
   while a nested content layer changes opacity. The pinned wrapper and animated
   transform never share one node, and paper surfaces never become translucent.

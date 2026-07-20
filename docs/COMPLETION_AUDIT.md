@@ -13,9 +13,9 @@ release approval and must not be used to bypass the remaining human gates.
 
 | Requirement | Evidence | State |
 |---|---|---|
-| Homepage narrative | Hero, Selected Highlights, Builder Pass, Selected Work, How I Work, Principles, Quorum, Contact | Implemented |
+| Homepage narrative | Hero, Selected Highlights, Builder Pass, Selected Work, How I Work, Principles, Contact | Implemented |
 | Supporting routes | `/about`, `/work`, custom not-found | Implemented |
-| Five public case studies | Fradium, PayGate, Nova AI Wallet, SpecHeal, Quorum | Implemented |
+| Six public case studies | Fradium, PayGate, Nova AI Wallet, Nara Wallet, Quorum, SpecHeal | Implemented |
 | Deployment metadata | icon, Open Graph image, robots, sitemap, canonical metadata, JSON-LD | Implemented |
 | Credential destination | static `/instagram-qr` SVG encoding Wildan's canonical Instagram profile | Implemented |
 
@@ -35,10 +35,18 @@ Research remains a supporting method rather than the primary public title.
 Wildan also approved the public Instagram profile as a contact destination and
 the Builder Pass QR target on the same date.
 
+On 20 July 2026, Wildan also approved Nara Wallet as a public project. Its
+canonical repository was reviewed against the typed content record, its public
+ICP deployment returned HTTP 200, and its DoraHacks milestone records the team's
+1st Place result at the Nextgen Agent Hackathon. Wildan's AI Agent Developer role
+remains owner-confirmed, and the case study explicitly retains prototype,
+security-audit, external-service, and end-to-end verification limits.
+
 - Public evidence IDs and lifecycle states are explicitly allowlisted by the
   build validator.
-- All approved public live, repository, demo, and evidence links returned HTTP
-  200 during the audit.
+- Approved public links were reviewed. Nara's ICP deployment returned HTTP 200;
+  its DoraHacks result was verified from Wildan's supplied milestone capture
+  because automated access was intercepted by DoraHacks' verification screen.
 - Award, team, testnet, prototype, degraded, offline, and active-build wording is
   scoped in the typed project records.
 - Atlas remains an authoring source only; it is not read by the application or CI.
@@ -67,11 +75,13 @@ the Builder Pass QR target on the same date.
 | Hero WebM | VP9, 1280x720, 24 fps, 9.375 seconds, zero audio, 483,523 bytes |
 | Hero MP4 | H.264, 1280x720, 24 fps, 9.375 seconds, zero audio, 1,359,352 bytes |
 | Credential portrait | approved deterministic crop; source metadata not committed |
+| Nara Wallet cover | authentic canonical landing-page crop, 1878x1056 WebP, 109,144 bytes |
 
 The accepted video derivatives are pinned by SHA-256 in the media validator.
 Any replacement intentionally fails validation until it is reprobed and approved.
-Wildan explicitly accepted the honest project-media placeholders as the interim
-v1 state on 16 July 2026; authentic project imagery remains a later content pass.
+Five selected-work projects now use optimized owner-supplied or canonical
+product media. SpecHeal remains the single explicitly labelled placeholder until
+an authentic cockpit image is available.
 
 ## Verification snapshot
 
@@ -80,7 +90,8 @@ Latest local production checks on 20 July 2026:
 - `npm run check`: passed;
 - unit tests: 12 passed;
 - Playwright: 32 passed across Chromium and WebKit;
-- static build: 15 generated routes/endpoints;
+- static build: 16 generated routes/endpoints, including `/work/nara` and
+  `/instagram-qr`;
 - initial homepage JavaScript: 67.6 KiB gzip against a 180 KiB budget;
 - Lighthouse local production: accessibility 100, best practices 100, CLS 0,
   TBT below 60 ms; trace-observed LCP below 0.3 seconds;

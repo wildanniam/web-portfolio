@@ -31,6 +31,7 @@ test("homepage presents the positioning, proof, work, and contact path", async (
 
   const proofLedger = page.getByRole("region", { name: "A few moments I'm proud of." });
   await expect(proofLedger.getByText("NOVA AI / 1ST NOTABLE MENTION", { exact: true })).toBeVisible();
+  await expect(proofLedger.getByText("NARA / 1ST PLACE", { exact: true })).toBeVisible();
   await expect(
     proofLedger.getByText("Refactory Hackathon 2026", { exact: true }),
   ).toBeVisible();
@@ -223,16 +224,17 @@ test("selected work forms a semantic desktop editorial stage", async ({ page }) 
   const scene = page.locator('[data-signature-scene="selected-systems"]');
   const panels = scene.locator("[data-system-panel]");
 
-  await expect(panels).toHaveCount(4);
+  await expect(panels).toHaveCount(5);
   await expect(panels.nth(0)).toHaveAttribute("data-project-slug", "fradium");
   await expect(panels.nth(1)).toHaveAttribute("data-project-slug", "paygate");
   await expect(panels.nth(2)).toHaveAttribute("data-project-slug", "nova-ai-wallet");
-  await expect(panels.nth(3)).toHaveAttribute("data-project-slug", "quorum");
-  await expect(scene.getByText("My contribution", { exact: true })).toHaveCount(4);
-  await expect(scene.getByText("Current state", { exact: true })).toHaveCount(4);
+  await expect(panels.nth(3)).toHaveAttribute("data-project-slug", "nara");
+  await expect(panels.nth(4)).toHaveAttribute("data-project-slug", "quorum");
+  await expect(scene.getByText("My contribution", { exact: true })).toHaveCount(5);
+  await expect(scene.getByText("Current state", { exact: true })).toHaveCount(5);
 
   await panels.first().scrollIntoViewIfNeeded();
-  await expect(scene.locator(".pin-spacer")).toHaveCount(3);
+  await expect(scene.locator(".pin-spacer")).toHaveCount(4);
 
   await panels.nth(2).evaluate((panel) => panel.scrollIntoView({ block: "start" }));
   await expect
@@ -253,7 +255,7 @@ test("work index reaches every public case study", async ({ page }) => {
 
   await expect(page.getByRole("heading", { level: 1, name: "Projects I've led and built." })).toBeVisible();
 
-  for (const title of ["Fradium", "PayGate", "Nova AI Wallet", "SpecHeal", "Quorum"]) {
+  for (const title of ["Fradium", "PayGate", "Nova AI Wallet", "Nara Wallet", "Quorum", "SpecHeal"]) {
     await expect(page.getByRole("heading", { name: title, exact: true })).toBeVisible();
   }
 

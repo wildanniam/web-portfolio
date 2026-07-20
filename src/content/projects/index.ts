@@ -1,10 +1,11 @@
 import { fradium } from "./fradium";
+import { nara } from "./nara";
 import { novaAiWallet } from "./nova-ai-wallet";
 import { paygate } from "./paygate";
 import { quorum } from "./quorum";
 import { specheal } from "./specheal";
 
-export const projects = [fradium, paygate, novaAiWallet, specheal, quorum] as const;
+export const projects = [fradium, paygate, novaAiWallet, nara, quorum, specheal] as const;
 
 export const selectedProjects = projects
   .filter((project) => project.showInSelectedSystems)
@@ -14,4 +15,4 @@ export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);
 }
 
-export { fradium, novaAiWallet, paygate, quorum, specheal };
+export { fradium, nara, novaAiWallet, paygate, quorum, specheal };

@@ -96,6 +96,20 @@ Do not replace these with vague success language.
 - Do not collapse those categories into an overall-winner claim, or claim
   production readiness, custodial status, or guaranteed estimates.
 
+### Nara Wallet
+
+- Describe Nara as an online hackathon prototype, not a production financial
+  wallet.
+- Wildan's public role is **AI Agent Developer** and remains owner-confirmed.
+- Attribute **1st Place at the Nextgen Agent Hackathon** to the Nara Wallet team,
+  using the DoraHacks build milestone as the public result source.
+- The canonical repository supports claims about the Fetch.ai/uAgents layer,
+  Internet Computer canisters, tool-routed wallet actions, Stripe integration,
+  and ONNX inference. It does not establish a security audit or production
+  reliability.
+- The current public ICP URL may be described as online after an availability
+  check, but individual transaction flows require separate end-to-end evidence.
+
 ### SpecHeal
 
 - The demo is offline.

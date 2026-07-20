@@ -44,11 +44,11 @@ describe("validatePortfolioContent", () => {
 
   it("rejects project-specific blocked claims", () => {
     const invalid = {
-      ...projects[4],
+      ...projects.find((project) => project.slug === "quorum")!,
       cardCopy: "Quorum is the winner of its current competition.",
     } as ProjectRecord;
     const result = validatePortfolioContent(
-      [...projects.slice(0, 4), invalid],
+      projects.map((project) => (project.slug === "quorum" ? invalid : project)),
       siteContent,
     );
 
@@ -104,13 +104,17 @@ describe("validatePortfolioContent", () => {
   });
 
   it("rejects blocked visitor-facing language in project links", () => {
+    const quorum = projects.find((project) => project.slug === "quorum")!;
     const invalid = {
-      ...projects[4],
-      links: projects[4].links.map((link, index) =>
+      ...quorum,
+      links: quorum.links.map((link, index) =>
         index === 0 ? { ...link, label: "Inspect project" } : link,
       ),
     } as ProjectRecord;
-    const result = validatePortfolioContent([...projects.slice(0, 4), invalid], siteContent);
+    const result = validatePortfolioContent(
+      projects.map((project) => (project.slug === "quorum" ? invalid : project)),
+      siteContent,
+    );
 
     expect(result.errors.some((error) => error.includes("blocked visitor-facing language"))).toBe(
       true,

@@ -19,7 +19,7 @@ export const siteContent = {
   selectedWork: {
     title: "Selected Work",
     intro:
-      "A selection of products I've led and built across wallet safety, agentic payments, AI-assisted testing, and on-chain applications.",
+      "A selection of products I've led and built across wallet safety, agentic payments, conversational agents, and on-chain applications.",
   },
   credential: {
     title: "I like being close to the whole build.",
@@ -115,6 +115,12 @@ export const proofLedger = [
     value: "SEA Lisk Builder Challenge 3",
     context: "Nova AI also won the 1st Social Media Challenge",
     href: "https://bse.telkomuniversity.ac.id/prestasi-tim-nova-ai-di-south-east-asia-lisk-builder-challenge-3/",
+  },
+  {
+    label: "NARA / 1ST PLACE",
+    value: "Nextgen Agent Hackathon",
+    context: "Won by the Nara Wallet team",
+    href: "https://dorahacks.io/buidl/31746/",
   },
   {
     label: "SPECHEAL / 2ND PLACE",
