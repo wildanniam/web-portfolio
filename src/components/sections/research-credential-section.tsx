@@ -29,7 +29,7 @@ export function ResearchCredentialSection() {
           data-credential-stage
           className="builder-pass-section__object credential-section__object"
         >
-          <ResearchCredential aboutQrSrc="/about-qr" />
+          <ResearchCredential instagramQrSrc="/instagram-qr" />
         </div>
       </Container>
     </section>

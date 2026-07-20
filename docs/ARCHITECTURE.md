@@ -122,8 +122,8 @@ Failure restores the poster rather than leaving an empty media surface.
   server-owned content records. The Builder Pass accepts Motion in the homepage
   client graph to preserve one stable object identity; GSAP still loads only when
   its signature scene becomes relevant.
-- `qrcode` runs in the static `/about-qr` route at build time to encode the
-  current deployment's absolute `/about` URL. It does not enter the browser
+- `qrcode` runs in the static `/instagram-qr` route at build time to encode
+  Wildan's canonical Instagram profile URL. It does not enter the browser
   bundle or duplicate base64 data in the homepage HTML.
 - New runtime dependencies above 20 KiB gzip need documented justification.
 - Do not add a smooth-scroll library, WebGL stack, CMS, or UI kit without an

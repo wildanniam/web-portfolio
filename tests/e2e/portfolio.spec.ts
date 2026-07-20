@@ -44,7 +44,7 @@ test("homepage presents the positioning, proof, work, and contact path", async (
 test("credential identity remains available in the server-rendered interactive shell", async ({ request }) => {
   const response = await request.get("/");
   const html = await response.text();
-  const qrResponse = await request.get("/about-qr");
+  const qrResponse = await request.get("/instagram-qr");
 
   expect(response.ok()).toBe(true);
   expect(html).toContain('data-testid="research-credential"');
@@ -52,9 +52,21 @@ test("credential identity remains available in the server-rendered interactive s
   expect(html).toContain("Wildan Syukri Niam");
   expect(html).toContain("From idea to product.");
   expect(html).toContain('href="/about"');
-  expect(html).toContain('src="/about-qr"');
+  expect(html).toContain('src="/instagram-qr"');
+  expect(html).toContain("@wildanniam_");
   expect(qrResponse.ok()).toBe(true);
   expect(qrResponse.headers()["content-type"]).toContain("image/svg+xml");
+});
+
+test("public contact surfaces expose Wildan's Instagram profile", async ({ page }) => {
+  await page.goto("/");
+
+  const instagramLinks = page.getByRole("link", { name: /Instagram/ });
+  await expect(instagramLinks).toHaveCount(2);
+  await expect(instagramLinks.first()).toHaveAttribute(
+    "href",
+    "https://www.instagram.com/wildanniam_/",
+  );
 });
 
 test("builder pass enters once and stays settled after revisiting the section", async ({ page }) => {

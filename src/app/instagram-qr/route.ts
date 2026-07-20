@@ -1,12 +1,11 @@
 import QRCode from "qrcode";
 
-import { getSiteUrl } from "@/lib/seo/site-url";
+import { siteContent } from "@/content/site";
 
 export const dynamic = "force-static";
 
 export async function GET() {
-  const aboutUrl = new URL("/about", getSiteUrl()).toString();
-  const svg = await QRCode.toString(aboutUrl, {
+  const svg = await QRCode.toString(siteContent.contact.instagram, {
     type: "svg",
     errorCorrectionLevel: "M",
     margin: 1,
