@@ -71,6 +71,22 @@ export const fradium = defineProject({
         href: "https://bse.telkomuniversity.ac.id/tim-fradium-berhasil-meraih-global-finale-winner-fully-on-chain-track-pada-world-computer-hacker-league-2025/",
       },
     },
+    {
+      id: "fra-live-01",
+      claim: "Fradium is publicly accessible at fradium.io.",
+      scope: "product",
+      state: "verified",
+      asOf: "2026-07-15",
+      source: { label: "Live public beta", href: "https://fradium.io" },
+    },
+    {
+      id: "fra-flow-01",
+      claim: "The reviewed implementation combines chain preparation, canister inference, and community cross-checking.",
+      scope: "product",
+      state: "verified",
+      asOf: "2026-07-15",
+      source: { label: "Canonical repository", href: "https://github.com/fradiumofficial/fradium" },
+    },
   ],
   limitations: [
     "Not every multi-chain analysis step runs fully on-chain.",

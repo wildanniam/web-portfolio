@@ -6,12 +6,11 @@ import { ProjectMedia } from "@/components/projects/project-media";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { getProjectBySlug, projects } from "@/content/projects";
+import { getSiteUrl, serializeJsonLd } from "@/lib/seo/site-url";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
 };
-
-export const dynamicParams = false;
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -31,6 +30,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       title: `${project.title} | Wildan Syukri Niam`,
       description: project.oneLiner,
       type: "article",
+      url: `/work/${project.slug}`,
     },
   };
 }
@@ -43,13 +43,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const projectIndex = projects.findIndex((item) => item.slug === project.slug);
   const nextProject = projects[(projectIndex + 1) % projects.length];
+  const siteUrl = getSiteUrl();
+  const projectUrl = new URL(`/work/${project.slug}`, siteUrl).toString();
   const projectJsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: project.title,
     description: project.oneLiner,
-    creator: { "@type": "Person", name: "Wildan Syukri Niam" },
-    url: `/work/${project.slug}`,
+    creator: { "@id": new URL("/#person", siteUrl).toString() },
+    url: projectUrl,
+    mainEntityOfPage: projectUrl,
+    keywords: project.domains.join(", "),
     dateModified: project.lastVerifiedAt,
   };
 
@@ -58,7 +62,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(projectJsonLd).replaceAll("<", "\\u003c"),
+          __html: serializeJsonLd(projectJsonLd),
         }}
       />
       <article>
@@ -94,6 +98,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </div>
               </dl>
             </div>
+            <p className="copy-pretty mt-10 max-w-[56rem] text-lg leading-8 text-ink-600">
+              {project.caseStudyLead}
+            </p>
             <div className="mt-12">
               <ProjectMedia media={project.media[0]} />
             </div>
@@ -104,7 +111,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <Container className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20">
             <div>
               <h2 className="font-display text-5xl font-[520] tracking-[-0.05em]">
-                The question
+                The problem
               </h2>
               <p className="mt-6 text-xl leading-9 text-ink-700">{project.problem}</p>
             </div>
@@ -125,7 +132,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <Container className="grid gap-14 lg:grid-cols-2 lg:gap-20">
             <div>
               <h2 className="font-display text-5xl font-[520] tracking-[-0.05em]">
-                How the system works
+                How it works
               </h2>
               <ol className="mt-10 space-y-6">
                 {project.mechanism.map((step, index) => (
@@ -140,7 +147,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
             <div>
               <h2 className="font-display text-5xl font-[520] tracking-[-0.05em]">
-                My contribution
+                What I built
               </h2>
               <div className="mt-10 space-y-6">
                 {project.contributions.map((contribution) => (
@@ -159,7 +166,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <section className="border-y border-line-200 bg-paper-1/52 py-20 sm:py-24">
           <Container>
             <h2 className="font-display text-5xl font-[520] tracking-[-0.05em]">
-              Decisions and tradeoffs
+              Key decisions
             </h2>
             <div className="mt-12 grid gap-7 md:grid-cols-2">
               {project.decisions.map((decision) => (
@@ -177,15 +184,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <Container className="grid gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
             <div>
               <h2 className="font-display text-5xl font-[520] tracking-[-0.05em]">
-                Evidence ledger
+                Results &amp; sources
               </h2>
               <div className="mt-10 space-y-8">
                 {project.evidence.map((evidence) => (
                   <article key={evidence.id} className="border-t border-line-200 pt-6">
                     <div className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-[0.66rem] text-ink-600">
-                      <span>{evidence.scope.toUpperCase()}</span>
-                      <span>{evidence.state.toUpperCase()}</span>
-                      <span>{evidence.asOf}</span>
+                      <span>
+                        {evidence.scope === "personal"
+                          ? "MY ROLE"
+                          : evidence.scope === "team"
+                            ? "TEAM RESULT"
+                            : "PROJECT RECORD"}
+                      </span>
+                      <span>AS OF {evidence.asOf}</span>
                     </div>
                     <p className="mt-4 text-lg leading-8 text-ink-700">{evidence.claim}</p>
                     <a
@@ -202,7 +214,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
             <aside className="rounded-[1.5rem] border border-line-200 bg-paper-1 p-7 sm:p-9">
               <h2 className="font-display text-4xl font-[520] tracking-[-0.045em]">
-                Scope boundaries
+                Current limitations
               </h2>
               <div className="mt-8 space-y-5">
                 {project.limitations.map((limitation) => (
@@ -218,7 +230,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <footer className="border-t border-line-200 py-16 sm:py-20">
           <Container className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-end">
             <div>
-              <p className="text-sm text-ink-600">Next system</p>
+              <p className="text-sm text-ink-600">Next project</p>
               <Link
                 href={`/work/${nextProject.slug}`}
                 className="mt-2 block font-display text-5xl font-[520] tracking-[-0.05em] hover:text-ember-700"

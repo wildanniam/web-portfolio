@@ -7,9 +7,11 @@ peers, collaborators, program evaluators, founders, and technical recruiters.
 
 Visitors should understand three things quickly:
 
-1. Wildan builds serious technical systems, not visual concepts alone.
-2. Claims are accompanied by mechanisms, evidence, or stated limitations.
-3. The experience has a distinct point of view while remaining calm and usable.
+1. Wildan turns complex ideas into working products.
+2. Wildan works end to end across product, full-stack engineering, AI, Web3,
+   testing, and team delivery.
+3. Project claims remain factual and scoped without turning editorial safeguards
+   into the public brand voice.
 
 ## Visual thesis
 
@@ -54,13 +56,15 @@ by color alone.
 
 ## Typography
 
-- Fraunces: editorial display and hero headline.
-- Geist: navigation, body, controls, and case-study prose.
-- Geist Mono: metadata, timestamps, statuses, coordinates, and evidence labels.
+- Iowan/Palatino/Georgia system-serif stack: editorial display and hero headline
+  without a render-delaying font transfer.
+- Native UI sans: navigation, body, controls, and case-study prose.
+- Native UI mono: metadata, timestamps, statuses, coordinates, and evidence labels.
 
 Typography rules:
 
-- Use variable fonts through `next/font` with Latin subset.
+- Keep all three typography roles on carefully ordered system stacks. This
+  preserves the editorial character while avoiding render-delaying font transfers.
 - Keep the hero headline at two lines on intended desktop sizes.
 - Body copy is 16–18 px and case-study reading width is about 68–72 characters.
 - Mono uppercase is reserved for short evidence metadata.
@@ -70,7 +74,7 @@ Typography rules:
 
 - Desktop content max width: approximately 1440 px with generous fluid gutters.
 - Editorial copy uses a narrower readable measure inside the wide composition.
-- Hero uses a split layout; mobile stacks copy before media.
+- Hero uses a full-bleed media stage with a protected editorial contrast zone.
 - Project pages alternate full evidence surfaces and narrow explanatory prose.
 - Sections are not automatically cards. Use whitespace, rules, and material
   changes before adding a container.
@@ -90,9 +94,11 @@ Typography rules:
 - Solid ink primary action; paper/line secondary action.
 - Mono status label with icon or explicit text.
 - Media frame with caption, provenance, and state.
-- Evidence ledger row rather than generic metric card.
-- Physical Research Credential object.
-- Project panel with problem, mechanism, contribution, evidence, and limitations.
+- Results/source row rather than generic metric card.
+- Physical personal Builder Pass object.
+- Continuous woven lanyard entering from outside the section, with one compact
+  clip physically touching the credential slot.
+- Project panel with problem, mechanism, contribution, highlight, and current state.
 
 ## State requirements
 
@@ -109,9 +115,9 @@ Typography rules:
 
 ### Large desktop — 1280 px and above
 
-- Full split hero and short hero handoff.
-- Research Credential may bridge section boundaries.
-- Selected Systems may use a sticky editorial stage.
+- Full-bleed cinematic hero and short hero handoff.
+- Builder Pass may bridge section boundaries.
+- Selected Work may use a sticky editorial stage.
 
 ### Tablet — 768 to 1279 px
 
@@ -122,7 +128,7 @@ Typography rules:
 
 - Strict single-column narrative.
 - No pinned or horizontally hijacked scenes.
-- Preserve hero media at 16:9.
+- Preserve a full-viewport hero crop with a reviewed mobile focal point.
 - Credential is tap-to-flip without pointer tilt.
 - Minimum primary touch target is 44×44 px.
 
@@ -146,10 +152,20 @@ Typography rules:
 - Placeholder text presented as evidence.
 - Decorative verified/evidence states without factual meaning.
 
+## Public voice
+
+- Lead with concrete verbs such as build, shape, lead, test, ship, and improve.
+- Position Wildan as a full-stack builder first; research is a secondary way of
+  learning and should appear only where it adds real context.
+- Keep the tone warm, direct, technically literate, and personal.
+- Do not use `inspect` or its variants in visitor-facing copy.
+- Do not repeat internal claim-governance language as slogans. Truthfulness is
+  demonstrated through project status, attribution, sources, and limitations.
+
 ## Visual references
 
 - Reference implementation: locally audited inspiration repository, not copied or committed here.
-- Hero source: `The_three_uploaded_images_show.mp4`
+- Hero source: `wildan-human-checkpoint-source.mp4`
 - Full approved product direction: `docs/DEVELOPMENT_BLUEPRINT.md`
 
 Local absolute reference paths are documentation-only and must never enter the
