@@ -5,10 +5,11 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { selectedProjects, specheal, quorum } from "@/content/projects";
 import { siteContent } from "@/content/site";
+import { SelectedSystemsSceneController } from "@/motion/selected-systems-scene";
 
 export function SelectedSystemsSection() {
   return (
-    <section id="selected-systems" className="scroll-mt-24 py-24 sm:py-32">
+    <section id="selected-work" className="scroll-mt-24 py-24 sm:py-32">
       <Container>
         <div className="max-w-[54rem]">
           <h2 className="font-display text-5xl font-[520] tracking-[-0.05em] sm:text-6xl">
@@ -19,36 +20,72 @@ export function SelectedSystemsSection() {
           </p>
         </div>
 
-        <div className="mt-16 space-y-20 lg:space-y-28">
-          {selectedProjects.map((project, index) => (
-            <article
-              key={project.slug}
-              className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12"
-            >
-              <div className={index === 1 ? "lg:order-2 lg:col-span-7" : "lg:col-span-7"}>
-                <ProjectMedia media={project.media[0]} />
-              </div>
-              <div className={index === 1 ? "lg:order-1 lg:col-span-5" : "lg:col-span-5"}>
-                <p className="font-mono text-xs font-semibold text-ember-700">{project.statusLabel}</p>
-                <h3 className="mt-4 font-display text-4xl font-[520] tracking-[-0.045em] sm:text-5xl">
-                  {project.title}
-                </h3>
-                <p className="mt-4 text-lg leading-8 text-ink-700">{project.oneLiner}</p>
-                <p className="mt-5 text-base leading-7 text-ink-600">{project.cardCopy}</p>
-                <Link
-                  href={`/work/${project.slug}`}
-                  className="mt-7 inline-flex min-h-11 items-center font-semibold text-ember-700 underline decoration-ember-500/40 underline-offset-8 hover:text-ink-900"
+        <div data-signature-scene="selected-systems">
+          <div className="selected-systems-stage mt-14 sm:mt-16">
+            {selectedProjects.map((project) => {
+              const highlight =
+                project.evidence.find((item) => item.scope === "team") ??
+                project.evidence.find((item) => item.scope === "product") ??
+                project.evidence[0];
+
+              return (
+                <article
+                  key={project.slug}
+                  data-system-panel
+                  data-project-slug={project.slug}
+                  className="selected-system-panel"
                 >
-                  Read case study
-                </Link>
-              </div>
-            </article>
-          ))}
+                  <div data-system-surface className="selected-system-surface paper-surface">
+                    <div data-system-content className="selected-system-content">
+                      <div className="selected-system-main">
+                        <div className="selected-system-media">
+                          <ProjectMedia media={project.media[0]} />
+                        </div>
+                        <div className="selected-system-copy">
+                          <div className="selected-system-meta">
+                            <span>{project.statusLabel}</span>
+                            <span>{project.year}</span>
+                          </div>
+                          <h3>{project.title}</h3>
+                          <p className="selected-system-one-liner">{project.oneLiner}</p>
+                          <p className="selected-system-role">{project.role}</p>
+                          <Link href={`/work/${project.slug}`}>Read case study</Link>
+                        </div>
+                      </div>
+
+                      <dl className="selected-system-ledger">
+                        <div>
+                          <dt>My contribution</dt>
+                          <dd>{project.contributions[0]}</dd>
+                        </div>
+                        <div>
+                          <dt>Highlight</dt>
+                          <dd>
+                            {highlight.claim}{" "}
+                            <a href={highlight.source.href} target="_blank" rel="noreferrer">
+                              {highlight.source.label}
+                            </a>
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>Current state</dt>
+                          <dd>{project.limitations[0]}</dd>
+                        </div>
+                      </dl>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+          <SelectedSystemsSceneController />
         </div>
 
         <div className="mt-24 grid gap-7 border-t border-line-200 pt-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
-            <p className="font-mono text-xs font-semibold text-ember-700">RESEARCH PROTOTYPE</p>
+            <p className="font-mono text-xs font-semibold text-ember-700">
+              HACKATHON PROJECT · ARCHIVED
+            </p>
             <h3 className="mt-3 font-display text-4xl font-[520] tracking-[-0.04em]">
               {specheal.title}
             </h3>
@@ -59,7 +96,7 @@ export function SelectedSystemsSection() {
               href={`/work/${specheal.slug}`}
               className="mt-5 inline-flex min-h-11 items-center font-semibold text-ember-700 underline decoration-ember-500/40 underline-offset-8 hover:text-ink-900"
             >
-              Inspect the offline prototype
+              View the SpecHeal case study
             </Link>
           </div>
         </div>
@@ -68,27 +105,28 @@ export function SelectedSystemsSection() {
   );
 }
 
-export function ResearchSection() {
+export function HowIWorkSection() {
   return (
-    <section id="research" className="scroll-mt-24 bg-paper-1/62 py-24 sm:py-32">
+    <section id="how-i-work" className="scroll-mt-24 bg-paper-1/62 py-24 sm:py-32">
       <Container className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
         <h2 className="max-w-[10ch] font-display text-5xl leading-[0.98] font-[520] tracking-[-0.05em] sm:text-6xl">
-          {siteContent.research.title}
+          {siteContent.approach.title}
         </h2>
         <div className="max-w-[47rem]">
-          {siteContent.research.paragraphs.map((paragraph) => (
+          {siteContent.approach.paragraphs.map((paragraph) => (
             <p key={paragraph} className="not-first:mt-6 text-xl leading-9 text-ink-700">
               {paragraph}
             </p>
           ))}
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {["Frame the risk", "Build the mechanism", "Expose the evidence", "Test the boundary"].map(
-              (step) => (
-                <div key={step} className="border-l-2 border-ember-500 pl-4 text-sm font-semibold text-ink-700">
-                  {step}
-                </div>
-              ),
-            )}
+            {siteContent.approach.steps.map((step) => (
+              <div
+                key={step}
+                className="border-l-2 border-ember-500 pl-4 text-sm font-semibold text-ink-700"
+              >
+                {step}
+              </div>
+            ))}
           </div>
         </div>
       </Container>
@@ -102,10 +140,10 @@ export function PrinciplesSection() {
       <Container>
         <div className="max-w-[52rem]">
           <h2 className="font-display text-5xl font-[520] tracking-[-0.05em] sm:text-6xl">
-            How I build autonomous systems
+            What guides my work.
           </h2>
           <p className="mt-5 text-xl leading-8 text-ink-600">
-            Autonomy is useful only when people can understand its limits.
+            A few principles I come back to when turning an idea into a working product.
           </p>
         </div>
         <div className="mt-16 grid gap-x-12 gap-y-10 md:grid-cols-2">
@@ -128,11 +166,11 @@ export function AboutSection() {
         <div className="paper-surface relative overflow-hidden rounded-[1.75rem] border border-line-200 bg-paper-1 p-7 sm:p-10 lg:grid lg:grid-cols-[0.72fr_1.28fr] lg:gap-16 lg:p-14">
           <div>
             <h2 className="font-display text-4xl font-[520] tracking-[-0.045em] sm:text-5xl">
-              Researcher. Builder. Systems thinker.
+              A builder who likes the whole problem.
             </h2>
           </div>
           <div className="mt-8 lg:mt-0">
-            <p className="text-xl leading-9 text-ink-700">{siteContent.about.short}</p>
+            <p className="text-xl leading-9 text-ink-700">{siteContent.about.home}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href="/about">Read more</ButtonLink>
               <ButtonLink href={siteContent.contact.github} variant="secondary">
@@ -163,7 +201,7 @@ export function CurrentBuildSection() {
             href={`/work/${quorum.slug}`}
             className="mt-8 inline-flex min-h-11 items-center rounded-full border border-paper-2/28 px-5 text-sm font-semibold text-paper-0 hover:bg-paper-0 hover:text-ink-900"
           >
-            Inspect Quorum
+            See what I&apos;m building
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">

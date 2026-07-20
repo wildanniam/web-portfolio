@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 
 const navigation = [
   { label: "Work", href: "/work" },
-  { label: "Method", href: "/#research" },
+  { label: "How I Work", href: "/#how-i-work" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/#contact" },
 ];

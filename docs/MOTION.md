@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Motion explains causality in the portfolio's narrative:
+Motion supports the portfolio's build narrative:
 
-**signal enters → system works → human checkpoint intervenes → evidence emerges**.
+**idea appears → product takes shape → build connects → result becomes usable**.
 
 It should create one or two memorable moments, not make every section perform.
 
@@ -13,9 +13,9 @@ It should create one or two memorable moments, not make every section perform.
 | Layer | Owner | Examples |
 |---|---|---|
 | Ordinary state | CSS | hover, focus, pressed, color, border |
-| Object interaction | Motion | credential, mobile menu, small disclosure |
-| Signature scroll | GSAP + ScrollTrigger | hero handoff, selected systems stage |
-| Media loop | HTML video | ten-second Verifiable Machine loop |
+| Object interaction | Motion | Builder Pass, mobile menu, small disclosure |
+| Signature scroll | GSAP + ScrollTrigger | hero handoff, Selected Work stage |
+| Media loop | HTML video | 9.375-second Living Portrait loop |
 
 Motion and GSAP never control the same property on the same element.
 
@@ -25,7 +25,7 @@ Motion and GSAP never control the same property on the same element.
 |---|---:|---|
 | Micro | 140–220 ms | control state |
 | Interface | 280–420 ms | menu/panel presence |
-| Object | 450–700 ms | credential settle/flip |
+| Object | 450–700 ms | Builder Pass settle/flip |
 | Scene | 700–1200 ms equivalent | coordinated narrative motion |
 | Stagger | 40–90 ms | at most four or five related items |
 
@@ -35,25 +35,43 @@ Prefer restrained ease-out and weighted motion. Avoid elastic or playful bounce.
 
 Desktop motion-enabled only, approximately 60–80vh after the first viewport:
 
-1. Poster and all hero copy are immediately usable.
-2. Video crossfades only after it can play.
-3. The media frame scales/translates slightly as scrolling begins.
+1. Poster, provenance caption, and all hero copy are server-rendered and
+   immediately usable.
+2. The video module is requested only on eligible desktop viewports, then
+   crossfades only after it can play.
+3. The full-bleed portrait stage scales/translates slightly as scrolling begins.
 4. An ember signal trace visually continues toward the next section.
-5. The signal meets the lanyard anchor and the credential settles with weight.
+5. The signal meets the lanyard anchor and the Builder Pass settles with weight.
 6. Pinning releases early enough that the user never feels trapped.
 
-Pin a wrapper and animate a child. Keep calls scoped through `useGSAP`; use
-`gsap.matchMedia()` for breakpoints and cleanup.
+Pin a wrapper and animate a child. The server-rendered scene owns all content;
+a zero-layout client controller imports GSAP after scroll intent or a short
+post-paint delay and scopes cleanup to the scene root.
 
-## Research Credential
+## Builder Pass
 
 - A brief gentle pendulum settles and stops.
+- The continuous strap, clip, and badge share the pendulum wrapper so their
+  physical connection never separates during motion.
 - Pointer tilt uses MotionValue, not React state per pointer frame.
 - Click, Enter, or Space flips front/back.
 - Touch uses tap-to-flip and does not depend on hover.
 - Reduced motion removes tilt/pendulum and uses instant or subtle opacity state.
+- The complete front-facing credential is server-rendered as the no-JS state.
+  Motion and the interactive face controller load only when the credential stage
+  approaches the viewport, then replace an identically sized static shell.
 
-## Signature scene 2: Selected Systems
+Implementation ownership is separated by nested nodes:
+
+- GSAP: hero media wrapper, hero copy wrapper, signal traces, and outer
+  credential stage arrival.
+- Motion: credential swing, pointer-tilt wrapper, and inner face-flip wrapper.
+
+The first scene uses one short pinned hero timeline plus the continuation and
+arrival triggers inside the same narrative component. These collectively count
+as one signature scene.
+
+## Signature scene 2: Selected Work
 
 Desktop uses a sticky editorial stage for Fradium, PayGate, and Nova AI Wallet:
 
@@ -65,9 +83,23 @@ Desktop uses a sticky editorial stage for Fradium, PayGate, and Nova AI Wallet:
 All project content remains in semantic DOM order. Tablet uses shorter distances.
 Mobile and reduced motion use normal vertical blocks.
 
+Implementation details:
+
+- `SelectedSystemsSceneController` is the only client owner of this scene.
+- Its IntersectionObserver imports GSAP only as the section approaches the
+  viewport; the semantic articles remain server-rendered.
+- Each project article remains complete in server-rendered HTML.
+- Large desktop pins the first two article wrappers at an 88 px navigation
+  offset with `pinSpacing: false`; the final article releases the scene.
+- The opaque inner project surface scales as the following article arrives,
+  while a nested content layer changes opacity. The pinned wrapper and animated
+  transform never share one node, and paper surfaces never become translucent.
+- Tablet, mobile, no-JS, and reduced-motion rendering use the same articles in
+  ordinary document flow with no replacement content.
+
 ## Supporting motion
 
-- Research method uses a one-time line/marker reveal.
+- How I Work uses a one-time line/marker reveal.
 - Principles respond to hover/focus without hiding information.
 - Quorum's six evidence marks may illuminate once.
 - Contact uses a restrained tonal transition.
