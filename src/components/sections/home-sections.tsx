@@ -169,9 +169,14 @@ export function ContactSection() {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="contact-stage scroll-mt-24 bg-smoke-900 text-paper-0"
+      className="contact-stage scroll-mt-24"
     >
       <Container>
+        <div className="contact-stage__marker" aria-hidden="true">
+          <span>05</span>
+          <span>CONTACT</span>
+        </div>
+
         <div className="contact-stage__body">
           <div>
             <p className="contact-stage__eyebrow">LET&apos;S MAKE IT REAL</p>
@@ -184,7 +189,8 @@ export function ContactSection() {
               href={`mailto:${siteContent.contact.email}`}
               className="contact-stage__email"
             >
-              {siteContent.contact.email}
+              <span>{siteContent.contact.email}</span>
+              <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
