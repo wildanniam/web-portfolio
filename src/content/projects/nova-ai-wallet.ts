@@ -104,6 +104,15 @@ export const novaAiWallet = defineProject({
       kind: "evidence",
     },
   ],
-  media: [{ state: "placeholder", label: "Nova intent-to-transaction review", aspectRatio: "16/10" }],
+  media: [
+    {
+      state: "published",
+      src: "/media/projects/nova-ai-wallet-cover.webp",
+      alt: "Nova AI Wallet product cover showing its conversational wallet interface and intent-to-on-chain execution concept.",
+      width: 2560,
+      height: 1440,
+      sourceNote: "Owner-supplied product showcase cover, reviewed 2026-07-20.",
+    },
+  ],
   lastVerifiedAt: "2026-07-16",
 });

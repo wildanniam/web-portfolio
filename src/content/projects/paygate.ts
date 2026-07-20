@@ -100,6 +100,15 @@ export const paygate = defineProject({
     { label: "View repository", href: "https://github.com/wildanniam/paygate-stellar", kind: "repository" },
     { label: "Read developer docs", href: "https://github.com/wildanniam/paygate-stellar/tree/main/docs", kind: "documentation" },
   ],
-  media: [{ state: "placeholder", label: "PayGate HTTP 402 receipt flow", aspectRatio: "16/10" }],
+  media: [
+    {
+      state: "published",
+      src: "/media/projects/paygate-cover.webp",
+      alt: "PayGate product cover showing the HTTP 402 pay-per-call flow from an API URL through Stellar payment verification to a paid endpoint.",
+      width: 2560,
+      height: 1572,
+      sourceNote: "Owner-supplied product showcase cover, reviewed 2026-07-20.",
+    },
+  ],
   lastVerifiedAt: "2026-07-15",
 });

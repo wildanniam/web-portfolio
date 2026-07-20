@@ -17,6 +17,7 @@ const credentialPortrait = resolve(
   projectRoot,
   "public/media/profile/wildan-credential.jpg",
 );
+const projectMediaMaxBytes = 500 * 1024;
 
 const publicMediaBudgets = [
   {
@@ -117,6 +118,13 @@ for (const project of projects) {
 
     if (!media.alt.trim()) {
       errors.push(`${project.title}: ${media.state} media requires alt text.`);
+    }
+
+    const size = statSync(filePath).size;
+    if (size === 0 || size > projectMediaMaxBytes) {
+      errors.push(
+        `${project.title}: ${media.state} media exceeds the ${projectMediaMaxBytes}-byte project-cover budget: ${size} bytes.`,
+      );
     }
 
     if (media.state === "published" && (media.width <= 0 || media.height <= 0)) {

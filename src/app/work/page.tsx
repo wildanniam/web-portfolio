@@ -35,7 +35,10 @@ export default function WorkPage() {
           {projects.map((project, index) => (
             <article key={project.slug} className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className={index % 2 === 1 ? "lg:order-2 lg:col-span-7" : "lg:col-span-7"}>
-                <ProjectMedia media={project.media[0]} />
+                <ProjectMedia
+                  media={project.media[0]}
+                  sizes="(min-width: 1024px) 58vw, calc(100vw - 2.5rem)"
+                />
               </div>
               <div className={index % 2 === 1 ? "lg:order-1 lg:col-span-5" : "lg:col-span-5"}>
                 <p className="font-mono text-xs font-semibold text-ember-700">

@@ -54,7 +54,10 @@ export function SelectedSystemsSection() {
                     <div data-system-content className="selected-system-content">
                       <div className="selected-system-main">
                         <div className="selected-system-media">
-                          <ProjectMedia media={project.media[0]} />
+                          <ProjectMedia
+                            media={project.media[0]}
+                            sizes="(min-width: 1280px) 52vw, (min-width: 768px) 54vw, calc(100vw - 2.5rem)"
+                          />
                         </div>
                         <div className="selected-system-copy">
                           <div className="selected-system-meta">

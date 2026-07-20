@@ -2,7 +2,15 @@ import Image from "next/image";
 
 import type { MediaSlot } from "@/content/schema";
 
-export function ProjectMedia({ media }: { media: MediaSlot }) {
+type ProjectMediaProps = {
+  media: MediaSlot;
+  sizes?: string;
+};
+
+export function ProjectMedia({
+  media,
+  sizes = "(min-width: 1440px) 1312px, calc(100vw - 2.5rem)",
+}: ProjectMediaProps) {
   if (media.state === "placeholder") {
     return (
       <div
@@ -20,6 +28,7 @@ export function ProjectMedia({ media }: { media: MediaSlot }) {
 
   const width = media.state === "published" ? media.width : 1600;
   const height = media.state === "published" ? media.height : 1000;
+  const sizingClass = media.state === "published" ? "h-auto" : "aspect-[16/10]";
 
   return (
     <Image
@@ -27,7 +36,8 @@ export function ProjectMedia({ media }: { media: MediaSlot }) {
       alt={media.alt}
       width={width}
       height={height}
-      className="aspect-[16/10] w-full rounded-[1.25rem] border border-line-200 object-cover"
+      sizes={sizes}
+      className={`${sizingClass} w-full rounded-[1.25rem] border border-line-200 bg-smoke-900 object-contain`}
     />
   );
 }

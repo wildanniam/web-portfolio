@@ -99,6 +99,15 @@ export const fradium = defineProject({
     { label: "View repository", href: "https://github.com/fradiumofficial/fradium", kind: "repository" },
     { label: "Read documentation", href: "https://fradium.gitbook.io/docs", kind: "documentation" },
   ],
-  media: [{ state: "placeholder", label: "Fradium decision surface", aspectRatio: "16/10" }],
+  media: [
+    {
+      state: "published",
+      src: "/media/projects/fradium-cover.webp",
+      alt: "Fradium product cover showing its Web3 transaction trust layer, wallet analysis surfaces, and public website.",
+      width: 2560,
+      height: 1440,
+      sourceNote: "Owner-supplied product showcase cover, reviewed 2026-07-20.",
+    },
+  ],
   lastVerifiedAt: "2026-07-15",
 });

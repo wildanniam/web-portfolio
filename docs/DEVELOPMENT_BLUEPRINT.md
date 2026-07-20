@@ -119,6 +119,8 @@ pinned scene.
 - Hero poster target: at most 150–200 KB.
 - Hero WebM target: preferably at most 2 MB.
 - Hero MP4 fallback target: at most 3 MB.
+- Published project cover target: at most 500 KB per asset, with dimensions
+  large enough for a reviewed high-density desktop rendering.
 - The talking derivatives may contain the approved greeting audio. Playback
   begins muted and audio is enabled only by explicit user action.
 - A dependency above 20 KiB gzip requires a documented reason.

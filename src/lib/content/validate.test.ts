@@ -11,7 +11,9 @@ describe("validatePortfolioContent", () => {
     const result = validatePortfolioContent(projects, siteContent);
 
     expect(result.errors).toEqual([]);
-    expect(result.warnings).toHaveLength(5);
+    expect(result.warnings).toEqual([
+      "Project SpecHeal: all media slots are still placeholders.",
+    ]);
   });
 
   it("rejects duplicate slugs", () => {

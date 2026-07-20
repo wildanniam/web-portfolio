@@ -103,6 +103,15 @@ export const quorum = defineProject({
       kind: "evidence",
     },
   ],
-  media: [{ state: "placeholder", label: "Quorum settlement and pass flow", aspectRatio: "16/10" }],
+  media: [
+    {
+      state: "published",
+      src: "/media/projects/quorum-cover.webp",
+      alt: "Quorum product cover introducing collaborative Web3 event checkout and Stellar-powered payments.",
+      width: 2560,
+      height: 1440,
+      sourceNote: "Owner-supplied product showcase cover, reviewed 2026-07-20.",
+    },
+  ],
   lastVerifiedAt: "2026-07-15",
 });
