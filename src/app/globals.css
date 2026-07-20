@@ -756,26 +756,52 @@ summary:focus-visible {
   position: relative;
   isolation: isolate;
   overflow: clip;
-  min-height: 78svh;
-  padding-block: clamp(7rem, 12vw, 12rem) 5rem;
+  min-height: 72svh;
+  padding-block: clamp(6rem, 10vw, 10rem) 3rem;
+  color: var(--ink-900);
   background:
-    radial-gradient(circle at 83% 18%, rgb(198 94 46 / 0.22), transparent 27rem),
-    linear-gradient(140deg, #171411, #211812 58%, #171411);
+    radial-gradient(circle at 86% 14%, rgb(245 240 232 / 0.34), transparent 24rem),
+    radial-gradient(circle at 13% 88%, rgb(148 62 27 / 0.28), transparent 30rem),
+    linear-gradient(135deg, #d7794d 0%, var(--ember-500) 48%, #a94922 100%);
 }
 
 .contact-stage::before {
   position: absolute;
   z-index: -1;
-  top: -12%;
-  right: -9%;
-  width: min(55vw, 50rem);
-  aspect-ratio: 1;
-  border: 1px solid rgb(242 164 126 / 0.18);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 6rem rgb(198 94 46 / 0.025),
-    0 0 0 12rem rgb(198 94 46 / 0.018);
+  inset: 0;
+  opacity: 0.28;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent calc(25% - 1px),
+    rgb(26 23 20 / 0.16) calc(25% - 1px),
+    rgb(26 23 20 / 0.16) 25%
+  );
   content: "";
+}
+
+.contact-stage__marker {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(26 23 20 / 0.28);
+  color: rgb(26 23 20 / 0.72);
+  font-family: var(--font-mono-stack);
+  font-size: 0.63rem;
+  font-weight: 720;
+  letter-spacing: 0.14em;
+}
+
+.contact-stage__marker span:first-child {
+  display: grid;
+  width: 2rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgb(26 23 20 / 0.38);
+  border-radius: 50%;
+  letter-spacing: 0;
 }
 
 .contact-stage__body {
@@ -785,7 +811,7 @@ summary:focus-visible {
 }
 
 .contact-stage__eyebrow {
-  color: #f2a47e;
+  color: var(--ink-900);
 }
 
 .contact-stage h2 {
@@ -805,23 +831,38 @@ summary:focus-visible {
 
 .contact-stage__invitation > p {
   margin: 0;
-  color: rgb(225 214 199 / 0.72);
+  color: rgb(26 23 20 / 0.76);
   font-size: clamp(1.05rem, 1.8vw, 1.25rem);
   line-height: 1.7;
 }
 
 .contact-stage__email {
-  display: inline-flex;
-  min-height: 3.5rem;
+  display: flex;
+  gap: 1.25rem;
   align-items: center;
+  justify-content: space-between;
   margin-top: 2rem;
-  color: #f2a47e;
+  padding-block: 1rem;
+  border-top: 1px solid rgb(26 23 20 / 0.3);
+  border-bottom: 1px solid rgb(26 23 20 / 0.3);
+  color: var(--ink-900);
   font-size: clamp(1.25rem, 2.4vw, 2rem);
   font-weight: 650;
   letter-spacing: -0.035em;
-  text-decoration: underline;
-  text-decoration-color: rgb(242 164 126 / 0.35);
-  text-underline-offset: 0.65rem;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.contact-stage__email span:last-child {
+  transition: transform 180ms ease;
+}
+
+.contact-stage__email:hover {
+  border-color: var(--ink-900);
+  color: var(--paper-0);
+}
+
+.contact-stage__email:hover span:last-child {
+  transform: translate(0.2rem, -0.2rem);
 }
 
 .contact-stage__meta {
@@ -831,8 +872,8 @@ summary:focus-visible {
   align-items: center;
   margin-top: clamp(5rem, 10vw, 9rem);
   padding-top: 1.5rem;
-  border-top: 1px solid rgb(225 214 199 / 0.18);
-  color: rgb(225 214 199 / 0.58);
+  border-top: 1px solid rgb(26 23 20 / 0.28);
+  color: rgb(26 23 20 / 0.66);
   font-family: var(--font-mono-stack);
   font-size: 0.63rem;
   font-weight: 650;
@@ -840,12 +881,12 @@ summary:focus-visible {
 }
 
 .contact-stage__meta a {
-  color: var(--paper-0);
+  color: var(--ink-900);
   transition: color 180ms ease;
 }
 
 .contact-stage__meta a:hover {
-  color: #f2a47e;
+  color: var(--paper-0);
 }
 
 @media (min-width: 900px) {
