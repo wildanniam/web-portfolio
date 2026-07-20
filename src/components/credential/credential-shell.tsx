@@ -35,7 +35,7 @@ export function CredentialFaces({ aboutQrSrc, isBackVisible }: CredentialFacesPr
             fill
             sizes="(min-width: 768px) 22rem, 78vw"
             className="object-cover"
-            priority={false}
+            loading="eager"
           />
           <span className="credential-portrait__index" aria-hidden="true">
             AI / WEB3 / PRODUCT

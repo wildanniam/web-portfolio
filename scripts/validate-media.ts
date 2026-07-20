@@ -11,7 +11,7 @@ let managedMediaCount = 0;
 
 const heroSource = resolve(
   projectRoot,
-  "source-assets/hero/wildan-human-checkpoint-source.mp4",
+  "source-assets/hero/wildan-hero-talking-source.mp4",
 );
 const credentialPortrait = resolve(
   projectRoot,
@@ -21,32 +21,38 @@ const credentialPortrait = resolve(
 const publicMediaBudgets = [
   {
     label: "Hero poster",
-    path: resolve(projectRoot, "public/media/hero/wildan-human-checkpoint-poster.jpg"),
+    path: resolve(projectRoot, "public/media/hero/wildan-hero-poster.jpg"),
     maxBytes: 200 * 1024,
   },
   {
+    label: "Hero mobile poster",
+    path: resolve(projectRoot, "public/media/hero/wildan-hero-poster-mobile.jpg"),
+    maxBytes: 150 * 1024,
+  },
+  {
     label: "Hero WebM",
-    path: resolve(projectRoot, "public/media/hero/wildan-human-checkpoint-loop.webm"),
+    path: resolve(projectRoot, "public/media/hero/wildan-hero-video.webm"),
     maxBytes: 2 * 1024 * 1024,
   },
   {
     label: "Hero MP4",
-    path: resolve(projectRoot, "public/media/hero/wildan-human-checkpoint-loop.mp4"),
+    path: resolve(projectRoot, "public/media/hero/wildan-hero-video.mp4"),
     maxBytes: 3 * 1024 * 1024,
   },
 ] as const;
 
-// These exact derivatives were probed with ffprobe: 1280x720, 24 fps,
-// 9.375 seconds, and zero audio streams. A replacement must be re-audited before
-// its new hash is accepted here.
-const approvedSilentVideoHashes = new Map([
+// These talking-video derivatives were probed with ffprobe: 1280x720, 24 fps,
+// about 7.54 seconds, with one intentionally retained audio stream (AAC in MP4,
+// Opus in WebM). A replacement must be re-audited for those properties and for
+// visible provenance before its new hash is accepted here.
+const approvedTalkingVideoHashes = new Map([
   [
-    resolve(projectRoot, "public/media/hero/wildan-human-checkpoint-loop.webm"),
-    "3123913c6b2fbbad22fc93ee3f1028c19a6369e31e2b406afe808e76f31d3189",
+    resolve(projectRoot, "public/media/hero/wildan-hero-video.webm"),
+    "1e16d9ee270a20310f720f078b79cd58a69159a6203f4c130dab5124ee9dc3aa",
   ],
   [
-    resolve(projectRoot, "public/media/hero/wildan-human-checkpoint-loop.mp4"),
-    "0e243a8225db7a131ffd7b179fe5a250d9b66d76ebf6fd7b16b32d814f8f8018",
+    resolve(projectRoot, "public/media/hero/wildan-hero-video.mp4"),
+    "c84db40735aab962e9c9d4cf1969108f663057c62d5b4102c0e9ec5ea43e220d",
   ],
 ]);
 
@@ -81,12 +87,12 @@ for (const mediaBudget of publicMediaBudgets) {
     );
   }
 
-  const approvedHash = approvedSilentVideoHashes.get(mediaBudget.path);
+  const approvedHash = approvedTalkingVideoHashes.get(mediaBudget.path);
   if (approvedHash) {
     const actualHash = createHash("sha256").update(readFileSync(mediaBudget.path)).digest("hex");
     if (actualHash !== approvedHash) {
       errors.push(
-        `${mediaBudget.label} changed and must be re-audited for duration, dimensions, frame rate, and zero audio streams.`,
+        `${mediaBudget.label} changed and must be re-audited for duration, dimensions, frame rate, its intentional audio stream, and visible provenance.`,
       );
     }
   }
@@ -126,6 +132,6 @@ if (errors.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Media validation passed. Hero source, public derivatives, and credential portrait are within budget; ${managedMediaCount} candidate/published project asset(s) checked.`,
+    `Media validation passed. Talking hero source, public derivatives, and credential portrait are within budget; ${managedMediaCount} candidate/published project asset(s) checked.`,
   );
 }

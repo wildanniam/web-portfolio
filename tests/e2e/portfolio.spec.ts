@@ -14,29 +14,31 @@ test("homepage presents the positioning, proof, work, and contact path", async (
   await expect(
     page.getByRole("heading", { level: 2, name: "I like being close to the whole build." }),
   ).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "Quorum" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Quorum" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 2, name: "A few moments I'm proud of." })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "From idea to working product." })).toBeVisible();
   await expect(
     page.getByRole("heading", { level: 2, name: "Have something interesting to build?" }),
   ).toBeVisible();
   await expect(page.locator("video")).toHaveCount(1);
 
-  const heroBox = await page.locator("[data-hero-pin]").boundingBox();
-  const heroMediaBox = await page.locator("[data-hero-media-frame]").boundingBox();
+  const heroBox = await page.locator("[data-hero-scene]").boundingBox();
+  const heroMediaBox = await page.locator(".hero-media-frame").boundingBox();
   expect(heroBox).not.toBeNull();
   expect(heroMediaBox).not.toBeNull();
   expect(heroMediaBox?.width).toBeCloseTo(heroBox?.width ?? 0, 0);
   expect(heroMediaBox?.height).toBeCloseTo(heroBox?.height ?? 0, 0);
 
-  const proofLedger = page.getByRole("region", { name: "Selected highlights" });
+  const proofLedger = page.getByRole("region", { name: "A few moments I'm proud of." });
   await expect(proofLedger.getByText("NOVA AI / 1ST NOTABLE MENTION", { exact: true })).toBeVisible();
   await expect(
     proofLedger.getByText("Refactory Hackathon 2026", { exact: true }),
   ).toBeVisible();
   await expect(proofLedger.getByText("6 signed Quorum flows", { exact: true })).toHaveCount(0);
 
-  const playbackControl = page.getByRole("button", { name: /hero animation/i });
+  const playbackControl = page.getByRole("button", { name: "Hear intro" });
   await expect(playbackControl).toBeVisible();
-  await expect(playbackControl).toHaveAccessibleName(/(?:play|pause) hero animation/i);
+  await expect(playbackControl).toHaveAccessibleName("Hear intro");
 });
 
 test("credential identity remains available in the server-rendered fallback", async ({ request }) => {
@@ -105,7 +107,7 @@ test("builder pass exposes truthful front and back states", async ({ page }) => 
 
   await page.goto("/");
 
-  await page.locator("[data-credential-gsap-stage]").scrollIntoViewIfNeeded();
+  await page.locator("[data-credential-stage]").scrollIntoViewIfNeeded();
   const credential = page.getByTestId("research-credential");
   const credentialSwing = page.locator(
     '.credential-swing:has([data-testid="research-credential"])',
@@ -115,6 +117,10 @@ test("builder pass exposes truthful front and back states", async ({ page }) => 
   const lanyardClasp = lanyard.locator(".credential-lanyard__clasp");
 
   await expect(credential).toBeVisible();
+  await expect(credential.locator(".credential-portrait img")).toHaveJSProperty("complete", true);
+  await expect
+    .poll(() => credential.locator(".credential-portrait img").evaluate((image: HTMLImageElement) => image.naturalWidth))
+    .toBeGreaterThan(0);
   await expect(lanyardStrap).toHaveCount(1);
   await expect(lanyardClasp).toBeVisible();
   await expect(credentialSwing.locator(".credential-card")).toHaveCount(1);
@@ -242,24 +248,26 @@ test("public routes use the approved builder-first voice", async ({ page }) => {
   ).toBeVisible();
 });
 
-test("hero playback remains user-controlled and pauses outside the active document", async ({
+test("hero intro audio is opt-in and playback remains user-controlled", async ({
   page,
 }) => {
   await page.goto("/");
 
   const video = page.locator("video");
   await expect(video).toHaveCount(1);
-  await video.evaluate(async (element: HTMLVideoElement) => {
-    await element.play();
-  });
+  const hearButton = page.getByRole("button", { name: "Hear intro" });
+  await expect(hearButton).toBeVisible();
+  await hearButton.click();
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.muted)).toBe(false);
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeLessThan(1.5);
 
-  const pauseButton = page.getByRole("button", { name: "Pause hero animation" });
+  const pauseButton = page.getByRole("button", { name: "Pause intro" });
   await expect(pauseButton).toBeVisible();
   await pauseButton.click();
-  await expect(page.getByRole("button", { name: "Play hero animation" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Resume intro" })).toBeVisible();
   await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
 
-  await page.getByRole("button", { name: "Play hero animation" }).click();
+  await page.getByRole("button", { name: "Resume intro" }).click();
   await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(false);
 
   await page.evaluate(() => {
@@ -286,7 +294,8 @@ test("Save-Data keeps the hero on its disclosed still fallback", async ({ page }
   await page.goto("/");
 
   await expect(page.locator("video")).toHaveCount(0);
-  await expect(page.getByText("STILL MODE")).toBeVisible();
+  await expect(page.getByText("STILL MODE")).toHaveCount(1);
+  await expect(page.getByText("STILL MODE")).toBeHidden();
   const disclosure = page.getByTestId("hero-media-disclosure");
   await expect(disclosure).toBeVisible();
   await expect(disclosure).toContainText("AI-generated portrait environment");
@@ -309,11 +318,11 @@ test.describe("reduced motion", () => {
     await expect(page.getByText("STILL MODE")).toBeVisible();
     await expect(page.getByRole("link", { name: "View My Work" }).first()).toBeVisible();
 
-    await page.locator("[data-credential-gsap-stage]").scrollIntoViewIfNeeded();
+    await page.locator("[data-credential-stage]").scrollIntoViewIfNeeded();
     const credential = page.getByTestId("research-credential");
     await credential.click();
     await expect(credential).toHaveAttribute("data-face", "back");
-    await expect(page.locator('[data-signature-scene="hero-credential"] .pin-spacer')).toHaveCount(0);
+    await expect(page.locator('[data-hero-scene] .pin-spacer')).toHaveCount(0);
     await expect(page.locator('[data-signature-scene="selected-systems"] .pin-spacer')).toHaveCount(0);
     expect(browserProblems).toEqual([]);
   });
@@ -326,12 +335,13 @@ test.describe("mobile", () => {
     await page.goto("/");
 
     await expect(page.locator("video")).toHaveCount(0);
-    await page.getByText("Menu", { exact: true }).click();
+    await page.getByRole("button", { name: "Open navigation menu" }).click();
     const mobileNavigation = page.getByRole("navigation", { name: "Mobile navigation" });
     await expect(mobileNavigation).toBeVisible();
     await expect(mobileNavigation.getByRole("link", { name: "About" })).toBeVisible();
+    await page.getByRole("button", { name: "Close navigation menu" }).click();
 
-    await page.locator("[data-credential-gsap-stage]").scrollIntoViewIfNeeded();
+    await page.locator("[data-credential-stage]").scrollIntoViewIfNeeded();
     const credential = page.getByTestId("research-credential");
     await credential.tap();
     await expect(credential).toHaveAttribute("data-face", "back");

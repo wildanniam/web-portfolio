@@ -18,7 +18,7 @@ export function LazyResearchCredential({
     useState<InteractiveCredential | null>(null);
 
   useEffect(() => {
-    const stage = markerRef.current?.closest<HTMLElement>("[data-credential-gsap-stage]");
+    const stage = markerRef.current?.closest<HTMLElement>("[data-credential-stage]");
     if (!stage) return;
 
     let disposed = false;

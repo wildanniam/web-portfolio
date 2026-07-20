@@ -13,9 +13,9 @@ It should create one or two memorable moments, not make every section perform.
 | Layer | Owner | Examples |
 |---|---|---|
 | Ordinary state | CSS | hover, focus, pressed, color, border |
-| Object interaction | Motion | Builder Pass, mobile menu, small disclosure |
-| Signature scroll | GSAP + ScrollTrigger | hero handoff, Selected Work stage |
-| Media loop | HTML video | 9.375-second Living Portrait loop |
+| Shell/object interaction | CSS + React / Motion | Ember Entry, mobile menu, Builder Pass |
+| Signature scroll | GSAP + ScrollTrigger | Selected Work stage |
+| Media playback | HTML video | 7.54-second Talking Portrait |
 
 Motion and GSAP never control the same property on the same element.
 
@@ -31,26 +31,21 @@ Motion and GSAP never control the same property on the same element.
 
 Prefer restrained ease-out and weighted motion. Avoid elastic or playful bounce.
 
-## Signature scene 1: Hero to Credential
+## Entry and hero
 
-Desktop motion-enabled only, approximately 60–80vh after the first viewport:
-
-1. Poster, provenance caption, and all hero copy are server-rendered and
-   immediately usable.
-2. The video module is requested only on eligible desktop viewports, then
-   crossfades only after it can play.
-3. The full-bleed portrait stage scales/translates slightly as scrolling begins.
-4. An ember signal trace visually continues toward the next section.
-5. The signal meets the lanyard anchor and the Builder Pass settles with weight.
-6. Pinning releases early enough that the user never feels trapped.
-
-Pin a wrapper and animate a child. The server-rendered scene owns all content;
-a zero-layout client controller imports GSAP after scroll intent or a short
-post-paint delay and scopes cleanup to the scene root.
+- Ember Entry uses opacity, clip, and transform only. It waits for the poster or
+  a bounded timeout, runs once per session, and is skipped for reduced motion.
+- Hero copy, poster, disclosure, and controls remain immediately available in
+  server-rendered HTML.
+- The hero is never pinned, scrubbed, scaled, or translated by scroll.
+- Video crossfades only after it can play. Audio begins only after `Hear intro`,
+  which restarts playback at zero.
+- Header state changes are short CSS transitions and do not alter document flow.
 
 ## Builder Pass
 
-- A brief gentle pendulum settles and stops.
+- The complete object makes one weighted drop, small overshoot, and gentle
+  pendulum settle, then stops.
 - The continuous strap, clip, and badge share the pendulum wrapper so their
   physical connection never separates during motion.
 - Pointer tilt uses MotionValue, not React state per pointer frame.
@@ -61,17 +56,10 @@ post-paint delay and scopes cleanup to the scene root.
   Motion and the interactive face controller load only when the credential stage
   approaches the viewport, then replace an identically sized static shell.
 
-Implementation ownership is separated by nested nodes:
+Motion owns the credential swing, pointer-tilt wrapper, and inner face-flip
+wrapper. No GSAP selector or timeline writes to the Builder Pass.
 
-- GSAP: hero media wrapper, hero copy wrapper, signal traces, and outer
-  credential stage arrival.
-- Motion: credential swing, pointer-tilt wrapper, and inner face-flip wrapper.
-
-The first scene uses one short pinned hero timeline plus the continuation and
-arrival triggers inside the same narrative component. These collectively count
-as one signature scene.
-
-## Signature scene 2: Selected Work
+## Signature scene 1: Selected Work
 
 Desktop uses a sticky editorial stage for Fradium, PayGate, and Nova AI Wallet:
 
@@ -101,7 +89,7 @@ Implementation details:
 
 - How I Work uses a one-time line/marker reveal.
 - Principles respond to hover/focus without hiding information.
-- Quorum's six evidence marks may illuminate once.
+- Selected Highlights use an editorial index response, never metric-card motion.
 - Contact uses a restrained tonal transition.
 - No infinite dominant pulse, ticker, marquee, or repeated section fade-up.
 
@@ -110,6 +98,7 @@ Implementation details:
 When `prefers-reduced-motion: reduce` is active:
 
 - hero video does not autoplay;
+- Ember Entry is skipped;
 - scroll pinning and scrub timelines do not initialize;
 - credential pendulum and pointer tilt are disabled;
 - large transforms become a subtle opacity change or instant state;
@@ -128,7 +117,9 @@ Save-Data and autoplay failure use the same progressive-enhancement principle.
 
 ## Verification
 
-- Normal desktop timeline.
+- Normal desktop Selected Work timeline.
+- First-session entry, returning-session bypass, and bounded timeout.
+- Hero audio opt-in, replay, pause, failure, and poster recovery.
 - Tablet breakpoint.
 - Mobile normal flow.
 - Reduced-motion flow.

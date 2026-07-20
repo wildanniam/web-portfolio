@@ -1,8 +1,8 @@
 # Ember Lab Development Blueprint
 
-Status: **locked for Portfolio v1**
+Status: **locked for the video-portfolio prototype direction**
 Owner: Wildan Syukri Niam
-Baseline: 16 July 2026
+Baseline: 20 July 2026
 
 ## Product outcome
 
@@ -39,20 +39,20 @@ Open Graph assets.
 
 ## Locked homepage order
 
-1. Site Header
-2. Hero — The Living Portrait
-3. Selected Highlights
-4. Builder Pass
+1. First-session Ember Entry
+2. Fixed Site Header
+3. Hero — The Talking Portrait
+4. Builder Pass + About
 5. Selected Work — Fradium, PayGate, Nova AI Wallet
 6. SpecHeal archive bridge
-7. How I Work
-8. Principles
-9. Currently Building — Quorum
-10. Contact
-11. Footer
+7. Selected Highlights
+8. How I Build
+9. Contact closing act
+10. Oversized Footer
 
-Quorum receives an active-build section. SpecHeal appears honestly as an archived,
-offline hackathon prototype. All five projects remain available in `/work`.
+Quorum no longer receives a standalone homepage interruption. It remains honestly
+available in `/work` and `/work/quorum`. SpecHeal remains an archived, offline
+hackathon prototype. All five projects remain available in `/work`.
 
 ## Locked technical direction
 
@@ -66,26 +66,40 @@ offline hackathon prototype. All five projects remain available in `/work`.
 
 ## Signature experiences
 
-### The Living Portrait
+### Ember Entry
 
-A full-bleed identity-led cinematic hero places Wildan in a warm analog-futurist
-studio environment. Wildan remains on the right while the positioning copy uses
-the deliberately quiet left side. Motion is restrained to natural portrait and
-ember-signal movement. The matching poster is immediately usable; video playback
-is a progressive enhancement with a real pause control.
+A short first-session brand entrance waits for the hero poster to become usable,
+then reveals the page within a bounded 650–1400 ms window. It contains no fake
+percentage, never waits for the complete video download, does not replay during
+the same session, and is skipped for reduced motion.
+
+### The Talking Portrait
+
+A full-bleed identity-led cinematic hero places Wildan in a warm graphic studio
+environment. Wildan remains on the right while compact positioning copy uses the
+protected left side. The hero itself is not pinned, scaled, or scrubbed by GSAP.
+The matching poster is immediately usable; video playback is a progressive
+enhancement with real play, pause, replay, and audio opt-in controls. Choosing
+`Hear intro` restarts the clip from the beginning so the greeting is never joined
+mid-sentence. Visible provenance marks remain visible and are disclosed.
 
 ### Builder Pass
 
 One continuous orange woven strap enters from the section boundary and connects
 through a compact metal clip to a physical ID badge with Wildan's real portrait,
-role, focus, location, front/back state, and a QR link to `/about`. The strap,
-clip, and badge share one restrained pendulum; pointer tilt and deliberate flip
-remain on the badge—not the reference site's drop/bounce.
+role, focus, location, front/back state, and a QR link to `/about`. This scene now
+also carries the concise homepage About narrative and follows the hero directly.
+The strap, clip, and badge share one weighted drop-and-settle pendulum; pointer
+tilt and deliberate flip remain on the badge. Motion owns the complete object.
 
 ### Selected Work Stage
 
 Three editorial project panels use a desktop sticky narrative. Mobile and reduced
 motion receive the same content in normal document flow.
+
+This is the only GSAP signature scene in the prototype. How I Build may use a
+semantic static route with restrained CSS reveal, but it does not add another
+pinned scene.
 
 ## Delivery phases
 
@@ -105,6 +119,8 @@ motion receive the same content in normal document flow.
 - Hero poster target: at most 150–200 KB.
 - Hero WebM target: preferably at most 2 MB.
 - Hero MP4 fallback target: at most 3 MB.
+- The talking derivatives may contain the approved greeting audio. Playback
+  begins muted and audio is enabled only by explicit user action.
 - A dependency above 20 KiB gzip requires a documented reason.
 
 ## Release gates
@@ -142,3 +158,12 @@ research-first copy with Wildan's explicit approval on 20 July 2026. Research
 remains a secondary way of learning; the route map, Ember Lab visual direction,
 motion ownership, media lifecycle, factual claim rules, and performance contract
 remain unchanged.
+
+The video-portfolio prototype direction supersedes the pinned hero handoff,
+achievement-first ordering, duplicate About/Principles sections, standalone
+homepage Quorum section, utility-style header, and compact footer with Wildan's
+explicit approval on 20 July 2026. It keeps the route map, factual project
+records, Ember Lab palette, progressive media safeguards, and Selected Work
+signature scene. The implementation intentionally experiments on
+`codex/prototype-video-portfolio-redesign` without requiring an issue or pull
+request for this iteration.

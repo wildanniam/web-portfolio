@@ -17,7 +17,9 @@ Visitors should understand three things quickly:
 
 Ember Lab combines warm editorial restraint with an analog-futurist laboratory.
 The visual materials are paper, smoked glass, frosted acrylic, bronze, woven
-fabric, and small signal lights.
+fabric, and small signal lights. The homepage is staged as a sequence of distinct
+acts—dark portrait, warm identity object, editorial work, and dark closing—rather
+than one uninterrupted cream document.
 
 The direction may feel warm and considered like Claude, but it must not reproduce
 Claude's product layout, components, exact palette, or chat language.
@@ -56,8 +58,10 @@ by color alone.
 
 ## Typography
 
-- Iowan/Palatino/Georgia system-serif stack: editorial display and hero headline
-  without a render-delaying font transfer.
+- Native characterful grotesk stack: hero headline, wordmark, navigation, and
+  high-energy closing copy without a render-delaying font transfer.
+- Iowan/Palatino/Georgia system-serif stack: editorial section displays and
+  project titles.
 - Native UI sans: navigation, body, controls, and case-study prose.
 - Native UI mono: metadata, timestamps, statuses, coordinates, and evidence labels.
 
@@ -65,7 +69,9 @@ Typography rules:
 
 - Keep all three typography roles on carefully ordered system stacks. This
   preserves the editorial character while avoiding render-delaying font transfers.
-- Keep the hero headline at two lines on intended desktop sizes.
+- Keep the hero headline visually compact and off Wildan's face. Two lines are
+  preferred on wide desktop; a deliberate third line is acceptable inside the
+  narrower protected left rail.
 - Body copy is 16–18 px and case-study reading width is about 68–72 characters.
 - Mono uppercase is reserved for short evidence metadata.
 - Do not place a tiny uppercase eyebrow above every heading.
@@ -75,6 +81,8 @@ Typography rules:
 - Desktop content max width: approximately 1440 px with generous fluid gutters.
 - Editorial copy uses a narrower readable measure inside the wide composition.
 - Hero uses a full-bleed media stage with a protected editorial contrast zone.
+- Header is fixed and transparent over the hero, then becomes a warm refractive
+  paper surface after scroll or on non-home routes.
 - Project pages alternate full evidence surfaces and narrow explanatory prose.
 - Sections are not automatically cards. Use whitespace, rules, and material
   changes before adding a container.
@@ -99,12 +107,15 @@ Typography rules:
 - Continuous woven lanyard entering from outside the section, with one compact
   clip physically touching the credential slot.
 - Project panel with problem, mechanism, contribution, highlight, and current state.
+- First-session Ember Entry with a real readiness bound and no fake progress.
+- Large dark closing wordmark with truthful contact metadata and no fake form.
 
 ## State requirements
 
 | Surface | Required states |
 |---|---|
 | Navigation | top, scrolled, current route, mobile open/closed, focus |
+| Ember Entry | waiting for poster, ready, bounded timeout, returning session, reduced motion |
 | Hero media | poster, loading, playing, paused, failed, reduced, Save-Data |
 | Credential | front, back, focus, pointer, touch, reduced motion |
 | Project media | placeholder, candidate, published, error |
@@ -129,6 +140,8 @@ Typography rules:
 - Strict single-column narrative.
 - No pinned or horizontally hijacked scenes.
 - Preserve a full-viewport hero crop with a reviewed mobile focal point.
+- Use the dedicated mobile poster rather than relying on a blind crop of the
+  desktop derivative.
 - Credential is tap-to-flip without pointer tilt.
 - Minimum primary touch target is 44×44 px.
 
@@ -145,10 +158,12 @@ Typography rules:
 
 - Purple/cyan AI gradients, floating orbs, and random glass cards.
 - Generic three-card sections and card-wall layouts.
-- Fake preloader, custom cursor, fake terminal, or nonfunctional form.
+- Timer-only preloader, fake percentage, custom cursor, fake terminal, or
+  nonfunctional form.
 - Repeated fade-up sections or elastic/bouncy entrances.
-- Copying the reference's red palette, layout, torn paper, badge geometry, or
-  giant CONTACT form treatment.
+- Copying the reference's red palette, layout, torn paper, badge geometry,
+  name-fill loader, dashed S-path, or giant CONTACT form treatment. A large
+  Wildan wordmark is allowed as an original closing composition.
 - Placeholder text presented as evidence.
 - Decorative verified/evidence states without factual meaning.
 
@@ -165,7 +180,7 @@ Typography rules:
 ## Visual references
 
 - Reference implementation: locally audited inspiration repository, not copied or committed here.
-- Hero source: `wildan-human-checkpoint-source.mp4`
+- Hero source: `source-assets/hero/wildan-hero-talking-source.mp4`
 - Full approved product direction: `docs/DEVELOPMENT_BLUEPRINT.md`
 
 Local absolute reference paths are documentation-only and must never enter the

@@ -1,28 +1,42 @@
 import Link from "next/link";
 
 import { ProjectMedia } from "@/components/projects/project-media";
-import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
-import { selectedProjects, specheal, quorum } from "@/content/projects";
+import { selectedProjects, specheal } from "@/content/projects";
 import { siteContent } from "@/content/site";
 import { SelectedSystemsSceneController } from "@/motion/selected-systems-scene";
 
+const buildStages = siteContent.approach.steps.map((step, index) => ({
+  step,
+  principle: siteContent.principles[index],
+}));
+
 export function SelectedSystemsSection() {
   return (
-    <section id="selected-work" className="scroll-mt-24 py-24 sm:py-32">
+    <section
+      id="selected-work"
+      aria-labelledby="selected-work-title"
+      className="selected-work-section scroll-mt-24 py-24 sm:py-32"
+    >
       <Container>
-        <div className="max-w-[54rem]">
-          <h2 className="font-display text-5xl font-[520] tracking-[-0.05em] sm:text-6xl">
+        <header className="selected-work-section__header max-w-[54rem]">
+          <p className="font-mono text-xs font-semibold tracking-[0.12em] text-ember-700">
+            SELECTED WORK / 03
+          </p>
+          <h2
+            id="selected-work-title"
+            className="font-display text-5xl font-[520] tracking-[-0.05em] sm:text-6xl"
+          >
             {siteContent.selectedWork.title}
           </h2>
           <p className="copy-pretty mt-5 max-w-[44rem] text-lg leading-8 text-ink-600">
             {siteContent.selectedWork.intro}
           </p>
-        </div>
+        </header>
 
         <div data-signature-scene="selected-systems">
           <div className="selected-systems-stage mt-14 sm:mt-16">
-            {selectedProjects.map((project) => {
+            {selectedProjects.map((project, index) => {
               const highlight =
                 project.evidence.find((item) => item.scope === "team") ??
                 project.evidence.find((item) => item.scope === "product") ??
@@ -33,6 +47,7 @@ export function SelectedSystemsSection() {
                   key={project.slug}
                   data-system-panel
                   data-project-slug={project.slug}
+                  data-project-index={String(index + 1).padStart(2, "0")}
                   className="selected-system-panel"
                 >
                   <div data-system-surface className="selected-system-surface paper-surface">
@@ -81,7 +96,10 @@ export function SelectedSystemsSection() {
           <SelectedSystemsSceneController />
         </div>
 
-        <div className="mt-24 grid gap-7 border-t border-line-200 pt-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <aside
+          aria-label="More work"
+          className="selected-work-section__archive mt-20 grid gap-7 border-t border-line-200 pt-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end"
+        >
           <div>
             <p className="font-mono text-xs font-semibold text-ember-700">
               HACKATHON PROJECT · ARCHIVED
@@ -99,121 +117,45 @@ export function SelectedSystemsSection() {
               View the SpecHeal case study
             </Link>
           </div>
-        </div>
+        </aside>
       </Container>
     </section>
   );
 }
 
-export function HowIWorkSection() {
+export function HowIBuildSection() {
   return (
-    <section id="how-i-work" className="scroll-mt-24 bg-paper-1/62 py-24 sm:py-32">
-      <Container className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
-        <h2 className="max-w-[10ch] font-display text-5xl leading-[0.98] font-[520] tracking-[-0.05em] sm:text-6xl">
-          {siteContent.approach.title}
-        </h2>
-        <div className="max-w-[47rem]">
-          {siteContent.approach.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="not-first:mt-6 text-xl leading-9 text-ink-700">
-              {paragraph}
-            </p>
-          ))}
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {siteContent.approach.steps.map((step) => (
-              <div
-                key={step}
-                className="border-l-2 border-ember-500 pl-4 text-sm font-semibold text-ink-700"
-              >
-                {step}
-              </div>
+    <section
+      id="how-i-work"
+      data-signature-scene="how-i-build"
+      aria-labelledby="how-i-build-title"
+      className="how-build-section scroll-mt-24"
+    >
+      <Container className="how-build-section__grid">
+        <header className="how-build-section__intro">
+          <p>HOW I BUILD</p>
+          <h2 id="how-i-build-title">{siteContent.approach.title}</h2>
+          <div>
+            {siteContent.approach.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
+        </header>
 
-export function PrinciplesSection() {
-  return (
-    <section className="py-24 sm:py-32">
-      <Container>
-        <div className="max-w-[52rem]">
-          <h2 className="font-display text-5xl font-[520] tracking-[-0.05em] sm:text-6xl">
-            What guides my work.
-          </h2>
-          <p className="mt-5 text-xl leading-8 text-ink-600">
-            A few principles I come back to when turning an idea into a working product.
-          </p>
-        </div>
-        <div className="mt-16 grid gap-x-12 gap-y-10 md:grid-cols-2">
-          {siteContent.principles.map((principle) => (
-            <article key={principle.title} className="border-t border-line-200 pt-6">
-              <h3 className="text-xl font-semibold tracking-[-0.025em]">{principle.title}</h3>
-              <p className="mt-3 max-w-[34rem] leading-7 text-ink-600">{principle.copy}</p>
-            </article>
+        <ol className="how-build-path">
+          {buildStages.map(({ step, principle }, index) => (
+            <li key={step} data-build-stage className="how-build-stage">
+              <span className="how-build-stage__index" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div className="how-build-stage__copy">
+                <p>{step}</p>
+                <h3>{principle.title}</h3>
+                <span>{principle.copy}</span>
+              </div>
+            </li>
           ))}
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-export function AboutSection() {
-  return (
-    <section id="about" className="scroll-mt-24 pb-24 sm:pb-32">
-      <Container>
-        <div className="paper-surface relative overflow-hidden rounded-[1.75rem] border border-line-200 bg-paper-1 p-7 sm:p-10 lg:grid lg:grid-cols-[0.72fr_1.28fr] lg:gap-16 lg:p-14">
-          <div>
-            <h2 className="font-display text-4xl font-[520] tracking-[-0.045em] sm:text-5xl">
-              A builder who likes the whole problem.
-            </h2>
-          </div>
-          <div className="mt-8 lg:mt-0">
-            <p className="text-xl leading-9 text-ink-700">{siteContent.about.home}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/about">Read more</ButtonLink>
-              <ButtonLink href={siteContent.contact.github} variant="secondary">
-                View GitHub
-              </ButtonLink>
-            </div>
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-export function CurrentBuildSection() {
-  return (
-    <section className="bg-smoke-900 py-24 text-paper-0 sm:py-32">
-      <Container className="grid gap-14 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:gap-20">
-        <div>
-          <p className="font-mono text-xs font-semibold tracking-[0.1em] text-[#e18a62]">
-            CURRENTLY BUILDING
-          </p>
-          <h2 className="mt-5 font-display text-6xl font-[520] tracking-[-0.055em] sm:text-7xl">
-            {quorum.title}
-          </h2>
-          <p className="mt-5 max-w-[36rem] text-xl leading-8 text-paper-2">{quorum.oneLiner}</p>
-          <p className="mt-6 max-w-[40rem] leading-7 text-paper-2/78">{quorum.cardCopy}</p>
-          <Link
-            href={`/work/${quorum.slug}`}
-            className="mt-8 inline-flex min-h-11 items-center rounded-full border border-paper-2/28 px-5 text-sm font-semibold text-paper-0 hover:bg-paper-0 hover:text-ink-900"
-          >
-            See what I&apos;m building
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {["Create", "Publish", "Checkout", "Pass", "Check-in", "Withdraw"].map((flow) => (
-            <div
-              key={flow}
-              className="grid aspect-square place-items-center rounded-[1.25rem] border border-paper-2/14 bg-white/[0.035] p-4 text-center font-mono text-xs text-paper-2"
-            >
-              {flow}
-            </div>
-          ))}
-        </div>
+        </ol>
       </Container>
     </section>
   );
@@ -221,31 +163,36 @@ export function CurrentBuildSection() {
 
 export function ContactSection() {
   return (
-    <section id="contact" className="scroll-mt-24 bg-smoke-900 pb-24 text-paper-0 sm:pb-32">
+    <section
+      id="contact"
+      aria-labelledby="contact-title"
+      className="contact-stage scroll-mt-24 bg-smoke-900 text-paper-0"
+    >
       <Container>
-        <div className="border-t border-paper-2/18 pt-20">
-          <h2 className="display-balance max-w-[11ch] font-display text-6xl leading-[0.95] font-[520] tracking-[-0.055em] sm:text-8xl">
-            {siteContent.contact.title}
-          </h2>
-          <p className="mt-7 max-w-[43rem] text-lg leading-8 text-paper-2/78">
-            {siteContent.contact.copy}
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
+        <div className="contact-stage__body">
+          <div>
+            <p className="contact-stage__eyebrow">LET&apos;S MAKE IT REAL</p>
+            <h2 id="contact-title">{siteContent.contact.title}</h2>
+          </div>
+
+          <div className="contact-stage__invitation">
+            <p>{siteContent.contact.copy}</p>
             <a
               href={`mailto:${siteContent.contact.email}`}
-              className="inline-flex min-h-11 items-center rounded-full bg-paper-0 px-5 text-sm font-semibold text-ink-900 hover:bg-[#e18a62]"
+              className="contact-stage__email"
             >
-              Send me an email
-            </a>
-            <a
-              href={siteContent.contact.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-11 items-center rounded-full border border-paper-2/25 px-5 text-sm font-semibold hover:bg-paper-0 hover:text-ink-900"
-            >
-              View GitHub
+              {siteContent.contact.email}
             </a>
           </div>
+        </div>
+
+        <div className="contact-stage__meta">
+          <span>{siteContent.contact.location}</span>
+          <span>AI / WEB3 / PRODUCT ENGINEERING</span>
+          <a href={siteContent.contact.github} target="_blank" rel="noreferrer">
+            GitHub ↗
+          </a>
+          <a href="#main-content">Back to top ↑</a>
         </div>
       </Container>
     </section>

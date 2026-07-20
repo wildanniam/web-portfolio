@@ -1,0 +1,159 @@
+.gate {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: none;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 18%, rgb(198 94 46 / 0.15), transparent 26rem),
+    #171411;
+  color: #f5f0e8;
+  isolation: isolate;
+}
+
+:global(html[data-entry-gate="show"]) .gate {
+  display: grid;
+}
+
+:global(html[data-entry-gate="leaving"]) .gate,
+:global(html[data-entry-gate="fallback-leaving"]) .gate {
+  display: grid;
+}
+
+:global(html[data-entry-gate="show"]),
+:global(html[data-entry-gate="leaving"]),
+:global(html[data-entry-gate="fallback-leaving"]) {
+  overflow: hidden;
+}
+
+.gate::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(245 240 232 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(245 240 232 / 0.035) 1px, transparent 1px);
+  background-size: 4.75rem 4.75rem;
+  content: "";
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.gate[data-phase="leaving"] {
+  animation: gate-exit 480ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  pointer-events: none;
+}
+
+:global(html[data-entry-gate="fallback-leaving"]) .gate {
+  animation: gate-exit 480ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  display: grid;
+  width: min(90vw, 70rem);
+  align-items: center;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+  color: rgb(245 240 232 / 0.48);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.wordmark {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia,
+    serif;
+  font-size: clamp(4.5rem, 16vw, 12rem);
+  line-height: 0.72;
+  font-weight: 600;
+  letter-spacing: -0.075em;
+}
+
+.dot {
+  color: #c65e2e;
+}
+
+.rail {
+  position: relative;
+  height: 1px;
+  margin-top: clamp(2.25rem, 5vw, 4rem);
+  overflow: visible;
+  background: rgb(245 240 232 / 0.15);
+}
+
+.trace {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #943e1b, #c65e2e 78%, #f5f0e8);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: trace-arrive 720ms cubic-bezier(0.22, 1, 0.36, 1) 80ms forwards;
+}
+
+.signal {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 0.62rem;
+  height: 0.62rem;
+  border: 1px solid #c65e2e;
+  background: #c65e2e;
+  box-shadow: 0 0 1.6rem rgb(198 94 46 / 0.75);
+  opacity: 0;
+  transform: translate(50%, -50%) rotate(45deg) scale(0.35);
+  animation: signal-arrive 260ms ease-out 650ms forwards;
+}
+
+.caption {
+  margin: 1rem 0 0;
+  color: rgb(245 240 232 / 0.58);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.62rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@keyframes trace-arrive {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes signal-arrive {
+  to {
+    opacity: 1;
+    transform: translate(50%, -50%) rotate(45deg) scale(1);
+  }
+}
+
+@keyframes gate-exit {
+  0% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+
+  100% {
+    clip-path: inset(0 0 100% 0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html[data-entry-gate="show"]) .gate {
+    display: none;
+  }
+
+  .trace,
+  .signal {
+    animation: none;
+  }
+}

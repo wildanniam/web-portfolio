@@ -27,6 +27,7 @@ function canLoadVideo() {
 
 export function LazyHeroMedia({ fallback }: LazyHeroMediaProps) {
   const [isEligible, setIsEligible] = useState(false);
+  const [loadFailed, setLoadFailed] = useState(false);
   const [InteractiveHero, setInteractiveHero] = useState<InteractiveHero | null>(null);
 
   useEffect(() => {
@@ -52,14 +53,18 @@ export function LazyHeroMedia({ fallback }: LazyHeroMediaProps) {
 
     let active = true;
 
-    void import("@/components/interactive/hero-media").then(({ HeroMedia }) => {
-      if (active) setInteractiveHero(() => HeroMedia);
-    });
+    void import("@/components/interactive/hero-media")
+      .then(({ HeroMedia }) => {
+        if (active) setInteractiveHero(() => HeroMedia);
+      })
+      .catch(() => {
+        if (active) setLoadFailed(true);
+      });
 
     return () => {
       active = false;
     };
   }, [isEligible]);
 
-  return isEligible && InteractiveHero ? <InteractiveHero /> : fallback;
+  return isEligible && !loadFailed && InteractiveHero ? <InteractiveHero /> : fallback;
 }

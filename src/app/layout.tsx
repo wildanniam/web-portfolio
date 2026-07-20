@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 
+import { EntryGate } from "@/components/layout/entry-gate";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { siteContent } from "@/content/site";
@@ -9,6 +10,29 @@ import "./globals.css";
 
 const metadataBase = getSiteUrl();
 const indexable = isIndexableDeployment();
+
+const entryGateBootstrap = `
+  try {
+    var hasSeenEntry = window.sessionStorage.getItem("wildan-entry-seen") === "1";
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.documentElement.dataset.entryGate = hasSeenEntry || prefersReducedMotion ? "skip" : "show";
+    if (!hasSeenEntry && !prefersReducedMotion) {
+      window.setTimeout(function () {
+        if (document.documentElement.dataset.entryGate === "show") {
+          document.documentElement.dataset.entryGate = "fallback-leaving";
+        }
+      }, 920);
+      window.setTimeout(function () {
+        if (document.documentElement.dataset.entryGate === "fallback-leaving") {
+          window.sessionStorage.setItem("wildan-entry-seen", "1");
+          document.documentElement.dataset.entryGate = "complete";
+        }
+      }, 1400);
+    }
+  } catch (error) {
+    document.documentElement.dataset.entryGate = "show";
+  }
+`;
 
 export const metadata: Metadata = {
   metadataBase,
@@ -79,8 +103,10 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: entryGateBootstrap }} />
+        <EntryGate />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}

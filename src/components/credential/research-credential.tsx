@@ -45,7 +45,7 @@ export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
     getReducedMotionServerSnapshot,
   );
   const [isBackVisible, setIsBackVisible] = useState(false);
-  const [hasSettled, setHasSettled] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
   const rawRotateX = useMotionValue(0);
   const rawRotateY = useMotionValue(0);
   const rotateX = useSpring(rawRotateX, tiltSpring);
@@ -79,18 +79,28 @@ export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
     <div className="credential-rig" aria-label="Interactive builder pass">
       <motion.div
         className="credential-swing"
-        initial={false}
-        animate={{ rotateZ: hasSettled ? [0, -1.65, 0.72, -0.28, 0] : 0 }}
+        initial={
+          reduceMotion ? false : { y: -88, rotateZ: -3.5, opacity: 0.01 }
+        }
+        animate={
+          reduceMotion
+            ? { y: 0, rotateZ: 0, opacity: 1 }
+            : hasEntered
+              ? {
+                  y: [-88, 0, -9, 0],
+                  rotateZ: [-3.5, 1.4, -0.55, 0],
+                  opacity: 1,
+                }
+              : { y: -88, rotateZ: -3.5, opacity: 0.01 }
+        }
         onViewportEnter={() => {
-          if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            setHasSettled(true);
-          }
+          setHasEntered(true);
         }}
         viewport={{ once: true, amount: 0.58 }}
         transition={{
-          duration: 1.55,
+          duration: 1.35,
           ease: [0.22, 1, 0.36, 1],
-          times: [0, 0.22, 0.5, 0.76, 1],
+          times: [0, 0.58, 0.78, 1],
         }}
       >
         <CredentialLanyard />

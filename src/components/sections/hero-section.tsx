@@ -7,28 +7,32 @@ import { siteContent } from "@/content/site";
 export function HeroSection() {
   return (
     <section
-      data-hero-pin
-      className="hero-scene hero-cinematic relative isolate flex min-h-[calc(100dvh-4.5rem)] overflow-hidden bg-smoke-900"
+      id="top"
+      data-hero-scene
+      className="hero-scene hero-cinematic relative isolate flex min-h-[100svh] overflow-hidden bg-smoke-900"
     >
-      <div data-hero-media-frame className="hero-media-frame absolute inset-0">
+      <div className="hero-media-frame absolute inset-0">
         <LazyHeroMedia fallback={<HeroMediaStatic />} />
       </div>
 
       <div className="hero-cinematic__scrim" aria-hidden="true" />
+      <div className="hero-cinematic__frame" aria-hidden="true" />
 
-      <Container className="pointer-events-none relative z-10 flex min-h-[calc(100dvh-4.5rem)] items-end py-10 sm:py-14 lg:py-16">
-        <div data-hero-copy className="pointer-events-auto max-w-[52rem] pb-14 sm:pb-10 lg:pb-2">
+      <Container className="hero-cinematic__inner pointer-events-none relative z-10 flex min-h-[100svh] items-center pt-28 pb-24 sm:pt-32 lg:pt-36 lg:pb-28">
+        <div className="hero-cinematic__copy pointer-events-auto max-w-[49rem]">
           <p className="mb-5 max-w-[42rem] font-mono text-[0.66rem] leading-relaxed font-semibold tracking-[0.14em] text-[#F2A47E] sm:mb-6">
             {siteContent.hero.eyebrow}
           </p>
           <h1
-            className="display-balance max-w-[67rem] font-display text-[clamp(3.2rem,7.6vw,6.9rem)] leading-[0.9] font-[520] tracking-[-0.06em] text-paper-0 xl:text-[4.65rem]"
+            className="hero-cinematic__title display-balance text-paper-0"
             aria-label={siteContent.hero.title}
           >
-            <span className="xl:block xl:whitespace-nowrap">I turn complex ideas into</span>{" "}
-            <span className="xl:block xl:whitespace-nowrap">working products.</span>
+            <span className="hero-cinematic__title-line">I turn complex ideas</span>
+            <span className="hero-cinematic__title-line">
+              into <span className="hero-cinematic__accent">working products.</span>
+            </span>
           </h1>
-          <p className="copy-pretty mt-6 max-w-[39rem] text-base leading-7 text-paper-0/78 sm:mt-7 sm:text-lg">
+          <p className="copy-pretty mt-6 max-w-[34rem] text-base leading-7 text-paper-0/78 sm:mt-7 sm:text-lg">
             {siteContent.hero.supportingCopy}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -49,9 +53,10 @@ export function HeroSection() {
         </div>
       </Container>
 
-      <div className="hero-handoff-signal" aria-hidden="true">
-        <span data-hero-signal />
-        <i data-hero-signal-head />
+      <div className="hero-cinematic__index" aria-hidden="true">
+        <span>00</span>
+        <i />
+        <span>INTRO</span>
       </div>
     </section>
   );

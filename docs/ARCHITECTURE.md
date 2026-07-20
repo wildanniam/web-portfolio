@@ -12,9 +12,9 @@
 
 - Pages are statically prerendered wherever possible.
 - Server Components are the default.
-- Client Components are limited to the eligibility-aware hero video enhancement,
-  deferred Builder Pass interaction, and zero-layout signature motion
-  controllers.
+- Client Components are limited to the bounded first-session entry, responsive
+  navigation state, eligibility-aware hero video enhancement, deferred Builder
+  Pass interaction, and zero-layout Selected Work motion controller.
 - `generateStaticParams` creates known project routes.
 - Unknown project slugs resolve through the shared not-found boundary. Keeping
   runtime fallback enabled avoids a Next.js `NoFallbackError` log while preserving
@@ -78,8 +78,9 @@ modules, generated output, tests, or browser data.
 ## State ownership
 
 - Server records are immutable inputs.
-- Native disclosure state owns the mobile menu; React local state owns the
-  credential front/back state after its deferred enhancement loads.
+- React local state owns the mobile menu and scrolled header state; it closes on
+  navigation and Escape. React local state owns the credential front/back state
+  after its deferred enhancement loads.
 - MotionValue owns pointer tilt without rerendering every pointer frame.
 - Dynamically imported GSAP timelines live in scoped `gsap.context()` instances
   with route/unmount cleanup.
@@ -98,21 +99,26 @@ poster
                               └── blocked autoplay → poster + play action
 ```
 
-Production media uses WebM first, audio-free MP4 fallback, and an initial poster.
+Production media uses WebM first, MP4 fallback, and an initial poster. The
+approved talking derivatives may contain audio, but autoplay is always muted.
+`Hear intro` is an explicit user action that restarts at zero, unmutes, and plays
+the greeting from the beginning. Pause and replay remain available afterward.
 The poster/caption are server-rendered. The interactive video module is downloaded
 only for eligible desktop visitors and is removed again if viewport, Save-Data, or
 reduced-motion policy changes. Video is paused offscreen and when the tab is hidden.
+Failure restores the poster rather than leaving an empty media surface.
 
 ## Dependency policy
 
 - CSS handles ordinary visual state.
 - Motion handles object interaction.
-- GSAP handles only two signature scroll scenes.
+- GSAP handles one signature scroll scene in the current prototype.
 - Motion is deferred until the Builder Pass approaches the viewport. GSAP is
-  deferred until hero scroll intent/post-paint or the Selected Work approach.
-- Motion and GSAP exceed 20 KiB gzip because they implement the two approved
-  signature experiences. Neither is part of the 24.5 KiB initial homepage
-  JavaScript path; they load only when their interaction becomes relevant.
+  deferred until the Selected Work stage approaches.
+- Motion and GSAP exceed 20 KiB gzip because they implement the approved physical
+  object interaction and Selected Work signature scene. Neither belongs in the
+  server-rendered semantic content path; they load only when their interaction
+  becomes relevant.
 - `qrcode` runs in the static `/about-qr` route at build time to encode the
   current deployment's absolute `/about` URL. It does not enter the browser
   bundle or duplicate base64 data in the homepage HTML.
@@ -147,7 +153,6 @@ CI and local checks cover:
 ## Builder Pass media
 
 The approved credential portrait is a deterministic 4:5 crop with metadata
-removed. The original private download is not committed. Motion owns the nested
-badge tilt, pendulum, and face flip. GSAP owns only the outer scene wrappers,
-signal traces, and scroll arrival so the two engines never write the same
-transform.
+removed. The original private download is not committed. Motion owns the badge
+drop-and-settle, pendulum, nested pointer tilt, and face flip. GSAP does not touch
+the Builder Pass in the prototype, so the object has one transform owner.
