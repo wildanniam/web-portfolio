@@ -6,6 +6,11 @@ The portfolio follows **evidence over assertion**. A claim is publishable only
 when it is public-approved, accurately scoped, and supported by a link, artifact,
 or explicit source record.
 
+This is an internal publishing rule, not a public slogan. Visitor-facing copy is
+builder-first, warm, and concrete. Research is a secondary learning method rather
+than Wildan's primary professional title, and `inspect` or its variants are not
+used in public interface copy.
+
 The repository is public. Raw Atlas Vault material is never copied wholesale and
 the app never reads Atlas at runtime or during CI.
 
@@ -15,7 +20,10 @@ the app never reads Atlas at runtime or during CI.
 - Public location: Bandung, Indonesia.
 - Public email: `wildanniam4@gmail.com`.
 - Public GitHub: `https://github.com/wildanniam`.
-- Approved positioning and short biography.
+- Approved role: **Full-Stack Builder**.
+- Approved positioning: **Full-stack builder working across AI agents, Web3, and
+  product engineering.**
+- Approved positioning and short biography last owner-approved on 20 July 2026.
 - Public-ready flagship project records.
 
 LinkedIn, resume, publications, phone number, private metrics, internal review

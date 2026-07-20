@@ -25,8 +25,8 @@ export function HeroSection() {
             className="display-balance max-w-[67rem] font-display text-[clamp(3.2rem,7.6vw,6.9rem)] leading-[0.9] font-[520] tracking-[-0.06em] text-paper-0 xl:text-[4.65rem]"
             aria-label={siteContent.hero.title}
           >
-            <span className="xl:block xl:whitespace-nowrap">I research and build autonomous</span>{" "}
-            <span className="xl:block xl:whitespace-nowrap">systems people can verify.</span>
+            <span className="xl:block xl:whitespace-nowrap">I turn complex ideas into</span>{" "}
+            <span className="xl:block xl:whitespace-nowrap">working products.</span>
           </h1>
           <p className="copy-pretty mt-6 max-w-[39rem] text-base leading-7 text-paper-0/78 sm:mt-7 sm:text-lg">
             {siteContent.hero.supportingCopy}

@@ -13,7 +13,7 @@
 - Pages are statically prerendered wherever possible.
 - Server Components are the default.
 - Client Components are limited to the eligibility-aware hero video enhancement,
-  deferred Research Credential interaction, and zero-layout signature motion
+  deferred Builder Pass interaction, and zero-layout signature motion
   controllers.
 - `generateStaticParams` creates known project routes.
 - Unknown project slugs resolve through the shared not-found boundary. Keeping
@@ -108,8 +108,8 @@ reduced-motion policy changes. Video is paused offscreen and when the tab is hid
 - CSS handles ordinary visual state.
 - Motion handles object interaction.
 - GSAP handles only two signature scroll scenes.
-- Motion is deferred until the credential approaches the viewport. GSAP is
-  deferred until hero scroll intent/post-paint or the Selected Systems approach.
+- Motion is deferred until the Builder Pass approaches the viewport. GSAP is
+  deferred until hero scroll intent/post-paint or the Selected Work approach.
 - Motion and GSAP exceed 20 KiB gzip because they implement the two approved
   signature experiences. Neither is part of the 24.5 KiB initial homepage
   JavaScript path; they load only when their interaction becomes relevant.
@@ -144,7 +144,7 @@ CI and local checks cover:
 - initial homepage JavaScript and public asset budgets;
 - Chromium and WebKit browser, reflow, security-header, and SEO smoke checks.
 
-## Credential media
+## Builder Pass media
 
 The approved credential portrait is a deterministic 4:5 crop with metadata
 removed. The original private download is not committed. Motion owns the nested

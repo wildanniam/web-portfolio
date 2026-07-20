@@ -6,7 +6,7 @@ export const paygate = defineProject({
   title: "PayGate",
   oneLiner: "Turning ordinary APIs into machine-paid endpoints on Stellar testnet.",
   cardCopy:
-    "I founded and built PayGate, a publicly deployed testnet beta that lets developers monetize API calls through HTTP 402 challenges, Stellar payments, and inspectable receipts. The project was awarded a $5,000 Stellar Community Fund Instaward.",
+    "I founded and built PayGate, a publicly deployed testnet beta that lets developers monetize API calls through HTTP 402 challenges, Stellar payments, and transaction receipts. The project was awarded a $5,000 Stellar Community Fund Instaward.",
   caseStudyLead:
     "PayGate asks what API billing should look like when the customer is software. I designed and built a flow where a machine client receives an HTTP 402 challenge, pays for one request on Stellar testnet, retries with proof, and receives the protected upstream response.",
   role: "Founder · Builder",
@@ -19,7 +19,7 @@ export const paygate = defineProject({
   featuredOrder: 2,
   showInSelectedSystems: true,
   problem:
-    "Traditional API billing assumes a human account, subscription, and card. Machine clients need a narrower loop for discovering a price, paying for one request, and retrying with inspectable proof.",
+    "Traditional API billing assumes a human account, subscription, and card. Machine clients need a narrower loop for discovering a price, paying for one request, and retrying with payment confirmation.",
   audience: [
     "Developers monetizing GET and JSON APIs",
     "Backend teams avoiding bespoke payment infrastructure",

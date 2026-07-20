@@ -4,17 +4,17 @@ export const quorum = defineProject({
   canonicalId: "project-quorum",
   slug: "quorum",
   title: "Quorum",
-  oneLiner: "Making collaborative event settlement inspectable on Stellar testnet.",
+  oneLiner: "Bringing event checkout, access passes, and split payouts together on Stellar testnet.",
   cardCopy:
-    "I'm leading Quorum, a Stellar testnet build that connects collaborative event checkout, split settlement, non-transferable passes, gated resources, and transaction evidence in one product flow.",
+    "I'm leading Quorum, a Stellar testnet build for collaborative event checkout, split settlement, non-transferable passes, gated resources, and withdrawals in one product flow.",
   caseStudyLead:
-    "A collaborative event is not only a ticket page. It is a chain of promises across payment, access, check-in, revenue splits, withdrawal, and proof. I lead Quorum across the product, full stack, and smart contracts to make those states explicit and inspectable.",
+    "A collaborative event is more than a ticket page. It connects payment, access, check-in, revenue splits, and withdrawal. I lead Quorum across product, full stack, and smart contracts to bring those states into one flow.",
   role: "Team Lead · Full-Stack & Smart Contract Engineer",
   year: "2026",
   status: "active-build",
   liveStatus: "online",
   statusLabel: "Active Stellar Testnet Build",
-  domains: ["Smart Contracts", "Event Settlement", "On-chain Evidence"],
+  domains: ["Smart Contracts", "Event Settlement", "On-chain Infrastructure"],
   technologies: ["Next.js", "TypeScript", "PostgreSQL", "Stellar SDK", "Soroban", "Rust", "Freighter"],
   featuredOrder: 5,
   showInSelectedSystems: false,
@@ -23,13 +23,13 @@ export const quorum = defineProject({
   audience: [
     "Web3 organizers creating paid or free events",
     "Attendees receiving wallet-bound passes and gated resources",
-    "Collaborators who need visible shares, balances, and withdrawal evidence",
+    "Collaborators who need visible shares, balances, and withdrawal records",
   ],
   mechanism: [
     "Create an event with access, capacity, collaborator splits, and resources.",
     "Prepare and sign QuorumCore actions through Freighter.",
-    "Issue a non-transferable pass and index contract evidence into product views.",
-    "Track collaborator balances and withdrawals as distinct inspectable movements.",
+    "Issue a non-transferable pass and index contract events into product views.",
+    "Track collaborator balances and withdrawals as clearly separated movements.",
   ],
   contributions: [
     "Lead the project, product specification, and team delivery.",
@@ -38,7 +38,7 @@ export const quorum = defineProject({
     "Work across indexing, settlement accounting, withdrawals, deployment tooling, and QA.",
   ],
   teamAttribution:
-    "Quorum is an active collaborative hackathon build. Wildan leads the product, full-stack application, and smart-contract work; ArgaAAL contributed substantively to infrastructure and evidence phases.",
+    "Quorum is an active collaborative hackathon build. Wildan leads the product, full-stack application, and smart-contract work; ArgaAAL contributed substantively to infrastructure and testnet validation phases.",
   decisions: [
     {
       title: "Split product data from on-chain invariants",
@@ -48,7 +48,7 @@ export const quorum = defineProject({
     {
       title: "Separate withdrawal from cash-out",
       rationale: "An on-chain withdrawal and an off-ramp transfer are two distinct money movements.",
-      tradeoff: "The interface must preserve separate proof identifiers and status language.",
+      tradeoff: "The interface must preserve separate transaction identifiers and status language.",
     },
   ],
   evidence: [
@@ -98,7 +98,7 @@ export const quorum = defineProject({
     { label: "Open testnet build", href: "https://quorum-sandy-eight.vercel.app", kind: "live" },
     { label: "View repository", href: "https://github.com/wildanniam/Quorum", kind: "repository" },
     {
-      label: "Inspect testnet evidence",
+      label: "View testnet records",
       href: "https://github.com/wildanniam/Quorum/blob/main/docs/LIVE_TESTNET_EVIDENCE.json",
       kind: "evidence",
     },

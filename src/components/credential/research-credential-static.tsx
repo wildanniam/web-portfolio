@@ -7,7 +7,7 @@ import {
 
 export function ResearchCredentialStatic({ aboutQrSrc }: { aboutQrSrc: string }) {
   return (
-    <div className="credential-rig" aria-label="Research credential">
+    <div className="credential-rig" aria-label="Wildan's builder pass">
       <div className="credential-swing">
         <CredentialLanyard />
         <div className="credential-tilt">

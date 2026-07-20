@@ -6,18 +6,17 @@ Baseline: 16 July 2026
 
 ## Product outcome
 
-Build an evidence-led editorial-cinematic portfolio that positions Wildan as:
+Build an editorial-cinematic portfolio that positions Wildan as:
 
-> A researcher and builder working across AI agents, Web3 trust, and on-chain
-> intelligence.
+> A full-stack builder working across AI agents, Web3, and product engineering.
 
 Primary hero statement:
 
-> I research and build autonomous systems people can verify.
+> I turn complex ideas into working products.
 
 The experience follows one narrative spine:
 
-**Signal → System → Human checkpoint → Evidence → Trust**
+**Idea → Product → Build → Test → Improve**
 
 The site should feel memorable and tactile without sacrificing speed,
 accessibility, truthful attribution, or legibility.
@@ -41,19 +40,19 @@ Open Graph assets.
 ## Locked homepage order
 
 1. Site Header
-2. Hero — The Living Checkpoint
-3. Proof Ledger
-4. Research Credential
-5. Selected Systems — Fradium, PayGate, Nova AI Wallet
+2. Hero — The Living Portrait
+3. Selected Highlights
+4. Builder Pass
+5. Selected Work — Fradium, PayGate, Nova AI Wallet
 6. SpecHeal archive bridge
-7. Research Through Building
+7. How I Work
 8. Principles
 9. Currently Building — Quorum
 10. Contact
 11. Footer
 
-Quorum receives an active-build section. SpecHeal appears honestly as an offline
-research prototype. All five systems remain available in `/work`.
+Quorum receives an active-build section. SpecHeal appears honestly as an archived,
+offline hackathon prototype. All five projects remain available in `/work`.
 
 ## Locked technical direction
 
@@ -67,23 +66,23 @@ research prototype. All five systems remain available in `/work`.
 
 ## Signature experiences
 
-### The Living Checkpoint
+### The Living Portrait
 
 A full-bleed identity-led cinematic hero places Wildan in a warm analog-futurist
-research environment. Wildan remains on the right while the positioning copy uses
+studio environment. Wildan remains on the right while the positioning copy uses
 the deliberately quiet left side. Motion is restrained to natural portrait and
 ember-signal movement. The matching poster is immediately usable; video playback
 is a progressive enhancement with a real pause control.
 
-### Research Credential
+### Builder Pass
 
 One continuous orange woven strap enters from the section boundary and connects
 through a compact metal clip to a physical ID badge with Wildan's real portrait,
-role, domains, front/back state, and a QR link to `/about`. The strap, clip, and
-badge share one restrained pendulum; pointer tilt and deliberate flip remain on
-the badge—not the reference site's drop/bounce.
+role, focus, location, front/back state, and a QR link to `/about`. The strap,
+clip, and badge share one restrained pendulum; pointer tilt and deliberate flip
+remain on the badge—not the reference site's drop/bounce.
 
-### Selected Systems Stage
+### Selected Work Stage
 
 Three editorial project panels use a desktop sticky narrative. Mobile and reduced
 motion receive the same content in normal document flow.
@@ -92,8 +91,8 @@ motion receive the same content in normal document flow.
 
 1. Repository, design, architecture, content contract, CI.
 2. Typed content and static responsive routes.
-3. Hero media and Research Credential.
-4. Selected Systems and five evidence-led case studies.
+3. Hero media and Builder Pass.
+4. Selected Work and five factual case studies.
 5. Motion polish and interaction QA.
 6. Accessibility, performance, SEO, browser QA, and preview deployment.
 
@@ -133,6 +132,13 @@ The full-bleed hero supersedes the original split composition with Wildan's
 explicit approval on 16 July 2026. It does not change the hero statement,
 narrative, media lifecycle, or performance contract.
 
-The identity-led Living Checkpoint portrait supersedes the abstract machine
-visual with Wildan's explicit approval on 16 July 2026. The approved hero statement,
-full-bleed composition, Ember Lab system, and progressive media lifecycle remain.
+The identity-led Living Portrait supersedes the abstract machine visual with
+Wildan's explicit approval on 16 July 2026. The full-bleed composition, Ember Lab
+system, and progressive media lifecycle remain.
+
+The builder-first positioning, hero statement, Builder Pass language, Selected
+Work vocabulary, How I Work section, and warmer public voice supersede the
+research-first copy with Wildan's explicit approval on 20 July 2026. Research
+remains a secondary way of learning; the route map, Ember Lab visual direction,
+motion ownership, media lifecycle, factual claim rules, and performance contract
+remain unchanged.

@@ -9,7 +9,7 @@ export function CredentialLanyard() {
   return (
     <div className="credential-lanyard" aria-hidden="true">
       <div className="credential-lanyard__strap">
-        <span>WILDAN / FIELD RESEARCH</span>
+        <span>WILDAN / FULL-STACK BUILDER</span>
       </div>
       <div className="credential-lanyard__keeper" />
       <div className="credential-lanyard__clasp">
@@ -24,7 +24,7 @@ export function CredentialFaces({ aboutQrSrc, isBackVisible }: CredentialFacesPr
     <>
       <div className="credential-face credential-face--front" aria-hidden={isBackVisible}>
         <div className="credential-face__topline">
-          <span>EMBER LAB / FIELD PASS</span>
+          <span>WN / BUILDER PASS</span>
           <span>WN—01</span>
         </div>
 
@@ -38,14 +38,14 @@ export function CredentialFaces({ aboutQrSrc, isBackVisible }: CredentialFacesPr
             priority={false}
           />
           <span className="credential-portrait__index" aria-hidden="true">
-            HUMAN CHECKPOINT
+            AI / WEB3 / PRODUCT
           </span>
         </div>
 
         <div className="credential-identity">
           <p>Wildan Syukri Niam</p>
-          <strong>Researcher &amp; Builder</strong>
-          <span>AI agents / Web3 trust / on-chain intelligence</span>
+          <strong>Full-Stack Builder</strong>
+          <span>AI / Web3 / Product Engineering</span>
         </div>
 
         <div className="credential-face__footer">
@@ -56,26 +56,26 @@ export function CredentialFaces({ aboutQrSrc, isBackVisible }: CredentialFacesPr
 
       <div className="credential-face credential-face--back" aria-hidden={!isBackVisible}>
         <div className="credential-back__header">
-          <span>WORKING METHOD</span>
-          <strong>Evidence before confidence.</strong>
+          <span>HOW I WORK</span>
+          <strong>From idea to product.</strong>
         </div>
 
         <ol className="credential-method">
           <li>
             <span>01</span>
-            <strong>Frame the risk</strong>
+            <strong>Understand the problem</strong>
           </li>
           <li>
             <span>02</span>
-            <strong>Build the mechanism</strong>
+            <strong>Shape the product</strong>
           </li>
           <li>
             <span>03</span>
-            <strong>Expose the evidence</strong>
+            <strong>Build the core</strong>
           </li>
           <li>
             <span>04</span>
-            <strong>Test the boundary</strong>
+            <strong>Test and improve</strong>
           </li>
         </ol>
 
@@ -90,15 +90,11 @@ export function CredentialFaces({ aboutQrSrc, isBackVisible }: CredentialFacesPr
             />
           </div>
           <div>
-            <span>FULL PROFILE</span>
-            <strong>Scan to inspect the research trail.</strong>
+            <span>MORE ABOUT ME</span>
+            <strong>Scan to learn more about me.</strong>
           </div>
         </div>
 
-        <p className="credential-boundary">
-          Public claims stay scoped to inspectable artifacts, current status, and stated
-          limitations.
-        </p>
       </div>
     </>
   );
