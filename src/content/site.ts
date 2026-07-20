@@ -86,6 +86,7 @@ export const siteContent = {
     copy: "I'm open to collaborations around AI, Web3, developer tools, and ambitious product ideas. If you think we could build something useful together, send me a message.",
     email: "wildanniam4@gmail.com",
     github: "https://github.com/wildanniam",
+    instagram: "https://www.instagram.com/wildanniam_/",
     location: "Bandung, Indonesia",
   },
   seo: {

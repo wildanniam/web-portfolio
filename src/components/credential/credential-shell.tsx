@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 type CredentialFacesProps = {
-  aboutQrSrc: string;
+  instagramQrSrc: string;
   isBackVisible: boolean;
 };
 
@@ -19,7 +19,7 @@ export function CredentialLanyard() {
   );
 }
 
-export function CredentialFaces({ aboutQrSrc, isBackVisible }: CredentialFacesProps) {
+export function CredentialFaces({ instagramQrSrc, isBackVisible }: CredentialFacesProps) {
   return (
     <>
       <div className="credential-face credential-face--front" aria-hidden={isBackVisible}>
@@ -81,17 +81,17 @@ export function CredentialFaces({ aboutQrSrc, isBackVisible }: CredentialFacesPr
 
         <div className="credential-qr-row">
           <div className="credential-qr">
-            {/* The static QR route encodes this deployment's absolute /about URL. */}
+            {/* The static QR route encodes Wildan's canonical Instagram profile. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={aboutQrSrc}
-              alt="QR code linking to Wildan's about page."
+              src={instagramQrSrc}
+              alt="QR code linking to Wildan's Instagram profile."
               loading="lazy"
             />
           </div>
           <div>
-            <span>MORE ABOUT ME</span>
-            <strong>Scan to learn more about me.</strong>
+            <span>INSTAGRAM</span>
+            <strong>@wildanniam_</strong>
           </div>
         </div>
 
