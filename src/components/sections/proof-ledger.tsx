@@ -10,11 +10,15 @@ export function ProofLedger() {
     >
       <Container>
         <header className="recognition-section__header">
-          <p>SELECTED HIGHLIGHTS</p>
-          <h2 id="recognition-title">A few moments I&apos;m proud of.</h2>
-          <span>
+          <div className="recognition-section__title-group">
+            <p className="recognition-section__eyebrow">SELECTED HIGHLIGHTS</p>
+            <h2 id="recognition-title">
+              A few moments <br className="recognition-section__title-break" />I&apos;m proud of.
+            </h2>
+          </div>
+          <p className="recognition-section__deck">
             Team outcomes and project recognition, linked to the public source where available.
-          </span>
+          </p>
         </header>
 
         <div className="recognition-grid proof-ledger-grid">

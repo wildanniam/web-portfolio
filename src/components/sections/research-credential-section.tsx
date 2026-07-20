@@ -1,5 +1,4 @@
-import { LazyResearchCredential } from "@/components/credential/lazy-research-credential";
-import { ResearchCredentialStatic } from "@/components/credential/research-credential-static";
+import { ResearchCredential } from "@/components/credential/research-credential";
 import { Container } from "@/components/ui/container";
 import { siteContent } from "@/content/site";
 
@@ -30,10 +29,7 @@ export function ResearchCredentialSection() {
           data-credential-stage
           className="builder-pass-section__object credential-section__object"
         >
-          <LazyResearchCredential
-            aboutQrSrc="/about-qr"
-            fallback={<ResearchCredentialStatic aboutQrSrc="/about-qr" />}
-          />
+          <ResearchCredential aboutQrSrc="/about-qr" />
         </div>
       </Container>
     </section>

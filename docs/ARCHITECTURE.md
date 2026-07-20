@@ -13,8 +13,8 @@
 - Pages are statically prerendered wherever possible.
 - Server Components are the default.
 - Client Components are limited to the bounded first-session entry, responsive
-  navigation state, eligibility-aware hero video enhancement, deferred Builder
-  Pass interaction, and zero-layout Selected Work motion controller.
+  navigation state, eligibility-aware hero video enhancement, the hydrated
+  Builder Pass interaction, and zero-layout Selected Work motion controller.
 - `generateStaticParams` creates known project routes.
 - Unknown project slugs resolve through the shared not-found boundary. Keeping
   runtime fallback enabled avoids a Next.js `NoFallbackError` log while preserving
@@ -113,12 +113,15 @@ Failure restores the poster rather than leaving an empty media surface.
 - CSS handles ordinary visual state.
 - Motion handles object interaction.
 - GSAP handles one signature scroll scene in the current prototype.
-- Motion is deferred until the Builder Pass approaches the viewport. GSAP is
-  deferred until the Selected Work stage approaches.
+- The Builder Pass emits one complete server-rendered visual tree and hydrates
+  that same tree in place. It does not swap a visible static credential for a
+  hidden interactive credential near the viewport. GSAP remains deferred until
+  the Selected Work stage approaches.
 - Motion and GSAP exceed 20 KiB gzip because they implement the approved physical
   object interaction and Selected Work signature scene. Neither belongs in the
-  server-rendered semantic content path; they load only when their interaction
-  becomes relevant.
+  server-owned content records. The Builder Pass accepts Motion in the homepage
+  client graph to preserve one stable object identity; GSAP still loads only when
+  its signature scene becomes relevant.
 - `qrcode` runs in the static `/about-qr` route at build time to encode the
   current deployment's absolute `/about` URL. It does not enter the browser
   bundle or duplicate base64 data in the homepage HTML.

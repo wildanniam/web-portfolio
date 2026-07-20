@@ -52,9 +52,12 @@ Prefer restrained ease-out and weighted motion. Avoid elastic or playful bounce.
 - Click, Enter, or Space flips front/back.
 - Touch uses tap-to-flip and does not depend on hover.
 - Reduced motion removes tilt/pendulum and uses instant or subtle opacity state.
-- The complete front-facing credential is server-rendered as the no-JS state.
-  Motion and the interactive face controller load only when the credential stage
-  approaches the viewport, then replace an identically sized static shell.
+- The complete front-facing credential is server-rendered from the same visual
+  tree that Motion hydrates. A visible static fallback is never replaced with a
+  newly hidden interactive tree.
+- The entrance triggers once as the Builder Pass stage begins entering the
+  viewport. After the weighted settle completes, the object never returns to its
+  hidden entrance pose when scrolling away or back.
 
 Motion owns the credential swing, pointer-tilt wrapper, and inner face-flip
 wrapper. No GSAP selector or timeline writes to the Builder Pass.

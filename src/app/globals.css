@@ -385,7 +385,7 @@ summary:focus-visible {
 }
 
 .recognition-section {
-  padding-block: clamp(6.5rem, 10vw, 10rem);
+  padding-block: clamp(6rem, 8vw, 8.5rem);
   background:
     radial-gradient(circle at 8% 14%, rgb(198 94 46 / 0.1), transparent 24rem),
     var(--paper-1);
@@ -393,12 +393,16 @@ summary:focus-visible {
 
 .recognition-section__header {
   display: grid;
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: end;
-  padding-bottom: clamp(3.5rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 4vw, 3.75rem);
 }
 
-.recognition-section__header > p,
+.recognition-section__title-group {
+  min-width: 0;
+}
+
+.recognition-section__eyebrow,
 .how-build-section__intro > p,
 .contact-stage__eyebrow {
   margin: 0;
@@ -410,21 +414,31 @@ summary:focus-visible {
 }
 
 .recognition-section__header h2 {
-  max-width: 11ch;
+  max-width: 13ch;
   margin: 0;
   font-family: var(--font-editorial);
-  font-size: clamp(3.3rem, 7vw, 6.5rem);
-  line-height: 0.92;
+  font-size: clamp(3.25rem, 6.7vw, 6.35rem);
+  line-height: 0.91;
   font-weight: 520;
   letter-spacing: -0.06em;
   text-wrap: balance;
 }
 
-.recognition-section__header > span {
-  max-width: 35rem;
+.recognition-section__eyebrow + h2 {
+  margin-top: 1.25rem;
+}
+
+.recognition-section__title-break {
+  display: none;
+}
+
+.recognition-section__deck {
+  display: block;
+  max-width: 29rem;
   color: var(--ink-600);
   font-size: 1rem;
   line-height: 1.75;
+  text-wrap: pretty;
 }
 
 .recognition-grid.proof-ledger-grid {
@@ -450,7 +464,6 @@ summary:focus-visible {
   color: inherit;
   transition:
     color 220ms ease,
-    padding-inline 220ms ease,
     background-color 220ms ease;
 }
 
@@ -462,11 +475,6 @@ summary:focus-visible {
   opacity: 0;
   transition: opacity 220ms ease;
   pointer-events: none;
-}
-
-.recognition-item:hover,
-.recognition-item:focus-visible {
-  padding-inline: 1rem;
 }
 
 .recognition-item:hover::before,
@@ -524,16 +532,26 @@ summary:focus-visible {
 
 @media (min-width: 768px) {
   .recognition-section__header {
-    grid-template-columns: minmax(0, 0.45fr) minmax(20rem, 1.05fr) minmax(16rem, 0.5fr);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(1rem, 2vw, 2rem);
   }
 
-  .recognition-section__header > p {
-    align-self: start;
-    padding-top: 0.45rem;
+  .recognition-section__title-group {
+    grid-column: 1 / 9;
+  }
+
+  .recognition-section__deck {
+    grid-column: 10 / 13;
+    align-self: end;
+    padding-bottom: 0.45rem;
+  }
+
+  .recognition-section__title-break {
+    display: block;
   }
 
   .recognition-item {
-    grid-template-columns: 3rem minmax(12rem, 0.68fr) minmax(20rem, 1.2fr) minmax(13rem, 0.62fr) 2rem;
+    grid-template-columns: 3rem minmax(10rem, 0.55fr) minmax(0, 1fr) 2rem;
     gap: 1rem 1.5rem;
     padding-block: 1.85rem;
   }
@@ -556,15 +574,28 @@ summary:focus-visible {
   }
 
   .recognition-item__context {
+    display: block;
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .recognition-item__arrow {
     grid-column: 4;
+  }
+}
+
+@media (min-width: 1100px) {
+  .recognition-item {
+    grid-template-columns: 3rem minmax(12rem, 0.68fr) minmax(20rem, 1.2fr) minmax(13rem, 0.62fr) 2rem;
+  }
+
+  .recognition-item__context {
+    grid-column: 4;
+    grid-row: 1;
   }
 
   .recognition-item__arrow {
     grid-column: 5;
-  }
-
-  .recognition-item__context {
-    display: block;
   }
 }
 
@@ -1186,11 +1217,6 @@ summary:focus-visible {
   border-radius: 999px;
   background: rgb(71 51 35 / 0.5);
   box-shadow: inset 0 1px 2px rgb(32 23 17 / 0.36);
-}
-
-.credential-card--static {
-  cursor: default;
-  will-change: auto;
 }
 
 .credential-card:focus-visible {

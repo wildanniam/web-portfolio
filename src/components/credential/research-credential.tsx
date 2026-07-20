@@ -45,7 +45,6 @@ export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
     getReducedMotionServerSnapshot,
   );
   const [isBackVisible, setIsBackVisible] = useState(false);
-  const [hasEntered, setHasEntered] = useState(false);
   const rawRotateX = useMotionValue(0);
   const rawRotateY = useMotionValue(0);
   const rotateX = useSpring(rawRotateX, tiltSpring);
@@ -80,27 +79,31 @@ export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
       <motion.div
         className="credential-swing"
         initial={
-          reduceMotion ? false : { y: -88, rotateZ: -3.5, opacity: 0.01 }
+          reduceMotion ? false : { y: -112, rotateZ: -2.4, opacity: 0 }
         }
         animate={
           reduceMotion
             ? { y: 0, rotateZ: 0, opacity: 1 }
-            : hasEntered
-              ? {
-                  y: [-88, 0, -9, 0],
-                  rotateZ: [-3.5, 1.4, -0.55, 0],
-                  opacity: 1,
-                }
-              : { y: -88, rotateZ: -3.5, opacity: 0.01 }
+            : undefined
         }
-        onViewportEnter={() => {
-          setHasEntered(true);
-        }}
-        viewport={{ once: true, amount: 0.58 }}
+        whileInView={
+          reduceMotion ? undefined : { y: 0, rotateZ: 0, opacity: 1 }
+        }
+        viewport={{ once: true, amount: 0.18 }}
         transition={{
-          duration: 1.35,
-          ease: [0.22, 1, 0.36, 1],
-          times: [0, 0.58, 0.78, 1],
+          y: {
+            type: "spring",
+            stiffness: 105,
+            damping: 17,
+            mass: 0.92,
+          },
+          rotateZ: {
+            type: "spring",
+            stiffness: 95,
+            damping: 16,
+            mass: 0.88,
+          },
+          opacity: { duration: 0.18, ease: "easeOut" },
         }}
       >
         <CredentialLanyard />

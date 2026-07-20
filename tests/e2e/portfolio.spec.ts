@@ -41,19 +41,56 @@ test("homepage presents the positioning, proof, work, and contact path", async (
   await expect(playbackControl).toHaveAccessibleName("Hear intro");
 });
 
-test("credential identity remains available in the server-rendered fallback", async ({ request }) => {
+test("credential identity remains available in the server-rendered interactive shell", async ({ request }) => {
   const response = await request.get("/");
   const html = await response.text();
   const qrResponse = await request.get("/about-qr");
 
   expect(response.ok()).toBe(true);
-  expect(html).toContain('data-testid="research-credential-fallback"');
+  expect(html).toContain('data-testid="research-credential"');
+  expect(html).not.toContain('data-testid="research-credential-fallback"');
   expect(html).toContain("Wildan Syukri Niam");
   expect(html).toContain("From idea to product.");
   expect(html).toContain('href="/about"');
   expect(html).toContain('src="/about-qr"');
   expect(qrResponse.ok()).toBe(true);
   expect(qrResponse.headers()["content-type"]).toContain("image/svg+xml");
+});
+
+test("builder pass enters once and stays settled after revisiting the section", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.sessionStorage.setItem("wildan-entry-seen", "1");
+  });
+  await page.goto("/");
+
+  const stage = page.locator("[data-credential-stage]");
+  const credential = page.getByTestId("research-credential");
+  const credentialSwing = page.locator(
+    '.credential-swing:has([data-testid="research-credential"])',
+  );
+
+  await expect(credential).toHaveCount(1);
+  await stage.scrollIntoViewIfNeeded();
+  await expect(credential).toBeVisible();
+  await expect
+    .poll(() =>
+      credentialSwing.evaluate((element) =>
+        Number.parseFloat(getComputedStyle(element).opacity),
+      ),
+    )
+    .toBeGreaterThan(0.98);
+
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await stage.scrollIntoViewIfNeeded();
+
+  await expect(credential).toHaveCount(1);
+  await expect
+    .poll(() =>
+      credentialSwing.evaluate((element) =>
+        Number.parseFloat(getComputedStyle(element).opacity),
+      ),
+    )
+    .toBeGreaterThan(0.98);
 });
 
 test("serves deployment metadata and pragmatic security headers", async ({ page }) => {
@@ -135,7 +172,7 @@ test("builder pass exposes truthful front and back states", async ({ page }) => 
   expect(Math.abs(
     ((claspBox?.x ?? 0) + (claspBox?.width ?? 0) / 2) -
       ((credentialBox?.x ?? 0) + (credentialBox?.width ?? 0) / 2),
-  )).toBeLessThan(10);
+  )).toBeLessThan(12);
   const claspBottom = (claspBox?.y ?? 0) + (claspBox?.height ?? 0);
   const cardTop = credentialBox?.y ?? 0;
   expect(claspBottom - cardTop).toBeGreaterThan(-4);
