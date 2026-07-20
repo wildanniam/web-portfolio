@@ -18,9 +18,9 @@ Visitors should understand three things quickly:
 Ember Lab combines warm editorial restraint with an analog-futurist laboratory.
 The visual materials are paper, smoked glass, frosted acrylic, bronze, woven
 fabric, and small signal lights. The homepage is staged as a sequence of distinct
-acts—dark portrait, warm identity object, editorial work, a full Ember contact
-chapter, and a restrained dark signature—rather than one uninterrupted cream
-document.
+acts—dark portrait, warm identity object, editorial work, a smoked contact scene
+with a bounded Ember signal, and a restrained dark signature—rather than one
+uninterrupted cream document.
 
 The direction may feel warm and considered like Claude, but it must not reproduce
 Claude's product layout, components, exact palette, or chat language.
@@ -96,8 +96,9 @@ Typography rules:
 - Grain is subtle, static, and cannot reduce text legibility.
 - Bronze aperture and evidence slab motifs are used sparingly.
 - Dark surfaces are concentrated in hero media, Quorum, and the footer signature.
-- The Contact section is the primary large-area Ember color moment. It must keep
-  ink-first contrast and transition directly into the dark footer.
+- Contact uses smoked glass, a warm paper invitation surface, and one bounded
+  Ember signal. Orange never becomes a full-section wallpaper. The complete
+  desktop composition should fit one normal viewport when its height permits.
 
 ## Component vocabulary
 
@@ -111,8 +112,8 @@ Typography rules:
   clip physically touching the credential slot.
 - Project panel with problem, mechanism, contribution, highlight, and current state.
 - First-session Ember Entry with a real readiness bound and no fake progress.
-- Ember contact chapter followed by a large dark closing wordmark with truthful
-  metadata and no fake form.
+- Smoked Contact scene with a paper invitation surface, followed by a large dark
+  closing wordmark with truthful metadata and no fake form.
 
 ## State requirements
 

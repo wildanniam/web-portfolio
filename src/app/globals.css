@@ -756,38 +756,49 @@ summary:focus-visible {
   position: relative;
   isolation: isolate;
   overflow: clip;
-  min-height: 72svh;
-  padding-block: clamp(6rem, 10vw, 10rem) 3rem;
-  color: var(--ink-900);
+  min-height: calc(100svh - 6rem);
+  padding-block: clamp(4rem, 7vh, 5.5rem) 2rem;
+  scroll-margin-top: 6.5rem;
+  color: var(--paper-0);
   background:
-    radial-gradient(circle at 86% 14%, rgb(245 240 232 / 0.34), transparent 24rem),
-    radial-gradient(circle at 13% 88%, rgb(148 62 27 / 0.28), transparent 30rem),
-    linear-gradient(135deg, #d7794d 0%, var(--ember-500) 48%, #a94922 100%);
+    radial-gradient(circle at 78% 36%, rgb(198 94 46 / 0.22), transparent 23rem),
+    radial-gradient(circle at 12% 95%, rgb(138 104 72 / 0.13), transparent 25rem),
+    linear-gradient(118deg, #171411 0%, #1d1814 58%, #281910 100%);
 }
 
 .contact-stage::before {
   position: absolute;
   z-index: -1;
-  inset: 0;
-  opacity: 0.28;
-  background-image: repeating-linear-gradient(
-    90deg,
-    transparent 0,
-    transparent calc(25% - 1px),
-    rgb(26 23 20 / 0.16) calc(25% - 1px),
-    rgb(26 23 20 / 0.16) 25%
+  top: 0;
+  right: clamp(1.5rem, 4vw, 5rem);
+  width: clamp(0.4rem, 0.65vw, 0.72rem);
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--ember-500) 18%,
+    #f2a47e 52%,
+    var(--ember-700) 82%,
+    transparent 100%
   );
+  box-shadow: 0 0 5rem rgb(198 94 46 / 0.32);
   content: "";
+}
+
+.contact-stage__container {
+  display: grid;
+  min-height: calc(100svh - 12rem);
+  grid-template-rows: auto 1fr auto;
 }
 
 .contact-stage__marker {
   display: flex;
   gap: 0.8rem;
   align-items: center;
-  margin-bottom: clamp(4rem, 8vw, 7rem);
+  margin-bottom: clamp(2.5rem, 5vh, 4rem);
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgb(26 23 20 / 0.28);
-  color: rgb(26 23 20 / 0.72);
+  border-bottom: 1px solid rgb(245 240 232 / 0.18);
+  color: rgb(245 240 232 / 0.68);
   font-family: var(--font-mono-stack);
   font-size: 0.63rem;
   font-weight: 720;
@@ -799,41 +810,69 @@ summary:focus-visible {
   width: 2rem;
   aspect-ratio: 1;
   place-items: center;
-  border: 1px solid rgb(26 23 20 / 0.38);
+  border: 1px solid rgb(242 164 126 / 0.48);
   border-radius: 50%;
   letter-spacing: 0;
 }
 
 .contact-stage__body {
   display: grid;
-  gap: 4rem;
-  align-items: end;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: center;
 }
 
 .contact-stage__eyebrow {
-  color: var(--ink-900);
+  color: #f2a47e;
 }
 
 .contact-stage h2 {
-  max-width: 10ch;
-  margin: 1.5rem 0 0;
+  max-width: 46rem;
+  margin: 1rem 0 0;
   font-family: var(--font-editorial);
-  font-size: clamp(4rem, 9vw, 8.7rem);
-  line-height: 0.88;
+  font-size: clamp(3.7rem, 5vw, 5.6rem);
+  line-height: 0.9;
   font-weight: 520;
-  letter-spacing: -0.07em;
-  text-wrap: balance;
+  letter-spacing: -0.065em;
+  text-wrap: pretty;
 }
 
 .contact-stage__invitation {
+  position: relative;
   max-width: 41rem;
+  padding: clamp(1.6rem, 3vw, 2.7rem);
+  color: var(--ink-900);
+  background:
+    linear-gradient(135deg, rgb(245 240 232 / 0.98), rgb(225 214 199 / 0.96));
+  box-shadow:
+    0 1.4rem 4rem rgb(10 7 5 / 0.24),
+    inset 0 0 0 1px rgb(255 255 255 / 0.36);
+}
+
+.contact-stage__signal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0.42rem;
+  background: var(--ember-500);
+  box-shadow: 0 0 2rem rgb(198 94 46 / 0.28);
+}
+
+.contact-stage__invitation-label {
+  display: block;
+  margin: 0 0 2rem;
+  color: var(--ember-700);
+  font-family: var(--font-mono-stack);
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
 }
 
 .contact-stage__invitation > p {
   margin: 0;
-  color: rgb(26 23 20 / 0.76);
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-  line-height: 1.7;
+  color: var(--ink-700);
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.65;
 }
 
 .contact-stage__email {
@@ -843,8 +882,8 @@ summary:focus-visible {
   justify-content: space-between;
   margin-top: 2rem;
   padding-block: 1rem;
-  border-top: 1px solid rgb(26 23 20 / 0.3);
-  border-bottom: 1px solid rgb(26 23 20 / 0.3);
+  border-top: 1px solid rgb(26 23 20 / 0.2);
+  border-bottom: 1px solid rgb(26 23 20 / 0.2);
   color: var(--ink-900);
   font-size: clamp(1.25rem, 2.4vw, 2rem);
   font-weight: 650;
@@ -857,8 +896,8 @@ summary:focus-visible {
 }
 
 .contact-stage__email:hover {
-  border-color: var(--ink-900);
-  color: var(--paper-0);
+  border-color: var(--ember-700);
+  color: var(--ember-700);
 }
 
 .contact-stage__email:hover span:last-child {
@@ -870,10 +909,10 @@ summary:focus-visible {
   flex-wrap: wrap;
   gap: 0.8rem 1.5rem;
   align-items: center;
-  margin-top: clamp(5rem, 10vw, 9rem);
+  margin-top: clamp(2.5rem, 5vh, 4rem);
   padding-top: 1.5rem;
-  border-top: 1px solid rgb(26 23 20 / 0.28);
-  color: rgb(26 23 20 / 0.66);
+  border-top: 1px solid rgb(245 240 232 / 0.18);
+  color: rgb(245 240 232 / 0.56);
   font-family: var(--font-mono-stack);
   font-size: 0.63rem;
   font-weight: 650;
@@ -881,22 +920,54 @@ summary:focus-visible {
 }
 
 .contact-stage__meta a {
-  color: var(--ink-900);
+  color: var(--paper-0);
   transition: color 180ms ease;
 }
 
 .contact-stage__meta a:hover {
-  color: var(--paper-0);
+  color: #f2a47e;
 }
 
 @media (min-width: 900px) {
   .contact-stage__body {
-    grid-template-columns: minmax(0, 1.15fr) minmax(22rem, 0.85fr);
-    gap: clamp(4rem, 9vw, 10rem);
+    grid-template-columns: minmax(0, 1.15fr) minmax(23rem, 0.75fr);
   }
 
   .contact-stage__meta a:first-of-type {
     margin-left: auto;
+  }
+}
+
+@media (max-width: 899px) {
+  .contact-stage {
+    min-height: auto;
+    padding-block: 5rem 3rem;
+    scroll-margin-top: 5.5rem;
+  }
+
+  .contact-stage__container {
+    min-height: auto;
+    grid-template-rows: auto auto auto;
+  }
+
+  .contact-stage h2 {
+    max-width: 9ch;
+    font-size: clamp(3.4rem, 15.5vw, 5.25rem);
+  }
+}
+
+@media (min-width: 900px) and (max-height: 760px) {
+  .contact-stage {
+    min-height: auto;
+    padding-block: 3.5rem 2rem;
+  }
+
+  .contact-stage__container {
+    min-height: 38rem;
+  }
+
+  .contact-stage h2 {
+    font-size: clamp(3.7rem, 5.55vw, 5.75rem);
   }
 }
 

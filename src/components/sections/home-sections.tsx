@@ -169,9 +169,9 @@ export function ContactSection() {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="contact-stage scroll-mt-24"
+      className="contact-stage"
     >
-      <Container>
+      <Container className="contact-stage__container">
         <div className="contact-stage__marker" aria-hidden="true">
           <span>05</span>
           <span>CONTACT</span>
@@ -184,6 +184,10 @@ export function ContactSection() {
           </div>
 
           <div className="contact-stage__invitation">
+            <span className="contact-stage__signal" aria-hidden="true" />
+            <span className="contact-stage__invitation-label">
+              OPEN FOR COLLABORATION
+            </span>
             <p>{siteContent.contact.copy}</p>
             <a
               href={`mailto:${siteContent.contact.email}`}
