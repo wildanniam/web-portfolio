@@ -1,12 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-} from "motion/react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 import {
   type KeyboardEvent,
   type PointerEvent,
@@ -14,8 +9,13 @@ import {
   useSyncExternalStore,
 } from "react";
 
+import {
+  CredentialFaces,
+  CredentialLanyard,
+} from "@/components/credential/credential-shell";
+
 type ResearchCredentialProps = {
-  aboutQrDataUrl: string;
+  aboutQrSrc: string;
 };
 
 const tiltSpring = {
@@ -38,7 +38,7 @@ function getReducedMotionServerSnapshot() {
   return false;
 }
 
-export function ResearchCredential({ aboutQrDataUrl }: ResearchCredentialProps) {
+export function ResearchCredential({ aboutQrSrc }: ResearchCredentialProps) {
   const reduceMotion = useSyncExternalStore(
     subscribeToReducedMotion,
     getReducedMotionSnapshot,
@@ -76,23 +76,11 @@ export function ResearchCredential({ aboutQrDataUrl }: ResearchCredentialProps) 
   };
 
   return (
-    <div className="credential-rig" aria-label="Interactive research credential">
-      <div className="credential-lanyard" aria-hidden="true">
-        <div className="credential-lanyard__strap credential-lanyard__strap--left">
-          <span>EVIDENCE OVER ASSERTION</span>
-        </div>
-        <div className="credential-lanyard__strap credential-lanyard__strap--right">
-          <span>EVIDENCE OVER ASSERTION</span>
-        </div>
-        <div className="credential-lanyard__clasp">
-          <span />
-        </div>
-      </div>
-
+    <div className="credential-rig" aria-label="Interactive builder pass">
       <motion.div
         className="credential-swing"
         initial={false}
-        animate={{ rotateZ: hasSettled ? [0, -2.4, 1.15, -0.55, 0] : 0 }}
+        animate={{ rotateZ: hasSettled ? [0, -1.65, 0.72, -0.28, 0] : 0 }}
         onViewportEnter={() => {
           if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
             setHasSettled(true);
@@ -100,11 +88,12 @@ export function ResearchCredential({ aboutQrDataUrl }: ResearchCredentialProps) 
         }}
         viewport={{ once: true, amount: 0.58 }}
         transition={{
-          duration: 1.3,
+          duration: 1.55,
           ease: [0.22, 1, 0.36, 1],
-          times: [0, 0.18, 0.48, 0.74, 1],
+          times: [0, 0.22, 0.5, 0.76, 1],
         }}
       >
+        <CredentialLanyard />
         <motion.div
           className="credential-tilt"
           style={{ rotateX, rotateY }}
@@ -117,8 +106,8 @@ export function ResearchCredential({ aboutQrDataUrl }: ResearchCredentialProps) 
             aria-pressed={isBackVisible}
             aria-label={
               isBackVisible
-                ? "Show front of Wildan's research credential"
-                : "Show back of Wildan's research credential"
+                ? "Show front of Wildan's builder pass"
+                : "Show back of Wildan's builder pass"
             }
             id="research-credential-card"
             data-testid="research-credential"
@@ -133,86 +122,7 @@ export function ResearchCredential({ aboutQrDataUrl }: ResearchCredentialProps) 
             onClick={toggleFace}
             onKeyDown={handleKeyDown}
           >
-            <div
-              className="credential-face credential-face--front"
-              aria-hidden={isBackVisible}
-            >
-              <div className="credential-face__topline">
-                <span>RESEARCH CREDENTIAL</span>
-                <span>WSN</span>
-              </div>
-
-              <div className="credential-portrait">
-                <Image
-                  src="/media/profile/wildan-credential.jpg"
-                  alt="Wildan Syukri Niam at a technology event, wearing a maroon blazer."
-                  fill
-                  sizes="(min-width: 768px) 22rem, 78vw"
-                  className="object-cover"
-                  priority={false}
-                />
-                <span className="credential-portrait__index" aria-hidden="true">
-                  HUMAN CHECKPOINT
-                </span>
-              </div>
-
-              <div className="credential-identity">
-                <p>Wildan Syukri Niam</p>
-                <strong>Researcher &amp; Builder</strong>
-                <span>AI agents / Web3 trust / on-chain intelligence</span>
-              </div>
-
-              <div className="credential-face__footer">
-                <span>PUBLIC PROFILE</span>
-                <span>VERIFIED 15 JUL 2026</span>
-              </div>
-            </div>
-
-            <div
-              className="credential-face credential-face--back"
-              aria-hidden={!isBackVisible}
-            >
-              <div className="credential-back__header">
-                <span>WORKING METHOD</span>
-                <strong>Evidence before confidence.</strong>
-              </div>
-
-              <ol className="credential-method">
-                <li>
-                  <span>01</span>
-                  <strong>Frame the risk</strong>
-                </li>
-                <li>
-                  <span>02</span>
-                  <strong>Build the mechanism</strong>
-                </li>
-                <li>
-                  <span>03</span>
-                  <strong>Expose the evidence</strong>
-                </li>
-                <li>
-                  <span>04</span>
-                  <strong>Test the boundary</strong>
-                </li>
-              </ol>
-
-              <div className="credential-qr-row">
-                <div className="credential-qr">
-                  {/* The generated QR encodes this deployment's absolute /about URL. */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={aboutQrDataUrl} alt="QR code linking to Wildan's about page." />
-                </div>
-                <div>
-                  <span>FULL PROFILE</span>
-                  <strong>Scan to inspect the research trail.</strong>
-                </div>
-              </div>
-
-              <p className="credential-boundary">
-                Public claims stay scoped to inspectable artifacts, current status, and stated
-                limitations.
-              </p>
-            </div>
+            <CredentialFaces aboutQrSrc={aboutQrSrc} isBackVisible={isBackVisible} />
           </motion.div>
         </motion.div>
       </motion.div>
@@ -224,11 +134,9 @@ export function ResearchCredential({ aboutQrDataUrl }: ResearchCredentialProps) 
           aria-controls="research-credential-card"
           aria-pressed={isBackVisible}
         >
-          {isBackVisible ? "Show front" : "Turn credential"}
+          {isBackVisible ? "Show front" : "Flip pass"}
         </button>
-        <Link href="/about">
-          Open full profile
-        </Link>
+        <Link href="/about">Open full profile</Link>
       </div>
     </div>
   );

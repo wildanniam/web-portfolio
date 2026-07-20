@@ -18,14 +18,14 @@
     "typecheck": "tsc --noEmit",
     "validate:content": "tsx scripts/validate-content.ts",
     "validate:media": "tsx scripts/validate-media.ts",
+    "validate:bundle": "tsx scripts/validate-bundle.ts",
     "validate": "npm run validate:content && npm run validate:media",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "check": "npm run lint && npm run typecheck && npm run validate && npm test && npm run build"
+    "check": "npm run lint && npm run typecheck && npm run validate && npm test && npm run build && npm run validate:bundle"
   },
   "dependencies": {
-    "@gsap/react": "^2.1.2",
     "gsap": "^3.15.0",
     "motion": "^12.42.2",
     "next": "16.2.10",

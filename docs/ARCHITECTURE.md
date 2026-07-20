@@ -12,10 +12,13 @@
 
 - Pages are statically prerendered wherever possible.
 - Server Components are the default.
-- Client Components are limited to mobile navigation, hero video lifecycle,
-  Research Credential interaction, and signature motion wrappers.
+- Client Components are limited to the eligibility-aware hero video enhancement,
+  deferred Builder Pass interaction, and zero-layout signature motion
+  controllers.
 - `generateStaticParams` creates known project routes.
-- Unknown project slugs return not found through `dynamicParams = false`.
+- Unknown project slugs resolve through the shared not-found boundary. Keeping
+  runtime fallback enabled avoids a Next.js `NoFallbackError` log while preserving
+  the correct HTTP 404 response.
 - `generateMetadata` provides project-specific metadata.
 - Deploy as a normal Next.js application on Vercel; do not use static export.
 
@@ -52,8 +55,9 @@ src/motion                  policy, tokens, and isolated GSAP scenes
 src/styles                  semantic design tokens
 ```
 
-Content components remain server-rendered. An animation wrapper may reference
-server-rendered children, but it must not duplicate or hide the semantic source.
+Content components remain server-rendered. Signature controllers render only a
+hidden marker, then query within their explicit scene root. They never own,
+duplicate, or hide the semantic source.
 
 ## Content flow
 
@@ -74,9 +78,11 @@ modules, generated output, tests, or browser data.
 ## State ownership
 
 - Server records are immutable inputs.
-- React local state owns menu open/closed and credential front/back.
+- Native disclosure state owns the mobile menu; React local state owns the
+  credential front/back state after its deferred enhancement loads.
 - MotionValue owns pointer tilt without rerendering every pointer frame.
-- GSAP timelines live in scoped `useGSAP` contexts with cleanup.
+- Dynamically imported GSAP timelines live in scoped `gsap.context()` instances
+  with route/unmount cleanup.
 - Hero video uses an explicit lifecycle state machine.
 - No global state library is required in v1.
 
@@ -93,15 +99,23 @@ poster
 ```
 
 Production media uses WebM first, audio-free MP4 fallback, and an initial poster.
-Video is paused offscreen and when the tab is hidden.
+The poster/caption are server-rendered. The interactive video module is downloaded
+only for eligible desktop visitors and is removed again if viewport, Save-Data, or
+reduced-motion policy changes. Video is paused offscreen and when the tab is hidden.
 
 ## Dependency policy
 
 - CSS handles ordinary visual state.
 - Motion handles object interaction.
 - GSAP handles only two signature scroll scenes.
-- `qrcode` runs in a Server Component at build time to encode the current
-  deployment's absolute `/about` URL. It does not enter the browser bundle.
+- Motion is deferred until the Builder Pass approaches the viewport. GSAP is
+  deferred until hero scroll intent/post-paint or the Selected Work approach.
+- Motion and GSAP exceed 20 KiB gzip because they implement the two approved
+  signature experiences. Neither is part of the 24.5 KiB initial homepage
+  JavaScript path; they load only when their interaction becomes relevant.
+- `qrcode` runs in the static `/about-qr` route at build time to encode the
+  current deployment's absolute `/about` URL. It does not enter the browser
+  bundle or duplicate base64 data in the homepage HTML.
 - New runtime dependencies above 20 KiB gzip need documented justification.
 - Do not add a smooth-scroll library, WebGL stack, CMS, or UI kit without an
   approved architecture change.
@@ -111,6 +125,8 @@ Video is paused offscreen and when the tab is hidden.
 - No secrets or private content in the repository.
 - No contact form/API/database in v1.
 - Apply pragmatic static-compatible security headers.
+- Preview deployments emit `noindex, nofollow`; Vercel production remains
+  indexable and exposes the canonical sitemap.
 - Do not introduce per-request nonce architecture that turns static routes dynamic
   without a demonstrated need.
 - Validate URLs and prohibit unsafe protocols in public records.
@@ -125,9 +141,10 @@ CI and local checks cover:
 - unit tests;
 - production build;
 - Playwright smoke/reduced-motion/accessibility checks;
-- bundle and asset budgets as the implementation matures.
+- initial homepage JavaScript and public asset budgets;
+- Chromium and WebKit browser, reflow, security-header, and SEO smoke checks.
 
-## Credential media
+## Builder Pass media
 
 The approved credential portrait is a deterministic 4:5 crop with metadata
 removed. The original private download is not committed. Motion owns the nested

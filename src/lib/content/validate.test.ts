@@ -52,4 +52,66 @@ describe("validatePortfolioContent", () => {
 
     expect(result.errors.some((error) => error.includes("blocked claim"))).toBe(true);
   });
+
+  it("rejects evidence outside the curated public allowlist", () => {
+    const invalid = {
+      ...projects[0],
+      evidence: [
+        ...projects[0].evidence,
+        {
+          ...projects[0].evidence[0],
+          id: "fra-private-claim",
+          claim: "A claim that has not passed the public content contract.",
+        },
+      ],
+    } as ProjectRecord;
+    const result = validatePortfolioContent([invalid, ...projects.slice(1)], siteContent);
+
+    expect(result.errors.some((error) => error.includes("curated public allowlist"))).toBe(true);
+  });
+
+  it("rejects an unapproved lifecycle upgrade", () => {
+    const invalid = {
+      ...projects[1],
+      status: "public-beta",
+      liveStatus: "online",
+    } as ProjectRecord;
+    const result = validatePortfolioContent(
+      [projects[0], invalid, ...projects.slice(2)],
+      siteContent,
+    );
+
+    expect(result.errors.some((error) => error.includes("not the approved public state"))).toBe(
+      true,
+    );
+  });
+
+  it("rejects blocked visitor-facing language in site copy", () => {
+    const invalidSiteContent = {
+      ...siteContent,
+      contact: {
+        ...siteContent.contact,
+        copy: "Inspect the work before reaching out.",
+      },
+    };
+    const result = validatePortfolioContent(projects, invalidSiteContent);
+
+    expect(result.errors.some((error) => error.includes("blocked visitor-facing language"))).toBe(
+      true,
+    );
+  });
+
+  it("rejects blocked visitor-facing language in project links", () => {
+    const invalid = {
+      ...projects[4],
+      links: projects[4].links.map((link, index) =>
+        index === 0 ? { ...link, label: "Inspect project" } : link,
+      ),
+    } as ProjectRecord;
+    const result = validatePortfolioContent([...projects.slice(0, 4), invalid], siteContent);
+
+    expect(result.errors.some((error) => error.includes("blocked visitor-facing language"))).toBe(
+      true,
+    );
+  });
 });

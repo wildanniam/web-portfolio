@@ -1,10 +1,17 @@
 import type { MetadataRoute } from "next";
 
+import { getSiteUrl, isIndexableDeployment } from "@/lib/seo/site-url";
+
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const baseUrl = getSiteUrl();
+  const indexable = isIndexableDeployment();
 
   return {
-    rules: [{ userAgent: "*", allow: "/" }],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    rules: [
+      indexable
+        ? { userAgent: "*", allow: "/" }
+        : { userAgent: "*", disallow: "/" },
+    ],
+    sitemap: indexable ? new URL("/sitemap.xml", baseUrl).toString() : undefined,
   };
 }

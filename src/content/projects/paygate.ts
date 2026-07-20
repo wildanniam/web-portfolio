@@ -6,7 +6,7 @@ export const paygate = defineProject({
   title: "PayGate",
   oneLiner: "Turning ordinary APIs into machine-paid endpoints on Stellar testnet.",
   cardCopy:
-    "I founded and built PayGate, a publicly deployed testnet beta that lets developers monetize API calls through HTTP 402 challenges, Stellar payments, and inspectable receipts. The project was awarded a $5,000 Stellar Community Fund Instaward.",
+    "I founded and built PayGate, a publicly deployed testnet beta that lets developers monetize API calls through HTTP 402 challenges, Stellar payments, and transaction receipts. The project was awarded a $5,000 Stellar Community Fund Instaward.",
   caseStudyLead:
     "PayGate asks what API billing should look like when the customer is software. I designed and built a flow where a machine client receives an HTTP 402 challenge, pays for one request on Stellar testnet, retries with proof, and receives the protected upstream response.",
   role: "Founder · Builder",
@@ -19,7 +19,7 @@ export const paygate = defineProject({
   featuredOrder: 2,
   showInSelectedSystems: true,
   problem:
-    "Traditional API billing assumes a human account, subscription, and card. Machine clients need a narrower loop for discovering a price, paying for one request, and retrying with inspectable proof.",
+    "Traditional API billing assumes a human account, subscription, and card. Machine clients need a narrower loop for discovering a price, paying for one request, and retrying with payment confirmation.",
   audience: [
     "Developers monetizing GET and JSON APIs",
     "Backend teams avoiding bespoke payment infrastructure",
@@ -59,7 +59,10 @@ export const paygate = defineProject({
       scope: "product",
       state: "owner-confirmed",
       asOf: "2026",
-      source: { label: "Stellar Community Fund", href: "https://communityfund.stellar.org/" },
+      source: {
+        label: "Stellar Indonesia announcement",
+        href: "https://x.com/Indo_Stellar/status/2075550378553421994",
+      },
     },
     {
       id: "pay-live-01",
@@ -68,6 +71,22 @@ export const paygate = defineProject({
       state: "verified",
       asOf: "2026-07-15",
       source: { label: "Live testnet beta", href: "https://trypaygate.com" },
+    },
+    {
+      id: "pay-role-01",
+      claim: "Wildan is PayGate's Founder and Builder.",
+      scope: "personal",
+      state: "owner-confirmed",
+      asOf: "2026-07-15",
+      source: { label: "Canonical repository", href: "https://github.com/wildanniam/paygate-stellar" },
+    },
+    {
+      id: "pay-flow-01",
+      claim: "PayGate verifies a testnet payment before forwarding to a protected upstream and recording an escrow credit.",
+      scope: "product",
+      state: "verified",
+      asOf: "2026-07-15",
+      source: { label: "Canonical repository", href: "https://github.com/wildanniam/paygate-stellar" },
     },
   ],
   limitations: [

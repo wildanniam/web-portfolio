@@ -1,31 +1,9 @@
-import QRCode from "qrcode";
-
-import { ResearchCredential } from "@/components/credential/research-credential";
+import { LazyResearchCredential } from "@/components/credential/lazy-research-credential";
+import { ResearchCredentialStatic } from "@/components/credential/research-credential-static";
 import { Container } from "@/components/ui/container";
 import { siteContent } from "@/content/site";
 
-function getDeploymentOrigin() {
-  const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  const vercelHost =
-    process.env.VERCEL_URL ?? process.env.VERCEL_PROJECT_PRODUCTION_URL;
-
-  if (configuredUrl) return new URL(configuredUrl).origin;
-  if (vercelHost) return new URL(`https://${vercelHost}`).origin;
-  return "http://localhost:3000";
-}
-
-export async function ResearchCredentialSection() {
-  const aboutUrl = new URL("/about", getDeploymentOrigin()).toString();
-  const aboutQrDataUrl = await QRCode.toDataURL(aboutUrl, {
-    errorCorrectionLevel: "M",
-    margin: 1,
-    width: 216,
-    color: {
-      dark: "#1A1714FF",
-      light: "#F5F0E8FF",
-    },
-  });
-
+export function ResearchCredentialSection() {
   return (
     <section
       id="research-credential"
@@ -51,8 +29,10 @@ export async function ResearchCredentialSection() {
         </div>
 
         <div data-credential-gsap-stage className="credential-section__object">
-          <span data-lanyard-anchor className="credential-anchor" aria-hidden="true" />
-          <ResearchCredential aboutQrDataUrl={aboutQrDataUrl} />
+          <LazyResearchCredential
+            aboutQrSrc="/about-qr"
+            fallback={<ResearchCredentialStatic aboutQrSrc="/about-qr" />}
+          />
         </div>
       </Container>
     </section>
