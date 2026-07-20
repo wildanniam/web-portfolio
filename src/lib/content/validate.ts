@@ -27,6 +27,12 @@ const blockedClaimPatterns: Record<string, RegExp[]> = {
     /guaranteed execution price/i,
     /(?:overall|grand) winner.*(?:lisk|competition|challenge)/i,
   ],
+  nara: [
+    /production (?:financial )?wallet/i,
+    /independently audited/i,
+    /guaranteed (?:price|execution|return)/i,
+    /wildan (?:won|received).*(?:nextgen|hackathon|first place|1st place)/i,
+  ],
   specheal: [
     /(?:winner|first place|champion).*(?:refactory|hackathon|competition)/i,
     /healing accuracy (?:of|is)/i,
@@ -45,6 +51,7 @@ const approvedEvidenceIds: Record<string, readonly string[]> = {
   fradium: ["fra-role-01", "fra-award-01", "fra-live-01", "fra-flow-01"],
   paygate: ["pay-role-01", "pay-grant-01", "pay-live-01", "pay-flow-01"],
   "nova-ai-wallet": ["nov-role-01", "nov-flow-01", "nov-life-01", "nov-award-01"],
+  nara: ["nar-role-01", "nar-award-01", "nar-flow-01", "nar-live-01"],
   specheal: ["spc-role-01", "spc-flow-01", "spc-live-01", "spc-award-01"],
   quorum: ["quo-role-01", "quo-live-01", "quo-flow-01", "quo-comp-01"],
 };
@@ -56,6 +63,7 @@ const approvedLifecycle: Record<
   fradium: { status: "public-beta", liveStatus: "online" },
   paygate: { status: "testnet-beta", liveStatus: "online" },
   "nova-ai-wallet": { status: "prototype", liveStatus: "degraded" },
+  nara: { status: "prototype", liveStatus: "online" },
   specheal: { status: "prototype", liveStatus: "offline" },
   quorum: { status: "active-build", liveStatus: "online" },
 };

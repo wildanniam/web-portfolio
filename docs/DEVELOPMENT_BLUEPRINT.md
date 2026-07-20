@@ -30,6 +30,7 @@ accessibility, truthful attribution, or legibility.
 /work/fradium
 /work/paygate
 /work/nova-ai-wallet
+/work/nara
 /work/specheal
 /work/quorum
 ```
@@ -43,17 +44,17 @@ Open Graph assets.
 2. Fixed Site Header
 3. Hero — The Talking Portrait
 4. Builder Pass + About
-5. Selected Work — Fradium, PayGate, Nova AI Wallet, Quorum
+5. Selected Work — Fradium, PayGate, Nova AI Wallet, Nara Wallet, Quorum
 6. SpecHeal archive bridge
 7. Selected Highlights
 8. How I Build
 9. Contact closing act
 10. Oversized Footer
 
-Quorum no longer receives a standalone homepage interruption. It joins Selected
-Work after Nova AI Wallet and remains available in `/work` and `/work/quorum`.
-SpecHeal remains an archived, offline hackathon prototype. All five projects
-remain available in `/work`.
+Quorum no longer receives a standalone homepage interruption. Nara Wallet joins
+Selected Work after Nova AI Wallet, followed by Quorum. Both remain available
+through their case-study routes. SpecHeal remains an archived, offline hackathon
+prototype. All six projects remain available in `/work`.
 
 ## Locked technical direction
 
@@ -107,7 +108,7 @@ pinned scene.
 1. Repository, design, architecture, content contract, CI.
 2. Typed content and static responsive routes.
 3. Hero media and Builder Pass.
-4. Selected Work and five factual case studies.
+4. Selected Work and six factual case studies.
 5. Motion polish and interaction QA.
 6. Accessibility, performance, SEO, browser QA, and preview deployment.
 
@@ -174,3 +175,8 @@ request for this iteration.
 Quorum joins the Selected Work stage after Nova AI Wallet with Wildan's explicit
 approval on 20 July 2026. It remains one panel in the existing signature scene,
 not a separate homepage interruption, and keeps its active-build/testnet limits.
+
+Nara Wallet joins the Selected Work stage between Nova AI Wallet and Quorum with
+Wildan's explicit approval on 20 July 2026. Its route, team-scoped 1st Place
+Nextgen Agent Hackathon result, AI Agent Developer role, canonical product media,
+prototype lifecycle, and limitations are part of the locked public content map.
