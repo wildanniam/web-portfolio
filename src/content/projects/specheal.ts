@@ -80,11 +80,11 @@ export const specheal = defineProject({
       id: "spc-award-01",
       claim: "The SpecHeal team placed second at Refactory Hackathon 2026.",
       scope: "team",
-      state: "owner-confirmed",
-      asOf: "2026-07-16",
+      state: "verified",
+      asOf: "2026-07-21",
       source: {
-        label: "Wildan's previous public portfolio",
-        href: "https://portofolio-wildan-zeta.vercel.app/",
+        label: "Refactory Hackathon result announcement",
+        href: "https://www.instagram.com/p/DYi32L8TYjP/",
       },
     },
   ],
@@ -98,10 +98,10 @@ export const specheal = defineProject({
     { label: "View repository", href: "https://github.com/antech2-async/SpecHeal", kind: "repository" },
     {
       label: "View public result record",
-      href: "https://portofolio-wildan-zeta.vercel.app/",
+      href: "https://www.instagram.com/p/DYi32L8TYjP/",
       kind: "evidence",
     },
   ],
   media: [{ state: "placeholder", label: "SpecHeal recovery cockpit capture required", aspectRatio: "16/10" }],
-  lastVerifiedAt: "2026-07-16",
+  lastVerifiedAt: "2026-07-21",
 });

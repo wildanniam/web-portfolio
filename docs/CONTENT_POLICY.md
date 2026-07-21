@@ -115,8 +115,7 @@ Do not replace these with vague success language.
 - The demo is offline.
 - Only three seeded scenarios may be claimed.
 - The team may be described as placing second at Refactory Hackathon 2026. The
-  current record is owner-confirmed and linked to Wildan's prior public portfolio;
-  replace it with an organizer record if one becomes available.
+  claim is linked to the public Refactory result announcement on Instagram.
 - Do not claim first place, accuracy, time saved, or adoption.
 
 ### Quorum

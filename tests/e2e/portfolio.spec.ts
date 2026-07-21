@@ -35,6 +35,9 @@ test("homepage presents the positioning, proof, work, and contact path", async (
   await expect(
     proofLedger.getByText("Refactory Hackathon 2026", { exact: true }),
   ).toBeVisible();
+  await expect(
+    proofLedger.getByText("ADIKARA 2024 Innovation Division", { exact: true }),
+  ).toBeVisible();
   await expect(proofLedger.getByText("6 signed Quorum flows", { exact: true })).toHaveCount(0);
 
   const playbackControl = page.getByRole("button", { name: "Hear intro" });

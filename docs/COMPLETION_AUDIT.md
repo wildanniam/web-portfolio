@@ -27,7 +27,9 @@ Contract, and all five public-ready project records on 16 July 2026. Wildan then
 explicitly approved two additional team-scoped outcomes in the active delivery
 thread: Nova AI's exact Lisk Builder Challenge recognitions and SpecHeal's second
 place at Refactory Hackathon 2026. Both were added to the curated allowlist with
-their public source strength recorded.
+their public source strength recorded. The Refactory record now points to its
+public result announcement, and the proof ledger also records the Long Journey
+team's first place in the ADIKARA 2024 Innovation Division.
 
 On 20 July 2026, Wildan explicitly approved the builder-first positioning and
 voice now reflected in the website, locked blueprint, and Atlas authoring notes.

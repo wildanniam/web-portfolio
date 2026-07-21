@@ -94,7 +94,7 @@ export const siteContent = {
     description:
       "Full-stack builder working across AI agents, Web3 products, and developer tools. Explore projects in wallet safety, agentic payments, smart contracts, and AI-assisted engineering.",
   },
-  lastVerifiedAt: "2026-07-20",
+  lastVerifiedAt: "2026-07-21",
 } as const;
 
 export const proofLedger = [
@@ -126,6 +126,12 @@ export const proofLedger = [
     label: "SPECHEAL / 2ND PLACE",
     value: "Refactory Hackathon 2026",
     context: "Awarded to the SpecHeal team",
-    href: "https://portofolio-wildan-zeta.vercel.app/",
+    href: "https://www.instagram.com/p/DYi32L8TYjP/",
+  },
+  {
+    label: "LONG JOURNEY / 1ST PLACE",
+    value: "ADIKARA 2024 Innovation Division",
+    context: "Won by the Long Journey team",
+    href: "https://www.instagram.com/p/DIeX94Izh44/?img_index=1",
   },
 ] as const;
