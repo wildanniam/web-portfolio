@@ -747,8 +747,8 @@ summary:focus-visible {
     top: 8rem;
   }
 
-  .how-build-stage:nth-child(even) {
-    translate: 3.5rem 0;
+  .how-build-stage:nth-child(even) .how-build-stage__copy {
+    translate: 1.75rem 0;
   }
 }
 
