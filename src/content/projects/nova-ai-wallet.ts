@@ -3,10 +3,10 @@ import { defineProject } from "../schema";
 export const novaAiWallet = defineProject({
   canonicalId: "project-nova-ai-wallet",
   slug: "nova-ai-wallet",
-  title: "Nova AI Wallet",
+  title: "Nova AI",
   oneLiner: "Turning wallet intent into clear actions without taking over the signature.",
   cardCopy:
-    "I led the AI engineering behind Nova, a conversational wallet prototype that turns natural-language intent into on-chain reads and prepared actions while keeping final authorization with the user's wallet.",
+    "I led the AI engineering behind Nova, a conversational Agentic wallet prototype that turns natural-language intent into on-chain reads and prepared actions while keeping final authorization with the user's wallet.",
   caseStudyLead:
     "Nova explored an important question for financial agents: can AI help a user understand and prepare an action without becoming the signer? I led the team and built the agent layer that translated intent into tools, context cards, and transaction review states.",
   role: "Team Lead · AI Engineer",
