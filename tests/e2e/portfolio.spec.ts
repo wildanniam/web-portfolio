@@ -258,7 +258,7 @@ test("work index reaches every public case study", async ({ page }) => {
 
   await expect(page.getByRole("heading", { level: 1, name: "Projects I've led and built." })).toBeVisible();
 
-  for (const title of ["Fradium", "PayGate", "Nova AI Wallet", "Nara Wallet", "Quorum", "SpecHeal"]) {
+  for (const title of ["Fradium", "PayGate", "Nova AI", "Nara Wallet", "Quorum", "SpecHeal"]) {
     await expect(page.getByRole("heading", { name: title, exact: true })).toBeVisible();
   }
 
