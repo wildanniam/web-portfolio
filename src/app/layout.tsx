@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { EntryGate } from "@/components/layout/entry-gate";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { ContactScrollController } from "@/motion/contact-scroll-controller";
 import { siteContent } from "@/content/site";
 import { getSiteUrl, isIndexableDeployment, serializeJsonLd } from "@/lib/seo/site-url";
 
@@ -118,6 +119,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <SiteHeader />
+        <ContactScrollController />
         {children}
         <SiteFooter />
       </body>

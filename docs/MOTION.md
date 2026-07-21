@@ -97,10 +97,10 @@ Implementation details:
 - How I Work uses a one-time line/marker reveal.
 - Principles respond to hover/focus without hiding information.
 - Selected Highlights use an editorial index response, never metric-card motion.
-- Contact uses a restrained CSS view-timeline: only the oversized backdrop word
-  descends as the section crosses the viewport. The conversation slab remains
-  stable, unsupported browsers keep a static composition, and reduced motion
-  removes the transform.
+- The oversized Contact backdrop word descends as the section crosses the
+  viewport. `ContactScrollController` owns that transform across browsers while
+  the conversation slab remains stable. Route changes clean up its listener,
+  and reduced motion removes the transform.
 - No infinite dominant pulse, ticker, marquee, or repeated section fade-up.
 
 ## Reduced-motion contract
