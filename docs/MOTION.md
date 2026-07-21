@@ -97,7 +97,10 @@ Implementation details:
 - How I Work uses a one-time line/marker reveal.
 - Principles respond to hover/focus without hiding information.
 - Selected Highlights use an editorial index response, never metric-card motion.
-- Contact uses a restrained tonal transition.
+- Contact uses a restrained CSS view-timeline: only the oversized backdrop word
+  descends as the section crosses the viewport. The conversation slab remains
+  stable, unsupported browsers keep a static composition, and reduced motion
+  removes the transform.
 - No infinite dominant pulse, ticker, marquee, or repeated section fade-up.
 
 ## Reduced-motion contract

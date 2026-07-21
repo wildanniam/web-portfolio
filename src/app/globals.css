@@ -762,6 +762,8 @@ summary:focus-visible {
   background:
     radial-gradient(circle at 82% 16%, rgb(198 94 46 / 0.13), transparent 28rem),
     var(--smoke-900);
+  view-timeline-name: --contact-stage;
+  view-timeline-axis: block;
 }
 
 .contact-stage__container {
@@ -785,7 +787,29 @@ summary:focus-visible {
 }
 
 .contact-stage__word-motion {
-  will-change: transform;
+  transform: none;
+}
+
+@keyframes contact-word-descend {
+  from {
+    transform: translate3d(0, -20%, 0);
+  }
+
+  to {
+    transform: translate3d(0, 30%, 0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .contact-stage__word-motion {
+    animation-name: contact-word-descend;
+    animation-duration: 1ms;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: --contact-stage;
+    animation-range: entry 0% exit 100%;
+    will-change: transform;
+  }
 }
 
 .contact-stage__word {
@@ -1750,6 +1774,12 @@ summary:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .selected-system-surface,
   .selected-system-content {
+    will-change: auto;
+  }
+
+  .contact-stage__word-motion {
+    animation: none;
+    transform: none;
     will-change: auto;
   }
 

@@ -167,12 +167,7 @@ export function HowIBuildSection() {
 
 export function ContactSection() {
   return (
-    <section
-      id="contact"
-      aria-labelledby="contact-title"
-      className="contact-stage"
-    >
-      <ContactBackdropWord />
+    <ContactBackdropWord>
       <Container className="contact-stage__container">
         <div className="contact-stage__panel">
           <p className="contact-stage__eyebrow">START A CONVERSATION</p>
@@ -200,6 +195,6 @@ export function ContactSection() {
           </div>
         </div>
       </Container>
-    </section>
+    </ContactBackdropWord>
   );
 }
