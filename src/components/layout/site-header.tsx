@@ -114,10 +114,10 @@ export function SiteHeader() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,box-shadow,color] duration-300 ${
+        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,color] duration-300 ${
           isHeroState
-            ? "border-transparent bg-gradient-to-b from-smoke-900/60 to-transparent text-paper-0"
-            : "border-line-200/70 bg-paper-0/84 text-ink-900 shadow-[0_14px_40px_rgb(26_23_20/0.07)] backdrop-blur-xl"
+            ? "bg-gradient-to-b from-smoke-900/60 to-transparent text-paper-0"
+            : "bg-paper-0/84 text-ink-900 shadow-[0_14px_40px_rgb(26_23_20/0.07)] backdrop-blur-xl"
         }`}
       >
         <Container className="flex min-h-20 items-center justify-between gap-5">

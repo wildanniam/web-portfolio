@@ -4,9 +4,8 @@ import { siteContent } from "@/content/site";
 export function SiteFooter() {
   return (
     <footer className="relative overflow-hidden bg-smoke-900 text-paper-0">
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-paper-0/14" />
-      <Container className="relative pt-10 pb-6 sm:pt-14 sm:pb-8">
-        <dl className="grid gap-8 border-b border-paper-0/14 pb-10 sm:grid-cols-3 sm:gap-10 sm:pb-12">
+      <Container className="relative pt-12 pb-7 sm:pt-16 sm:pb-9">
+        <dl className="grid gap-7 sm:grid-cols-3 sm:gap-10">
           <div>
             <dt className="font-mono text-[0.61rem] tracking-[0.14em] text-[#F2A47E] uppercase">
               Focus
@@ -33,24 +32,26 @@ export function SiteFooter() {
           </div>
         </dl>
 
-        <div className="relative border-b border-paper-0/14 py-12 sm:py-16 lg:py-20">
-          <p className="flex flex-col font-display text-[clamp(4rem,19vw,8rem)] leading-[0.7] font-semibold tracking-[-0.075em] sm:block sm:whitespace-nowrap sm:text-[clamp(5.5rem,12.2vw,11.25rem)]">
-            <span className="text-paper-0">WILDAN</span>
-            <span className="text-[#F2A47E] sm:ml-[0.11em]">NIAM.</span>
+        <div className="relative flex min-h-[19rem] items-center justify-center py-14 sm:min-h-[28rem] sm:py-20 lg:min-h-[32rem]">
+          <p className="whitespace-nowrap font-sans text-[clamp(4.25rem,17vw,9rem)] leading-[0.78] font-semibold tracking-[-0.09em] text-paper-0 sm:text-[clamp(7rem,13.4vw,12.5rem)]">
+            <span>wildan niam</span>
+            <span className="text-[#F2A47E]">.</span>
           </p>
         </div>
 
-        <div className="flex flex-col gap-6 pt-6 font-mono text-[0.64rem] font-semibold tracking-[0.1em] text-paper-0/52 uppercase sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} {siteContent.name}
-          </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+        <div className="flex flex-col gap-5 font-mono text-[0.64rem] font-semibold tracking-[0.1em] text-paper-0/52 uppercase sm:flex-row sm:items-end sm:justify-between">
+          <div className="grid gap-2">
             <a
               href={`mailto:${siteContent.contact.email}`}
-              className="transition-colors hover:text-paper-0"
+              className="w-fit text-paper-0 underline decoration-paper-0/45 underline-offset-4 transition-colors hover:text-[#F2A47E]"
             >
-              Email
+              {siteContent.contact.email}
             </a>
+            <p>
+              © {new Date().getFullYear()} {siteContent.name}
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
             <a
               href={siteContent.contact.github}
               target="_blank"

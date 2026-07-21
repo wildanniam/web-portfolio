@@ -181,3 +181,9 @@ Nara Wallet joins the Selected Work stage between Nova AI Wallet and Quorum with
 Wildan's explicit approval on 20 July 2026. Its route, team-scoped 1st Place
 Nextgen Agent Hackathon result, AI Agent Developer role, canonical product media,
 prototype lifecycle, and limitations are part of the locked public content map.
+
+The Contact closing act uses the Ember Overlay composition approved on 21 July
+2026: an oversized parallax `CONTACT` word behind one bounded burnt-Ember direct
+contact slab, followed by the oversized dark `wildan niam.` signature. It avoids
+a full-orange field and non-functional form without changing the route order,
+contact claims, or footer identity.

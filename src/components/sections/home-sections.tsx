@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ContactBackdropWord } from "@/components/interactive/contact-backdrop-word";
 import { ProjectMedia } from "@/components/projects/project-media";
 import { Container } from "@/components/ui/container";
 import { selectedProjects, specheal } from "@/content/projects";
@@ -165,48 +166,5 @@ export function HowIBuildSection() {
 }
 
 export function ContactSection() {
-  return (
-    <section
-      id="contact"
-      aria-labelledby="contact-title"
-      className="contact-stage scroll-mt-24"
-    >
-      <Container>
-        <div className="contact-stage__marker" aria-hidden="true">
-          <span>05</span>
-          <span>CONTACT</span>
-        </div>
-
-        <div className="contact-stage__body">
-          <div>
-            <p className="contact-stage__eyebrow">LET&apos;S MAKE IT REAL</p>
-            <h2 id="contact-title">{siteContent.contact.title}</h2>
-          </div>
-
-          <div className="contact-stage__invitation">
-            <p>{siteContent.contact.copy}</p>
-            <a
-              href={`mailto:${siteContent.contact.email}`}
-              className="contact-stage__email"
-            >
-              <span>{siteContent.contact.email}</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-
-        <div className="contact-stage__meta">
-          <span>{siteContent.contact.location}</span>
-          <span>AI / WEB3 / PRODUCT ENGINEERING</span>
-          <a href={siteContent.contact.github} target="_blank" rel="noreferrer">
-            GitHub ↗
-          </a>
-          <a href={siteContent.contact.instagram} target="_blank" rel="noreferrer">
-            Instagram ↗
-          </a>
-          <a href="#main-content">Back to top ↑</a>
-        </div>
-      </Container>
-    </section>
-  );
+  return <ContactBackdropWord />;
 }
